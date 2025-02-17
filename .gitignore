@@ -1,0 +1,14 @@
+.netlify/
+node_modules/
+*.log
+*.lock
+.netlify/
+.netlify/
+node_modules/
+*.log
+*.lock
+.netlify/
+node_modules/
+*.log
+*.lock
+public/

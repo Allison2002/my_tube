@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="Cache-Control" content="max-age=31536000, immutable" />
+    <meta
+      http-equiv="Cache-Control"
+      content="no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0"
+    />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <meta name="description" content="Upload and share your best sports moments on Sports Tube! Join a passionate community, showcase your game highlights, and categorize your videos in football, basketball, or baseball. Start sharing your sports journey today!" />
+    <title>Sports Tube Upload</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://res.cloudinary.com" crossorigin />
+    <link rel="dns-prefetch" href="https://res.cloudinary.com" />
+    <link rel="stylesheet" href="/styles.css" />
+    <link
+      rel="preload"
+      as="font"
+      href="/assets/fonts/Bebas_Neue/BebasNeue-Regular.woff2"
+      type="font/woff2"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="preload"
+      as="font"
+      href="/assets/fonts/Roboto/static/Roboto-Regular.woff2"
+      type="font/woff2"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="preload"
+      as="image"
+      href="https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_auto:low,w_1920,h_600,c_fit/v1739332968/upload-wide_qu2mg3.avif"
+      type="image/avif"
+      fetchpriority="high"
+      media="(min-width: 1024px)"
+    />
+
+    <link
+      rel="icon"
+      href="https://res.cloudinary.com/dnptzisuf/image/upload/v1738106888/sports_tube_tab_logo_oajgbj.webp"
+      type="image/webp"
+    />
+    <style>
+      .blog-hero img {
+        width: 100vw;
+        height: 600px; 
+        object-fit: cover;
+        box-shadow: rgb(0 0 0 / 20%) 0px 0px 10px 4px;
+        z-index: 0;
+        margin-top: -60px;
+      }
+
+      .upload-page form {
+        width: 60%;
+        max-width: 800px;
+        margin: 2em auto;
+        padding: 2em;
+        border-radius: 8px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        padding-top: 1rem !important; /* Reduce top padding */
+        margin-top: 0 !important;
+      }
+
+      .upload-page form {
+        margin-top: 0 !important;
+        padding-top: 1.5rem; /* Adjust spacing */
+      }
+
+      .upload-page {
+        margin-bottom: 0 !important;
+        padding-bottom: 2rem !important; /* Adjust to fit layout */
+      }
+
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="blog-hero-section">
+        <div id="nav"></div>
+        <section>
+          <div class="blog-hero">
+            <picture>
+              <source
+                srcset="
+                  https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_auto:low,w_1920,h_600,c_fit/v1739332968/upload-wide_qu2mg3.avif
+                "
+                type="image/avif"
+              />
+              <source
+                srcset="
+                  https://res.cloudinary.com/dnptzisuf/image/upload/f_auto,q_auto,w_1920,h_600,c_fit/v1739332968/upload-wide_qu2mg3.webp
+                "
+                type="image/webp"
+              />
+              <img
+                src="https://res.cloudinary.com/dnptzisuf/image/upload/f_auto,q_auto,w_1920,h_600,c_fit/v1739332968/upload-wide_qu2mg3.jpg"
+                alt="All Videos Page Banner"
+                width="1920"
+                height="600"
+                loading="eager"
+                fetchpriority="high"
+                class="hero-image"
+                decoding="async"
+                importance="high"
+              />
+            </picture>
+          </div>
+        </section>
+      </div>
+    </header>
+    <main>  
+      <section class="article">
+        <div id="upload-page" class="upload-page">
+          <form action="/submit" method="POST" class="article-color1">
+              <div>
+                <h1>Add New Video</h1>
+              </div>
+              <div class="form-sect"> 
+                <label for="name">Name</label>
+                <div class="name">
+                  <input
+                    name="title"
+                    id="title"
+                    type="text"
+                    minlength="2"
+                    maxlength="25"
+                    placeholder="First Name"
+                    required/>
+                  <input
+                    name="title"
+                    id="title"
+                    type="text"
+                    minlength="2"
+                    maxlength="25"
+                    placeholder="Last Name"
+                    required/>
+                </div>
+              </div>   
+              <div class="form-sect">
+                <label for="email">Email</label>
+                <input
+                  name="email"
+                  id="email"
+                  type="text"
+                  minlength="5"
+                  maxlength="25"
+                  placeholder="example@example.com"
+                  required/>
+              </div>   
+              <div class="form-sect">
+                <label for="title">Title of your video</label>
+                <input
+                  name="title"
+                  id="title"
+                  type="text"
+                  minlength="2"
+                  maxlength="25"
+                  placeholder="Title"
+                  required/>
+              </div>              
+
+              <div class="form-sect descr">
+                <label for="describe">Description</label>
+                <textarea
+                  name="describe"
+                  id="describe"
+                  rows="10"
+                  cols="40"
+                  placeholder="text area content"
+                  required>Describe your video...
+                </textarea> 
+              </div>  
+              <div class="form-sect">
+                <label for="video">Video</label>
+                <input 
+                  id="video" 
+                  name="video" 
+                  type="file" 
+                  required />
+              </div>  
+              <div class="form-sect">
+                <select id="choose_cata" name="choose_cata" required>
+                  <option value="choose_category" selected>Choose Category</option>
+                  <option value="football">Football</option>
+                  <option value="basketball">Basketball</option>
+                  <option value="baseball">Baseball</option>
+                </select>
+              </div>
+              <div class="radio-group first-radio">
+                <input type="radio" id="public" name="domain" value="public"/>
+                <label for="public">Public</label>
+              </div>
+              <div class="radio-group">
+                <input type="radio" id="private" name="domain" value="private"/>
+                <label for="private">Private</label>
+              </div>
+              <div class="form-sect">  
+                <button class="btn2 button" type="submit" id="submit" name="submit">Upload Video</button>
+              </div>   
+          </form>
+        </div>       
+      </section>         
+    </main>     
+      <section class="join-section upload-cta">
+        <div class="join-container">
+          <div class="join-text">
+            <div><h2>Join the Sports Tube Community</h2></div>
+            <div><p>Sign up now to start streaming your favorite sports videos or upload your own content!</p></div>
+            
+          </div>
+          <div class="grid-btn">
+            <a class="btn3 button" href="/pages/account.html">Sign Up</a>
+          </div> 
+        </div>
+      </section>      
+    </main>
+    <div id="footer"></div>
+    <script src="/script.js" defer></script>
+    <!-- Remove this script -->
+    <script>
+      if ("serviceWorker" in navigator) {
+        navigator.serviceWorker.getRegistrations().then((registrations) => {
+          registrations.forEach((registration) => {
+            registration.unregister();
+          });
+        });
+      }
+    </script>
+  </body>
+</html>

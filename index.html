@@ -1,0 +1,1038 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="Cache-Control" content="max-age=31536000, immutable" />
+    <meta
+      http-equiv="Cache-Control"
+      content="no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0"
+    />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <meta
+      name="description"
+      content="Join Sports Tube to stream live sports, upload videos, and connect with passionate fans worldwide. Learn how our platform works!"
+    />
+    <title>Sports Tube - Your Ultimate Destination for Sports Videos</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://res.cloudinary.com" crossorigin />
+    <link rel="dns-prefetch" href="https://res.cloudinary.com" />
+    <link rel="stylesheet" href="/styles.css" />
+    <link
+      rel="preload"
+      as="font"
+      href="/assets/fonts/Bebas_Neue/BebasNeue-Regular.woff2"
+      type="font/woff2"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="preload"
+      as="font"
+      href="/assets/fonts/Roboto/static/Roboto-Regular.woff2"
+      type="font/woff2"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="preload"
+      as="image"
+      href="https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_auto:best,w_1920,h_1080/v1737993374/sports_tube_background_nkpr4r.avif"
+      type="image/avif"
+      fetchpriority="high"
+    />
+
+    <link
+      rel="icon"
+      href="https://res.cloudinary.com/dnptzisuf/image/upload/v1738106888/sports_tube_tab_logo_oajgbj.webp"
+      type="image/webp"
+    />
+
+    <style>
+      @font-face {
+        font-family: "Roboto";
+        src: url("assets/fonts/Roboto/static/Roboto-Regular.woff2")
+          format("woff2");
+        font-display: swap; /* ✅ Uses system font first */
+      }
+
+      @font-face {
+        font-family: "Bebas Neue";
+        src: url("assets/fonts/Bebas_Neue/BebasNeue-Regular.woff2")
+          format("woff2");
+        font-display: swap;
+      }
+
+      .video-box img,
+      .video-box iframe {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* Ensures the image fills the space */
+      }
+
+      .hero-container {
+        display: flex;
+        max-width: 100vw;
+        height: 100vh;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center; /* Changed to center */
+        min-height: 50vh; /* Ensures space is reserved */
+        padding-left: 5%;
+        position: relative;
+        overflow: hidden; /* Prevents layout shift */
+      }
+
+      /* Hero Image - Keep in Normal Flow */
+      .hero img {
+        width: 100vw;
+        height: 100vh;
+        object-fit: cover;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 0;
+        will-change: opacity, transform; /* Enables browser optimizations */
+      }
+
+      /* Buttons & Quick Links */
+      .hero-btn {
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+        margin-top: 1em;
+        position: relative; /* Ensure it stays in document flow */
+        z-index: 20; /* Ensure it's above background elements */
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .sub-heading {
+        width: 40vw;
+      }
+
+      .video-week-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding-top: 8rem;
+        max-width: 100vw;
+        margin: 0 auto;
+        position: relative;
+      }
+
+      .video-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+        width: 90%;
+        max-width: 1200px;
+        margin: 8rem auto 0;
+        height: auto;
+        justify-content: center;
+      }
+
+      .thumbnail-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        width: 100%;
+        max-width: 500px; /* Increased width */
+      }
+
+      .video-box {
+        width: 100%;
+        max-width: 500px;
+        height: 300px; /* Ensures increased height */
+        overflow: hidden;
+        position: relative;
+        border-radius: 10px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+      }
+
+      .video-box img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+        aspect-ratio: 16/9;
+      }
+
+      .video-box-text {
+        text-align: center;
+        margin-top: 1rem;
+      }
+
+      .video-box-text h3 {
+        font-size: 1.5rem;
+        color: #1a1d9e;
+        text-transform: uppercase;
+        text-align: center;
+      }
+
+      .video-box-text h3:hover {
+        color: red;
+        transition: color 0.3s ease-in-out;
+      }
+
+      .video-container {
+        width: 100%;
+        height: auto;
+        position: relative;
+        width: 500px;
+        max-width: 800px;
+        height: 400px;
+        overflow: hidden;
+        object-fit: fill;
+      }
+
+      .video-styled {
+        position: relative;
+        cursor: pointer;
+        overflow: hidden;
+        border-radius: 10px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: black;
+        width: 100%;
+        max-width: 400px;
+        height: 338px;
+        overflow: hidden;
+        object-fit: fill;
+      }
+
+      .video-styled img {
+        object-fit: cover;
+        display: block;
+        width: 100%;
+        max-width: 400px;
+        height: 338px;
+        overflow: hidden;
+        object-fit: fill;
+      }
+
+      .video-box {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        max-width: 800px;
+        height: auto;
+        min-height: 200px; /* Prevents collapsing */
+      }
+
+      .video-box img {
+        max-width: 400px;
+        height: 338px;
+        object-fit: cover;
+      }
+
+      .video-box .video-box-text {
+        display: block;
+        text-align: center;
+        margin-top: 0.5rem;
+        font-size: 1rem;
+        font-weight: bold;
+        color: #0073e6;
+        text-decoration: none;
+      }
+
+      .youtube-facade {
+        width: 100%;
+        height: 100%;
+      }
+
+      .youtube-facade img {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+
+      .video-styled .play-button-overlay {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 60px;
+        height: 60px;
+        background: url("https://res.cloudinary.com/dnptzisuf/image/upload/v1738094189/play-icon_s7jgug.svg")
+          no-repeat center;
+        background-size: contain;
+        pointer-events: none;
+      }
+
+      .article-video {
+        max-width: 90%;
+        padding: 2em 0.5em;
+        margin: -8em 0 5em;
+      }
+
+      #sports {
+        margin: 5em auto 0;
+      }
+
+      .box2-2grid-video .youtube-facade {
+        display: flex;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+      }
+
+      .section-title {
+        width: 100%;
+        text-align: center;
+        padding: 2rem 0;
+        font-size: 2.5rem;
+        font-weight: bold;
+        text-transform: uppercase;
+        color: black;
+        position: relative; /* Ensures it stays above other elements */
+        z-index: 10; /* Higher than videos */
+        background: #e1e5e8; /* Match background to prevent overlapping */
+      }
+
+      .page-heading {
+        transform: translateY(-10%);
+        width: 50%;
+        text-align: left;
+        margin-top: -1em;
+      }
+
+      .page-heading h1,
+      .page-heading p {
+        color: white;
+      }
+
+      .page-heading h1 {
+        font-size: 3rem;
+        padding-bottom: 1em;
+      }
+
+      .page-heading p {
+        font-size: 2rem;
+        line-height: 1.5;
+        padding-bottom: 1em;
+      }
+
+      /* Buttons & Quick Links */
+      .hero-btn {
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+        margin-top: -1em;
+        position: relative; /* Ensure it stays in document flow */
+        z-index: 20; /* Ensure it's above background elements */
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .call2action-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 3rem 1rem;
+        gap: 2rem;
+      }
+
+      .call2action-text {
+        flex: 1;
+        max-width: 600px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        text-align: left;
+      }
+
+      .call2action-text h2 {
+        font-size: 2rem;
+        color: #1a1d9e;
+        margin-bottom: 1rem;
+      }
+
+      .call2action-text p {
+        font-size: 1.2rem;
+        color: #333;
+        line-height: 1.5;
+        margin-bottom: 1.5rem;
+      }
+
+      .call2action-features {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .feature-box {
+        background: #f4f4f4;
+        padding: 1rem;
+        border-radius: 8px;
+      }
+
+      .feature-box h3 {
+        font-size: 1.3rem;
+        color: #1a1d9e;
+        margin-bottom: 0.5rem;
+      }
+
+      .call2action-buttons {
+        display: flex;
+        gap: 1rem;
+      }
+
+      .btn {
+        display: inline-block;
+        padding: 0.75rem 1.5rem;
+        font-size: 1rem;
+        text-transform: uppercase;
+        border-radius: 5px;
+        text-decoration: none;
+        transition: all 0.3s ease;
+      }
+
+      .primary-btn {
+        background-color: #1a1d9e;
+        color: white;
+      }
+
+      .primary-btn:hover {
+        background-color: #0bd6e2;
+      }
+
+      .secondary-btn {
+        background-color: #e1e5e8;
+        color: #1a1d9e;
+        border: 1px solid #1a1d9e;
+      }
+
+      .secondary-btn:hover {
+        background-color: #d0d5db;
+      }
+
+      .call2action-video {
+        flex: 1;
+        max-width: 600px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+      }
+
+      .video-wrapper {
+        width: 100%;
+        max-width: 600px;
+        aspect-ratio: 16/9;
+        border-radius: 10px;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .video-thumbnail {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 10px;
+      }
+
+      .play-button-overlay {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 60px;
+        height: 60px;
+        background: url("https://res.cloudinary.com/dnptzisuf/image/upload/v1738094189/play-icon_s7jgug.svg")
+          no-repeat center;
+        background-size: contain;
+        pointer-events: none;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="hero-container">
+        <div id="nav"></div>
+        <section class="hero" role="img" aria-label="Sports Community Hub">
+          <picture class="hero-img">
+            <source
+              srcset="
+                https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_auto:best,w_480,h_270/v1737993374/sports_tube_background_nkpr4r.avif
+              "
+              media="(max-width: 480px)"
+              type="image/avif"
+              width="480"
+              height="270"
+              loading="eager"
+              fetchpriority="high"
+            />
+
+            <source
+              srcset="
+                https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_auto:best,w_768,h_432/v1737993374/sports_tube_background_nkpr4r.avif
+              "
+              media="(max-width: 768px)"
+              type="image/avif"
+              width="768"
+              height="432"
+              loading="eager"
+              fetchpriority="high"
+            />
+
+            <source
+              srcset="
+                https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_auto:best,w_1920,h_1080/v1737993374/sports_tube_background_nkpr4r.avif
+              "
+              media="(min-width: 1024px)"
+              type="image/avif"
+              width="1920"
+              height="1080"
+              loading="eager"
+              fetchpriority="high"
+            />
+
+            <img
+              src="https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_auto:best,w_1920,h_1080,c_fill,g_auto/v1737993374/sports_tube_background_nkpr4r.avif"
+              alt="Sports Community Hub"
+              width="1920"
+              height="1080"
+              loading="eager"
+              fetchpriority="high"
+              class="hero-image"
+              decoding="async"
+              importance="high"
+            />
+          </picture>
+        </section>
+
+        <div class="hero-content">
+          <div class="page-heading">
+            <h1>YOUR ULTIMATE DESTINATION FOR SPORTS VIDEOS</h1>
+            <p>
+              Dive into a world where sports meet entertainment. Discover,
+              watch, and share your favorite moments from baseball, football,
+              basketball, and more!
+            </p>
+          </div>
+
+          <div class="hero-btn">
+            <a class="button" href="/pages/all_videos/all-videos.html">Watch</a>
+            <a class="button" href="/pages/upload/upload.html">Upload</a>
+          </div>
+        </div>
+      </div>
+    </header>
+    <main>
+      <div class="video-week-container">
+        <div class="section-title">
+          <h2>VIDEO OF THE WEEK!</h2>
+        </div>
+        <section class="article-video">
+          <div class="video-grid">
+            <div class="thumbnail-container">
+              <div class="video-box">
+                <div
+                  class="youtube-facade video-styled"
+                  data-video-id="9n0T6cQ7zbM"
+                >
+                  <img
+                    src="https://res.cloudinary.com/dnptzisuf/image/upload/f_avif%2Cq_auto:low%2Cw_400%2Ch_338%2Cc_fit/v1738107519/thumbnaill-mAozdFiz4ng_w45qrz.avif"
+                    alt="Football Video Thumbnail"
+                    class="video-thumbnail"
+                  />
+                  <div class="play-button-overlay"></div>
+                </div>
+              </div>
+              <div class="video-box-text">
+                <a href="pages/football/football.html">
+                  <h3>Football</h3>
+                </a>
+              </div>
+            </div>
+
+            <div class="thumbnail-container">
+              <div class="video-box">
+                <div
+                  class="youtube-facade video-styled"
+                  data-video-id="7Oj7IAJ7B_0"
+                >
+                  <img
+                    src="https://res.cloudinary.com/dnptzisuf/image/fetch/v1738592450/https://res.cloudinary.com/dnptzisuf/image/upload/f_avif%2Cq_auto:low%2Cw_400%2Ch_338%2Cc_fit/v1738106889/thumbnaik-7Oj7IAJ7B_0_heineh.avif"
+                    alt="Basketball Video Thumbnail"
+                    class="video-thumbnail"
+                  />
+                  <div class="play-button-overlay"></div>
+                </div>
+              </div>
+              <div class="video-box-text">
+                <a href="pages/basketball/basketball.html">
+                  <h3>Basketball</h3>
+                </a>
+              </div>
+            </div>
+
+            <div class="thumbnail-container">
+              <div class="video-box">
+                <div
+                  class="youtube-facade video-styled"
+                  data-video-id="lRTUIBVfLP4"
+                >
+                  <img
+                    src="https://res.cloudinary.com/dnptzisuf/image/fetch/v1738212484/https://res.cloudinary.com/dnptzisuf/image/upload/f_auto,q_auto,w_400,h_338/v1739209644/thumbnails-unbelievable-plays_d23ogq.avif"
+                    alt="Baseball Video Thumbnail"
+                    class="video-thumbnail"
+                  />
+                  <div class="play-button-overlay"></div>
+                </div>
+              </div>
+              <div class="video-box-text">
+                <a href="pages/baseball/baseball.html">
+                  <h3>Baseball</h3>
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <section class="live-sports-and-videos call2action" id="your-home">
+        <div class="call2action-container">
+          <div class="call2action-text">
+            <h2>Your Home for Live Sports and Videos</h2>
+            <p>
+              Experience the thrill of live sports streaming and user-generated
+              content. Join a community that celebrates every game, every
+              highlight, and every fan.
+            </p>
+
+            <div class="call2action-features">
+              <div class="feature-box">
+                <h3>User-Generated</h3>
+                <p>
+                  Share your passion for sports with videos from fans like you.
+                </p>
+              </div>
+              <div class="feature-box">
+                <h3>Live Streaming</h3>
+                <p>Catch all the action as it happens, anytime, anywhere.</p>
+              </div>
+            </div>
+
+            <div class="call2action-buttons">
+              <a href="/pages/account.html" class="btn primary-btn">Join</a>
+              <a
+                href="/pages/learn_more/learn_more.html"
+                class="btn secondary-btn"
+                >Learn More!</a
+              >
+            </div>
+          </div>
+
+          <div class="call2action-video">
+            <div class="video-wrapper">
+              <div
+                class="youtube-facade video-styled"
+                data-video-id="9n0T6cQ7zbM"
+              >
+                <picture>
+                  <source
+                    srcset="
+                      https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_auto:low,w_400,h_338,c_fit/v1738106889/thumbnail-9n0T6cQ7zbM_wtj9uk.avif
+                    "
+                    type="image/avif"
+                  />
+                  <source
+                    srcset="
+                      https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_auto:low,w_400,h_338,c_fit/v1738106889/thumbnail-9n0T6cQ7zbM_wtj9uk.webp
+                    "
+                    type="image/webp"
+                  />
+                  <img
+                    src="https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_auto:low,w_400,h_338,c_fit/v1738106889/thumbnail-9n0T6cQ7zbM_wtj9uk.jpg"
+                    alt="Football Video Thumbnail"
+                    class="video-thumbnail"
+                    width="400"
+                    height="338"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </picture>
+                <div class="play-button-overlay"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="player-biography">
+        <div class="biography-section">
+          <!-- Aaron Judge -->
+          <div class="biography" id="bio1">
+            <div class="bio-img">
+              <picture>
+                <source
+                  srcset="
+                    https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_auto:low,w_600,h_400,c_fit/v1737994296/aaron_judge_lq02md.avif
+                  "
+                  media="(max-width: 768px)"
+                  loading="lazy"
+                  decoding="async"
+                  width="600"
+                  height="400"
+                />
+                <source
+                  srcset="
+                    https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_auto:low,w_800,h_533,c_fit/v1737994296/aaron_judge_lq02md.webp
+                  "
+                  media="(min-width: 769px)"
+                  loading="lazy"
+                  decoding="async"
+                  width="800"
+                  height="533"
+                />
+                <img
+                  src="https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_auto:low,w_800,h_533,c_fit/v1737994296/aaron_judge_lq02md.jpg"
+                  alt="Aaron Judge, a baseball player for the New York Yankees."
+                  loading="lazy"
+                  decoding="async"
+                  width="800"
+                  height="533"
+                />
+              </picture>
+            </div>
+
+            <div class="plus-sign">
+              <button class="toggle-btn">
+                <img
+                  src="https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_auto,w_100,h_100,c_fit/v1737994384/white-plus-sign_av8usw.avif"
+                  alt="Expand Biography"
+                  loading="lazy"
+                  decoding="async"
+                  width="100"
+                  height="100"
+                />
+              </button>
+            </div>
+            <div class="bio-content">
+              <p>
+                Aaron Judge is one of Major League Baseball's premier power
+                hitters. His rookie season in 2017 was historic, with 52 home
+                runs, breaking the rookie record previously held by Mark
+                McGwire. Known for his towering stature (6'7") and immense
+                strength, Judge continues to be a key player for the Yankees,
+                earning multiple All-Star selections and Silver Slugger Awards.
+              </p>
+            </div>
+          </div>
+
+          <!-- Giannis Antetokounmpo -->
+          <div class="biography" id="bio2">
+            <div class="bio-img">
+              <picture>
+                <source
+                  srcset="
+                    https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_auto,w_600,h_400,c_fill/v1737994296/Giannis_nl0dki.avif
+                  "
+                  media="(max-width: 768px)"
+                  loading="lazy"
+                  decoding="async"
+                  width="600"
+                  height="400"
+                />
+                <source
+                  srcset="
+                    https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_auto,w_800,h_533,c_fill/v1737994296/Giannis_nl0dki.webp
+                  "
+                  media="(min-width: 769px)"
+                  loading="lazy"
+                  decoding="async"
+                  width="800"
+                  height="533"
+                />
+                <img
+                  src="https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_auto,w_800,h_533,c_fill/v1737994296/Giannis_nl0dki.jpg"
+                  alt="Giannis Antetokounmpo, a basketball player for the Milwaukee Bucks."
+                  loading="lazy"
+                  decoding="async"
+                  width="800"
+                  height="533"
+                />
+              </picture>
+            </div>
+            <div class="plus-sign">
+              <button class="toggle-btn">
+                <img
+                  src="https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_auto,w_100,h_100,c_fill/v1737994384/white-plus-sign_av8usw.avif"
+                  alt="Expand Biography"
+                  loading="lazy"
+                  decoding="async"
+                  width="100"
+                  height="100"
+                />
+              </button>
+            </div>
+            <div class="bio-content">
+              <p>
+                Giannis Antetokounmpo, known as the "Greek Freak," is a dominant
+                NBA force for the Milwaukee Bucks. Known for his versatility,
+                length, and athleticism, Giannis led the Bucks to their first
+                NBA championship in 50 years in 2021, earning Finals MVP honors.
+              </p>
+            </div>
+          </div>
+          <div class="biography" id="bio3">
+            <div class="bio-img">
+              <picture>
+                <source
+                  srcset="
+                    https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_auto,w_600,h_400,c_fill/v1737994296/mahomes_ttt0eh.avif
+                  "
+                  media="(max-width: 768px)"
+                  loading="lazy"
+                  decoding="async"
+                  width="600"
+                  height="400"
+                />
+                <source
+                  srcset="
+                    https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_auto,w_800,h_533,c_fill/v1737994296/mahomes_ttt0eh.webp
+                  "
+                  media="(min-width: 769px)"
+                  loading="lazy"
+                  decoding="async"
+                  width="800"
+                  height="533"
+                />
+                <img
+                  src="https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_auto,w_800,h_533,c_fill/v1737994296/mahomes_ttt0eh.jpg"
+                  alt="Patrick Mahomes, a football player for the Kansas City Chiefs."
+                  loading="lazy"
+                  decoding="async"
+                  width="800"
+                  height="533"
+                />
+              </picture>
+            </div>
+            <div class="plus-sign">
+              <button class="toggle-btn">
+                <img
+                  src="https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_auto,w_100,h_100,c_fill/v1737994384/white-plus-sign_av8usw.avif"
+                  alt="Expand Biography"
+                  loading="lazy"
+                  decoding="async"
+                  width="100"
+                  height="100"
+                />
+              </button>
+            </div>
+            <div class="bio-content">
+              <p>
+                Patrick Mahomes is the star quarterback for the Kansas City
+                Chiefs. Known for his strong arm and playmaking ability, Mahomes
+                led the Chiefs to a Super Bowl victory in 2020, earning Super
+                Bowl MVP honors.
+              </p>
+            </div>
+          </div>
+
+          <!-- Shohei Ohtani -->
+          <div class="biography" id="bio4">
+            <div class="bio-img">
+              <picture>
+                <source
+                  srcset="
+                    https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_auto,w_600,h_400,c_fill/v1737994296/shohei_ohtani_o9eti3.avif
+                  "
+                  media="(max-width: 768px)"
+                  loading="lazy"
+                  decoding="async"
+                  width="600"
+                  height="400"
+                />
+                <source
+                  srcset="
+                    https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_auto,w_800,h_533,c_fill/v1737994296/shohei_ohtani_o9eti3.webp
+                  "
+                  media="(min-width: 769px)"
+                  loading="lazy"
+                  decoding="async"
+                  width="800"
+                  height="533"
+                />
+                <img
+                  src="https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_auto,w_800,h_533,c_fill/v1737994296/shohei_ohtani_o9eti3.jpg"
+                  alt="Shohei Ohtani, a baseball player for the Los Angeles Angels."
+                  loading="lazy"
+                  decoding="async"
+                  width="800"
+                  height="533"
+                />
+              </picture>
+            </div>
+            <div class="plus-sign">
+              <button class="toggle-btn">
+                <img
+                  src="https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_auto,w_100,h_100,c_fill/v1737994384/white-plus-sign_av8usw.avif"
+                  alt="Expand Biography"
+                  loading="lazy"
+                  decoding="async"
+                  width="100"
+                  height="100"
+                />
+              </button>
+            </div>
+            <div class="bio-content">
+              <p>
+                Shohei Ohtani is a once-in-a-generation talent from Japan who
+                has made waves in Major League Baseball as both a dominant
+                pitcher and a powerful hitter. Ohtani joined the Los Angeles
+                Angels in 2018 after a successful career in Japan’s Nippon
+                Professional Baseball.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="sports-your-way">
+        <div id="sports">
+          <div class="section-heading">
+            <h2>Your Sports, Your Way</h2>
+            <p>Experience the thrill of live sports anytime, anywhere.</p>
+          </div>
+          <div class="grid-211">
+            <div class="box1-211 icon">
+              <img
+                src="https://res.cloudinary.com/dnptzisuf/image/upload/f_auto,q_auto,w_40,h_40,c_fill/v1738006149/live_streaming_icon_e5jc1t.png"
+                alt="Live Streaming Icon"
+                width="40"
+                height="40"
+                loading="lazy"
+                style="width: 40px; height: 40px"
+              />
+              <h2>Live Streaming</h2>
+              <p>
+                Catch every moment with our high-quality live streaming of your
+                favorite sports event.
+              </p>
+              <div class="grid-button">
+                <div class="sct-btn">
+                  <div class="button-padding">
+                    <a
+                      href="/pages/learn_more/learn_more.html"
+                      class="btn2 button"
+                      >Learn Sports Tube!</a
+                    >
+                  </div>
+                </div>
+                <div class="sct-btn">
+                  <div class="sign-up link button-padding">
+                    <a href="/pages/account.html">Sign Up<span>></span></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="box1-211 icon">
+              <img
+                src="https://res.cloudinary.com/dnptzisuf/image/upload/f_auto,q_auto,w_100,h_100,c_fill/v1738006149/uploads_icon_uvklgj.avif"
+                alt="Uploads Icon"
+                width="40"
+                height="40"
+                loading="lazy"
+                style="width: 40px; height: 40px"
+              />
+              <h3>User Uploads Made Easy</h3>
+              <p class="box1-211p">
+                Join our community and upload your sports videos.
+              </p>
+              <div class="sct-btn">
+                <div class="sct-btn single-link">
+                  <div class="sign-up link button-padding">
+                    <a href="pages/all_videos/sports_hub.html"
+                      >Upload Your Own!<span>></span></a
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="box1-211 icon">
+              <img
+                src="https://res.cloudinary.com/dnptzisuf/image/upload/f_auto,q_auto,w_100,h_100,c_fill/v1738006149/stay_updated_icon_cbrwnq.avif"
+                alt="Stay Updated Icon"
+                width="40"
+                height="40"
+                loading="lazy"
+                style="width: 40px; height: 40px"
+              />
+              <h3>Stay Updated with Sports News</h3>
+              <p>Get the latest news and updates on all sports.</p>
+              <div class="sct-btn">
+                <div class="sct-btn single-link2">
+                  <div class="sign-up link button-padding">
+                    <a href="#">Explore Our Platform Features<span>></span></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="categories" class="categories section-heading">
+        <h2>Sports Categories</h2>
+        <div class="category-buttons1">
+          <a class="button" href="/pages/football/football.html">Football</a>
+
+          <a class="button" href="/pages/basketball/basketball.html"
+            >Basketball</a
+          >
+
+          <a class="button" href="/pages/baseball/baseball.html">Baseball</a>
+        </div>
+        <div class="category-buttons2">
+          <a class="button" href="/pages/coming-soon.html">Hockey</a>
+          <a class="button" href="/pages/coming-soon.html">Soccer</a>
+          <a class="button" href="/pages/coming-soon.html">MMA</a>
+          <a class="button" href="https://sports-tube-community.netlify.app"
+            >Sports Tube Community</a
+          >
+        </div>
+      </section>
+      <section class="join-section">
+        <div class="join-container">
+          <div class="join-text">
+            <div><h2>Join the Sports Tube Community</h2></div>
+            <div>
+              <p>
+                Sign up now to start streaming your favorite sports videos or
+                upload your own content!
+              </p>
+            </div>
+          </div>
+          <div class="grid-btn">
+            <a class="btn3 button" href="/pages/account.html">Sign Up</a>
+          </div>
+        </div>
+      </section>
+    </main>
+    <div id="footer"></div>
+    <script src="script.js" defer></script>
+    <!-- Remove this script -->
+    <script>
+      if ("serviceWorker" in navigator) {
+        navigator.serviceWorker.getRegistrations().then((registrations) => {
+          registrations.forEach((registration) => {
+            registration.unregister();
+          });
+        });
+      }
+    </script>
+  </body>
+</html>

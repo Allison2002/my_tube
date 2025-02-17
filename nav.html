@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="Cache-Control" content="max-age=31536000, immutable" />
+    <meta
+      http-equiv="Cache-Control"
+      content="no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0"
+    />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <meta
+      name="description"
+      content="Explore the ultimate sports video hub on Sports Tube! Watch highlights, upload content, and connect with the sports community. Join now!"
+    />
+    <title>Sports Tube</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://res.cloudinary.com" crossorigin />
+    <link rel="dns-prefetch" href="https://res.cloudinary.com" />
+    <link rel="stylesheet" href="/styles.css" />
+    <link
+      rel="preload"
+      as="font"
+      href="/assets/fonts/Bebas_Neue/BebasNeue-Regular.woff2"
+      type="font/woff2"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="preload"
+      as="font"
+      href="/assets/fonts/Roboto/static/Roboto-Regular.woff2"
+      type="font/woff2"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <nav id="nav">
+      <div class="logo-container">
+        <img
+          src="https://res.cloudinary.com/dnptzisuf/image/upload/f_auto,q_auto,w_180,h_50/v1738084682/sports_tube_logo_WHITE_fixyhq.png"
+          alt="Sports Tube Logo"
+          width="180"
+          height="50"
+          loading="lazy"
+          style="width: 180px; height: 50px"
+        />
+      </div>
+      <div class="menu-toggle" id="menu-toggle" aria-label="Open Menu">
+        <img
+          src="https://res.cloudinary.com/dnptzisuf/image/upload/f_auto,q_auto/w_40,h_40/v1738084653/hamburger-icon_pixgm5.png"
+          alt="Stay Updated Icon"
+          width="40"
+          height="40"
+          loading="lazy"
+        />
+      </div>
+      <ul class="nav-links nav-menu" id="nav-menu">
+        <li><a href="/index.html">HOME</a></li>
+        <li><a href="/pages/all_videos/sports_hub.html">SPORTS HUB</a></li>
+        <li><a href="/pages/upload/upload.html">UPLOAD</a></li>
+        <li><a href="/pages/account.html">JOIN</a></li>
+        <li><a href="/pages/log_in.html">LOG IN</a></li>
+        <li>
+          <a href="https://sports-tube-community.netlify.app"
+            >SPORTS COMMUNITY</a
+          >
+        </li>
+      </ul>
+      <div class="search-container">
+        <input type="search" placeholder="Search.." />
+      </div>
+    </nav>
+    <script src="/script.js" defer></script>
+    <!-- Remove this script -->
+    <script>
+      if ("serviceWorker" in navigator) {
+        navigator.serviceWorker.getRegistrations().then((registrations) => {
+          registrations.forEach((registration) => {
+            registration.unregister();
+          });
+        });
+      }
+    </script>
+  </body>
+</html>
