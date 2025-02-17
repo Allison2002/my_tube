@@ -1,6 +1,6 @@
 [build]
-  command = "echo 'Building site...'"
-  publish = "public"  # Ensure this matches your actual build output folder
+publish = "/"  
+command = "echo 'Building site...'" 
 
 [[redirects]]
   from = "/*"
