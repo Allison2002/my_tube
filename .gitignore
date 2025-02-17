@@ -4,10 +4,4 @@ node_modules/
 *.lock
 .netlify/
 .netlify/
-node_modules/
-*.log
-*.lock
-.netlify/
-node_modules/
-*.log
-*.lock
+
