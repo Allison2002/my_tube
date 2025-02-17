@@ -5,3 +5,5 @@ max-age=31536000, immutable # Cache images, fonts, and assets for 1 year
 /assets/img/* Cache-Control: public, max-age=31536000, immutable /assets/fonts/*
 /*
   Cache-Control: public, max-age=31536000, immutable
+/*  
+  Content-Encoding: br
