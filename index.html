@@ -265,6 +265,7 @@
         max-width: 90%;
         padding: 2em 0.5em;
         margin: -8em 0 5em;
+        min-height: 200px;
       }
 
       #sports {
@@ -460,25 +461,45 @@
         <div id="nav"></div>
         <section class="hero">
           <picture class="hero-img">
-            <!-- WebP Fallback -->
+            <!-- Mobile (480px) -->
             <source
               srcset="
-                https://res.cloudinary.com/dnptzisuf/image/upload/f_webp,q_auto:eco,w_1280,h_720/v1737993374/sports_tube_background_nkpr4r.webp
+                https://res.cloudinary.com/dnptzisuf/image/upload/f_auto,q_auto:eco,w_480,h_270/v1737993374/sports_tube_background_nkpr4r.avif
               "
-              type="image/webp"
+              media="(max-width: 480px)"
+              type="image/avif"
             />
 
-            <!-- AVIF Format (Optimized) -->
+            <!-- Tablet (768px) -->
             <source
               srcset="
-                https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_auto:eco,w_1280,h_720/v1737993374/sports_tube_background_nkpr4r.avif
+                https://res.cloudinary.com/dnptzisuf/image/upload/f_auto,q_auto:eco,w_768,h_432/v1737993374/sports_tube_background_nkpr4r.avif
               "
+              media="(max-width: 768px)"
+              type="image/avif"
+            />
+
+            <!-- Desktop (1280px) -->
+            <source
+              srcset="
+                https://res.cloudinary.com/dnptzisuf/image/upload/f_auto,q_auto:eco,w_1280,h_720/v1737993374/sports_tube_background_nkpr4r.avif
+              "
+              media="(max-width: 1600px)"
+              type="image/avif"
+            />
+
+            <!-- Large Desktop (1920px) -->
+            <source
+              srcset="
+                https://res.cloudinary.com/dnptzisuf/image/upload/f_auto,q_auto:eco,w_1920,h_1080/v1737993374/sports_tube_background_nkpr4r.avif
+              "
+              media="(min-width: 1601px)"
               type="image/avif"
             />
 
             <!-- Fallback Image -->
             <img
-              src="https://res.cloudinary.com/dnptzisuf/image/upload/f_webp,q_auto:eco,w_1280,h_720/v1737993374/sports_tube_background_nkpr4r.webp"
+              src="https://res.cloudinary.com/dnptzisuf/image/upload/f_auto,q_auto:eco,w_1280,h_720/v1737993374/sports_tube_background_nkpr4r.avif"
               alt="Sports Community Hub"
               width="1280"
               height="720"
