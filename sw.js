@@ -1,17 +1,19 @@
-const CACHE_NAME = "sports-tube-cache-v5"; 
+const CACHE_NAME = "sports-tube-cache-v6"; // Increment version when making changes
 const ASSETS_TO_CACHE = [
     "/",
     "/index.html",
-    "/styles-backup.css",
+    "/styles.css",
     "/script.js",
     "/nav.html",
     "/footer.html",
     "/manifest.json",
     "/sw.js",
 
-    // ✅ Local Assets (Images, Fonts)
+    // ✅ Local Fonts
     "/assets/fonts/Bebas_Neue/BebasNeue-Regular.woff2",
     "/assets/fonts/Roboto/static/Roboto-Regular.woff2",
+
+    // ✅ Local Images (Netlify-hosted)
     "/assets/img/sports_tube_logo.png",
     "/assets/img/football.jpg",
     "/assets/img/nba.jpg",
@@ -20,7 +22,7 @@ const ASSETS_TO_CACHE = [
     "/assets/img/soccer.jpg",
     "/assets/img/mma_fighters.jpg",
 
-    // ✅ Essential Pages (Ensure They Work Offline)
+    // ✅ Essential Pages
     "/pages/all_videos/all-videos.html",
     "/pages/all_videos/sports_hub.html",
     "/pages/baseball/baseball.html",
@@ -33,27 +35,7 @@ const ASSETS_TO_CACHE = [
     "/pages/guidelines.html",
     "/pages/log_in.html",
     "/pages/policy.html",
-    "/pages/privacy.html",
-
-    // ✅ Video Pages
-    "/videos/baseball-vd1.html",
-    "/videos/baseball-vd2.html",
-    "/videos/baseball-vd3.html",
-    "/videos/baseball-vd4.html",
-    "/videos/baseball-vd5.html",
-    "/videos/baseball-vd6.html",
-    "/videos/basketball-vd1.html",
-    "/videos/basketball-vd2.html",
-    "/videos/basketball-vd3.html",
-    "/videos/basketball-vd4.html",
-    "/videos/basketball-vd5.html",
-    "/videos/basketball-vd6.html",
-    "/videos/football-vd1.html",
-    "/videos/football-vd2.html",
-    "/videos/football-vd3.html",
-    "/videos/football-vd4.html",
-    "/videos/football-vd5.html",
-    "/videos/football-vd6.html"
+    "/pages/privacy.html"
 ];
 
 // ✅ Clear old caches on activation
@@ -67,7 +49,7 @@ self.addEventListener("activate", (event) => {
             );
         }).then(() => {
             console.log("✅ Old caches cleared, applying new cache...");
-            return self.clients.claim(); // Ensures all pages are controlled immediately
+            return self.clients.claim();
         })
     );
 });
@@ -86,22 +68,40 @@ self.addEventListener("install", (event) => {
 
 // ✅ Handle navigation requests for Multi-Page Application (MPA)
 self.addEventListener("fetch", (event) => {
-    if (event.request.mode === "navigate") {
+    const { request } = event;
+
+    // **Force fetch for Cloudinary images instead of caching**
+    if (request.url.includes("res.cloudinary.com")) {
+        event.respondWith(fetch(request));
+        return;
+    }
+
+    // **Fetch HTML pages from network first (stale-while-revalidate)**
+    if (request.destination === "document") {
         event.respondWith(
-            fetch(event.request).catch(() => caches.match(event.request) || caches.match("/index.html"))
-        );
-    } else {
-        event.respondWith(
-            caches.match(event.request).then((cachedResponse) => {
-                return cachedResponse || fetch(event.request).then((networkResponse) => {
+            fetch(request)
+                .then((networkResponse) => {
                     return caches.open(CACHE_NAME).then((cache) => {
-                        cache.put(event.request, networkResponse.clone());
+                        cache.put(request, networkResponse.clone());
                         return networkResponse;
                     });
-                });
-            }).catch(() => {
-                console.warn("⚠️ Network request failed, and no cache found.");
-            })
+                })
+                .catch(() => caches.match(request) || caches.match("/index.html"))
         );
+        return;
     }
+
+    // **Cache everything else normally**
+    event.respondWith(
+        caches.match(request).then((cachedResponse) => {
+            return cachedResponse || fetch(request).then((networkResponse) => {
+                return caches.open(CACHE_NAME).then((cache) => {
+                    cache.put(request, networkResponse.clone());
+                    return networkResponse;
+                });
+            });
+        }).catch(() => {
+            console.warn("⚠️ Network request failed, and no cache found.");
+        })
+    );
 });
