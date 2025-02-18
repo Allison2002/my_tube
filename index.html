@@ -471,40 +471,57 @@
         <div id="nav"></div>
         <section class="hero">
           <picture class="hero-img">
+            <!-- Mobile Image (480px) -->
             <source
               srcset="
-                https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_auto:best,w_1280,h_720,c_fill,g_auto/v1737993374/sports_tube_background_nkpr4r.avif
+                https://res.cloudinary.com/dnptzisuf/image/upload/f_auto,q_auto:good,w_480,h_270/v1737993374/sports_tube_background_nkpr4r.avif
               "
-              media="(max-width: 1280px)"
+              media="(max-width: 480px)"
               type="image/avif"
-              width="1280"
-              height="720"
+              width="480"
+              height="270"
+              fetchpriority="high"
             />
 
+            <!-- Tablet Image (768px) -->
             <source
               srcset="
-                https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_auto:best,w_1920,h_1080,c_fill,g_auto/v1737993374/sports_tube_background_nkpr4r.avif
+                https://res.cloudinary.com/dnptzisuf/image/upload/f_auto,q_auto:good,w_768,h_432,c_fill,g_auto/v1737993374/sports_tube_background_nkpr4r.avif
               "
-              media="(min-width: 1281px)"
+              media="(max-width: 768px)"
               type="image/avif"
-              width="1920"
-              height="1080"
+              width="768"
+              height="432"
+              fetchpriority="high"
             />
 
-            <img
-              src="https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_auto:best,w_1920,h_1080,c_fill,g_auto/v1737993374/sports_tube_background_nkpr4r.avif"
-              alt="Sports Community Hub"
+            <!-- Desktop Image (1920px) -->
+            <source
+              srcset="
+                https://res.cloudinary.com/dnptzisuf/image/upload/f_auto,q_auto:best,w_1920,h_1080,c_fill,g_auto/v1737993374/sports_tube_background_nkpr4r.avif
+              "
+              media="(min-width: 1024px)"
+              type="image/avif"
               width="1920"
               height="1080"
               fetchpriority="high"
-              decoding="async"
-              class="hero-image"
+            />
+
+            <!-- Fallback Image -->
+            <img
+              src="https://res.cloudinary.com/dnptzisuf/image/upload/f_auto,q_auto:eco,w_1920,h_1080,c_fill,g_auto/v1737993374/sports_tube_background_nkpr4r.avif"
+              alt="Sports Community Hub"
+              width="1920"
+              height="1080"
+              loading="eager"
+              fetchpriority="high"
               style="
+                width: 100vw;
+                height: 100vh;
+                aspect-ratio: 16/9;
                 object-fit: cover;
-                display: block;
-                width: 100%;
-                height: auto;
               "
+              decoding="async"
             />
           </picture>
         </section>
