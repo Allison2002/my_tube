@@ -472,38 +472,22 @@
           <picture class="hero-img">
             <source
               srcset="
-                https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_auto:best,w_480,h_270,c_fill,g_auto/v1737993374/sports_tube_background_nkpr4r.avif
+                https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_auto:best,w_1280,h_720,c_fill,g_auto/v1737993374/sports_tube_background_nkpr4r.avif
               "
-              media="(max-width: 480px)"
+              media="(max-width: 1280px)"
               type="image/avif"
-              width="480"
-              height="270"
-              loading="eager"
-              fetchpriority="high"
-            />
-
-            <source
-              srcset="
-                https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_auto:best,w_768,h_432,c_fill,g_auto/v1737993374/sports_tube_background_nkpr4r.avif
-              "
-              media="(max-width: 768px)"
-              type="image/avif"
-              width="768"
-              height="432"
-              loading="eager"
-              fetchpriority="high"
+              width="1280"
+              height="720"
             />
 
             <source
               srcset="
                 https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_auto:best,w_1920,h_1080,c_fill,g_auto/v1737993374/sports_tube_background_nkpr4r.avif
               "
-              media="(min-width: 1024px)"
+              media="(min-width: 1281px)"
               type="image/avif"
               width="1920"
               height="1080"
-              loading="eager"
-              fetchpriority="high"
             />
 
             <img
@@ -511,11 +495,15 @@
               alt="Sports Community Hub"
               width="1920"
               height="1080"
-              loading="eager"
               fetchpriority="high"
-              class="hero-image"
               decoding="async"
-              importance="high"
+              class="hero-image"
+              style="
+                object-fit: cover;
+                display: block;
+                width: 100%;
+                height: auto;
+              "
             />
           </picture>
         </section>
