@@ -25,11 +25,11 @@
       crossorigin="anonymous"
     />
     <link rel="preload" 
-      href="https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_auto:low,w_1920,h_600,c_fit,fl_attachment/v1739332968/upload-wide_qu2mg3.avif" 
+      href="https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_auto:low,w_1280,h_400,c_fit,fl_attachment/v1739332968/upload-wide_qu2mg3.avif" 
       as="image" 
       type="image/avif" 
-      fetchpriority="high"
-    />
+      fetchpriority="high">
+
     <link
       rel="icon"
       href="https://res.cloudinary.com/dnptzisuf/image/upload/f_auto,q_auto:good,c_fit,fl_attachment/v1738106888/sports_tube_tab_logo_oajgbj.avif"
@@ -75,17 +75,26 @@
         <section>
           <div class="blog-hero">
             <picture>
-              <source
-                srcset="
-                  https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_auto:low,w_768,h_240,c_fit,fl_attachment/v1739332968/upload-wide_qu2mg3.avif 768w,
-                  https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_auto:low,w_1280,h_400,c_fit,fl_attachment/v1739332968/upload-wide_qu2mg3.avif 1280w,
-                  https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_auto:low,w_1920,h_600,c_fit,fl_attachment/v1739332968/upload-wide_qu2mg3.avif 1920w
-                "
-                sizes="(max-width: 768px) 768px, (max-width: 1280px) 1280px, 1920px"
+              <source 
+                srcset="https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_auto:low,w_768,h_240,c_fit,fl_attachment/v1739332968/upload-wide_qu2mg3.avif"
+                media="(max-width: 768px)"
                 type="image/avif"
               />
-              <img src="https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_auto:low,w_1920,h_600,c_fit,fl_attachment/v1739332968/upload-wide_qu2mg3.avif"
-              width="1920" height="600" loading="eager" fetchpriority="high" class="hero-image" decoding="async" importance="high" alt="All Videos Page Banner">
+              <source 
+                srcset="https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_auto:low,w_1280,h_400,c_fit,fl_attachment/v1739332968/upload-wide_qu2mg3.avif"
+                media="(max-width: 1280px)"
+                type="image/avif"
+              />
+              <img 
+                src="https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_auto:low,w_1920,h_600,c_fit,fl_attachment/v1739332968/upload-wide_qu2mg3.avif"
+                width="1920" height="600"
+                loading="eager"
+                fetchpriority="high"
+                class="hero-image"
+                decoding="async"
+                importance="high"
+                alt="All Videos Page Banner"
+              />
             </picture>
           </div>
         </section>
