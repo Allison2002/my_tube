@@ -1,17 +1,23 @@
 /*  
-  Cache-Control: public, no-cache, must-revalidate
+  Cache-Control: no-cache, no-store, must-revalidate  
+  Pragma: no-cache  
+  Expires: 0  
 
 /assets/*
   Cache-Control: public, max-age=31536000, immutable
 
+/*.html
+  Cache-Control: public, max-age=3600, must-revalidate
+
 /img/*
   Cache-Control: public, max-age=31536000, immutable
-
-/*.html
-  Cache-Control: public, max-age=3600, must-revalidate, stale-while-revalidate=86400
 
 /styles.css
   Cache-Control: public, max-age=31536000, immutable
 
 /script.js
   Cache-Control: public, max-age=31536000, immutable
+
+/fonts/*
+  Cache-Control: public, max-age=31536000, immutable
+
