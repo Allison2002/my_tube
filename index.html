@@ -550,6 +550,7 @@
                     src="https://res.cloudinary.com/dnptzisuf/image/upload/f_avif%2Cq_auto:eco%2Cw_400%2Ch_338%2Cc_fit/v1738107519/thumbnaill-mAozdFiz4ng_w45qrz.avif"
                     alt="Football Video Thumbnail"
                     class="video-thumbnail"
+                    load="lazy"
                   />
                   <div class="play-button-overlay"></div>
                 </div>
@@ -571,6 +572,7 @@
                     src="https://res.cloudinary.com/dnptzisuf/image/fetch/v1738592450/https://res.cloudinary.com/dnptzisuf/image/upload/f_avif%2Cq_auto:eco%2Cw_400%2Ch_338%2Cc_fit/v1738106889/thumbnaik-7Oj7IAJ7B_0_heineh.avif"
                     alt="Basketball Video Thumbnail"
                     class="video-thumbnail"
+                    load="lazy"
                   />
                   <div class="play-button-overlay"></div>
                 </div>
@@ -592,6 +594,7 @@
                     src="https://res.cloudinary.com/dnptzisuf/image/fetch/v1738212484/https://res.cloudinary.com/dnptzisuf/image/upload/f_auto,q_auto:eco,w_400,h_338/v1739209644/thumbnails-unbelievable-plays_d23ogq.avif"
                     alt="Baseball Video Thumbnail"
                     class="video-thumbnail"
+                    load="lazy"
                   />
                   <div class="play-button-overlay"></div>
                 </div>
@@ -681,33 +684,47 @@
           <div class="biography" id="bio1">
             <div class="bio-img">
               <picture>
+                <!-- Mobile (600px width) -->
                 <source
                   srcset="
-                    https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_auto:eco,w_600,h_400,c_fit/v1737994296/aaron_judge_lq02md.avif
+                    https://res.cloudinary.com/dnptzisuf/image/upload/f_auto,q_auto:eco,w_600,h_400,c_fill/v1737994296/aaron_judge_lq02md.avif
                   "
                   media="(max-width: 768px)"
-                  loading="lazy"
-                  decoding="async"
+                  type="image/avif"
                   width="600"
                   height="400"
                 />
+
+                <!-- Tablet (800px width) -->
                 <source
                   srcset="
-                    https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_auto:eco,w_800,h_533,c_fit/v1737994296/aaron_judge_lq02md.avif
+                    https://res.cloudinary.com/dnptzisuf/image/upload/f_auto,q_auto:eco,w_800,h_533,c_fill/v1737994296/aaron_judge_lq02md.avif
                   "
-                  media="(min-width: 769px)"
-                  loading="lazy"
-                  decoding="async"
+                  media="(max-width: 1024px)"
+                  type="image/avif"
                   width="800"
                   height="533"
                 />
+
+                <!-- Desktop (1000px width) -->
+                <source
+                  srcset="
+                    https://res.cloudinary.com/dnptzisuf/image/upload/f_auto,q_auto:eco,w_1000,h_667,c_fill/v1737994296/aaron_judge_lq02md.avif
+                  "
+                  media="(min-width: 1025px)"
+                  type="image/avif"
+                  width="1000"
+                  height="667"
+                />
+
+                <!-- Fallback Image -->
                 <img
-                  src="https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_auto:eco,w_800,h_533,c_fit/v1737994296/aaron_judge_lq02md.avif"
+                  src="https://res.cloudinary.com/dnptzisuf/image/upload/f_auto,q_auto:eco,w_1000,h_667,c_fill/v1737994296/aaron_judge_lq02md.avif"
                   alt="Aaron Judge, a baseball player for the New York Yankees."
+                  width="1000"
+                  height="667"
                   loading="lazy"
                   decoding="async"
-                  width="800"
-                  height="533"
                 />
               </picture>
             </div>
@@ -715,7 +732,7 @@
             <div class="plus-sign">
               <button class="toggle-btn">
                 <img
-                  src="https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_auto:eco,w_100,h_100,c_fit/v1737994384/white-plus-sign_av8usw.avif"
+                  src="https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_auto:eco,w_100,h_100,c_fill/v1737994384/white-plus-sign_av8usw.avif"
                   alt="Expand Biography"
                   loading="lazy"
                   decoding="async"
@@ -740,33 +757,47 @@
           <div class="biography" id="bio2">
             <div class="bio-img">
               <picture>
+                <!-- Mobile (600px width) -->
                 <source
                   srcset="
-                    https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_auto:eco,w_600,h_400,c_fill/v1737994296/Giannis_nl0dki.avif
+                    https://res.cloudinary.com/dnptzisuf/image/upload/f_auto,q_auto:eco,w_600,h_400,c_fill/v1737994296/Giannis_nl0dki.avif
                   "
                   media="(max-width: 768px)"
-                  loading="lazy"
-                  decoding="async"
+                  type="image/avif"
                   width="600"
                   height="400"
                 />
+
+                <!-- Tablet (800px width) -->
                 <source
                   srcset="
-                    https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_auto:eco,w_800,h_533,c_fill/v1737994296/Giannis_nl0dki.avif
+                    https://res.cloudinary.com/dnptzisuf/image/upload/f_auto,q_auto:eco,w_800,h_533,c_fill/v1737994296/Giannis_nl0dki.avif
                   "
-                  media="(min-width: 769px)"
-                  loading="lazy"
-                  decoding="async"
+                  media="(max-width: 1024px)"
+                  type="image/avif"
                   width="800"
                   height="533"
                 />
+
+                <!-- Desktop (1000px width) -->
+                <source
+                  srcset="
+                    https://res.cloudinary.com/dnptzisuf/image/upload/f_auto,q_auto:eco,w_1000,h_667,c_fill/v1737994296/Giannis_nl0dki.avif
+                  "
+                  media="(min-width: 1025px)"
+                  type="image/avif"
+                  width="1000"
+                  height="667"
+                />
+
+                <!-- Fallback Image -->
                 <img
-                  src="https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_auto:eco,w_800,h_533,c_fill/v1737994296/Giannis_nl0dki.avif"
-                  alt="Giannis Antetokounmpo, a basketball player for the Milwaukee Bucks."
+                  src="https://res.cloudinary.com/dnptzisuf/image/upload/f_auto,q_auto:eco,w_1000,h_667,c_fill/v1737994296/Giannis_nl0dki.avif"
+                  alt="Aaron Judge, a baseball player for the New York Yankees."
+                  width="1000"
+                  height="667"
                   loading="lazy"
                   decoding="async"
-                  width="800"
-                  height="533"
                 />
               </picture>
             </div>
@@ -794,33 +825,47 @@
           <div class="biography" id="bio3">
             <div class="bio-img">
               <picture>
+                <!-- Mobile (600px width) -->
                 <source
                   srcset="
-                    https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_auto:eco,w_600,h_400,c_fill/v1737994296/mahomes_ttt0eh.avif
+                    https://res.cloudinary.com/dnptzisuf/image/upload/f_auto,q_auto:eco,w_600,h_400,c_fill/v1737994296/mahomes_ttt0eh.avif
                   "
                   media="(max-width: 768px)"
-                  loading="lazy"
-                  decoding="async"
+                  type="image/avif"
                   width="600"
                   height="400"
                 />
+
+                <!-- Tablet (800px width) -->
                 <source
                   srcset="
-                    https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_auto:eco,w_800,h_533,c_fill/v1737994296/mahomes_ttt0eh.avif
+                    https://res.cloudinary.com/dnptzisuf/image/upload/f_auto,q_auto:eco,w_800,h_533,c_fill/v1737994296/mahomes_ttt0eh.avif
                   "
-                  media="(min-width: 769px)"
-                  loading="lazy"
-                  decoding="async"
+                  media="(max-width: 1024px)"
+                  type="image/avif"
                   width="800"
                   height="533"
                 />
+
+                <!-- Desktop (1000px width) -->
+                <source
+                  srcset="
+                    https://res.cloudinary.com/dnptzisuf/image/upload/f_auto,q_auto:eco,w_1000,h_667,c_fill/v1737994296/mahomes_ttt0eh.avif
+                  "
+                  media="(min-width: 1025px)"
+                  type="image/avif"
+                  width="1000"
+                  height="667"
+                />
+
+                <!-- Fallback Image -->
                 <img
-                  src="https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_auto:eco,w_800,h_533,c_fill/v1737994296/mahomes_ttt0eh.avif"
-                  alt="Patrick Mahomes, a football player for the Kansas City Chiefs."
+                  src="https://res.cloudinary.com/dnptzisuf/image/upload/f_auto,q_auto:eco,w_1000,h_667,c_fill/v1737994296/mahomes_ttt0eh.avif"
+                  alt="Aaron Judge, a baseball player for the New York Yankees."
+                  width="1000"
+                  height="667"
                   loading="lazy"
                   decoding="async"
-                  width="800"
-                  height="533"
                 />
               </picture>
             </div>
@@ -850,33 +895,47 @@
           <div class="biography" id="bio4">
             <div class="bio-img">
               <picture>
+                <!-- Mobile (600px width) -->
                 <source
                   srcset="
-                    https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_auto:eco,w_600,h_400,c_fill/v1737994296/shohei_ohtani_o9eti3.avif
+                    https://res.cloudinary.com/dnptzisuf/image/upload/f_auto,q_auto:eco,w_600,h_400,c_fill/v1737994296/shohei_ohtani_o9eti3.avif
                   "
                   media="(max-width: 768px)"
-                  loading="lazy"
-                  decoding="async"
+                  type="image/avif"
                   width="600"
                   height="400"
                 />
+
+                <!-- Tablet (800px width) -->
                 <source
                   srcset="
-                    https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_auto:eco,w_800,h_533,c_fill/v1737994296/shohei_ohtani_o9eti3.avif
+                    https://res.cloudinary.com/dnptzisuf/image/upload/f_auto,q_auto:eco,w_800,h_533,c_fill/v1737994296/shohei_ohtani_o9eti3.avif
                   "
-                  media="(min-width: 769px)"
-                  loading="lazy"
-                  decoding="async"
+                  media="(max-width: 1024px)"
+                  type="image/avif"
                   width="800"
                   height="533"
                 />
+
+                <!-- Desktop (1000px width) -->
+                <source
+                  srcset="
+                    https://res.cloudinary.com/dnptzisuf/image/upload/f_auto,q_auto:eco,w_1000,h_667,c_fill/v1737994296/shohei_ohtani_o9eti3.avif
+                  "
+                  media="(min-width: 1025px)"
+                  type="image/avif"
+                  width="1000"
+                  height="667"
+                />
+
+                <!-- Fallback Image -->
                 <img
-                  src="https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_auto:eco,w_800,h_533,c_fill/v1737994296/shohei_ohtani_o9eti3.avif"
-                  alt="Shohei Ohtani, a baseball player for the Los Angeles Angels."
+                  src="https://res.cloudinary.com/dnptzisuf/image/upload/f_auto,q_auto:eco,w_1000,h_667,c_fill/v1737994296/shohei_ohtani_o9eti3.avif"
+                  alt="Aaron Judge, a baseball player for the New York Yankees."
+                  width="1000"
+                  height="667"
                   loading="lazy"
                   decoding="async"
-                  width="800"
-                  height="533"
                 />
               </picture>
             </div>
