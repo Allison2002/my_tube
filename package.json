@@ -1,0 +1,16 @@
+{
+  "name": "my_tube",
+  "version": "1.0.0",
+  "description": "Sports Tube is a fast, mobile-friendly sports video platform where fans stream live sports, upload highlights, and watch trending clips. Built with HTML, CSS, and JavaScript, it features a modern UI/UX, optimized performance, and AI-enhanced content. Perfect for sports enthusiasts!",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+     "build": "critical --src index.html --css styles.css --width 1300 --height 900 --inline"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "critical": "^7.2.1"
+  }
+}
