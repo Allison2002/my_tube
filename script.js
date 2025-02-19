@@ -69,18 +69,18 @@ document.addEventListener("DOMContentLoaded", function () {
                 return;
             }
 
-            // ✅ Use Cloudinary to Convert YouTube Thumbnails to AVIF
+            // ✅ Use Cloudinary to Fetch and Convert YouTube Thumbnails to AVIF
             const cloudinaryBaseUrl = "https://res.cloudinary.com/dnptzisuf/image/fetch/";
-            const youtubeThumbnailUrl = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
+            const youtubeThumbnailUrl = encodeURIComponent(`https://img.youtube.com/vi/${videoId}/hqdefault.jpg`);
 
-            let optimizedThumbnailUrl = `${cloudinaryBaseUrl}f_avif,q_auto,w_320/${youtubeThumbnailUrl}`;
+            let optimizedThumbnailUrl = `${cloudinaryBaseUrl}f_avif,q_auto,w_320,h_180/${youtubeThumbnailUrl}`;
 
             // ✅ Detect container size to serve the optimal image
             let containerWidth = facade.offsetWidth;
             if (containerWidth >= 480) {
-                optimizedThumbnailUrl = `${cloudinaryBaseUrl}f_avif,q_auto,w_480/${youtubeThumbnailUrl}`;
+                optimizedThumbnailUrl = `${cloudinaryBaseUrl}f_avif,q_auto,w_480,h_270/${youtubeThumbnailUrl}`;
             } else if (containerWidth >= 320) {
-                optimizedThumbnailUrl = `${cloudinaryBaseUrl}f_avif,q_auto,w_320/${youtubeThumbnailUrl}`;
+                optimizedThumbnailUrl = `${cloudinaryBaseUrl}f_avif,q_auto,w_320,h_180/${youtubeThumbnailUrl}`;
             }
 
             // ✅ Set Placeholder First to Avoid Layout Shift
