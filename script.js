@@ -59,7 +59,7 @@ document.addEventListener("DOMContentLoaded", function () {
         updateHamburgerVisibility();
     }
 
-    console.log("✅ Fixing YouTube Video Thumbnails!");
+    console.log("✅ Optimized script loaded!");
 
     function setupYouTubePlayers() {
         document.querySelectorAll(".youtube-facade, .youtube-facade-all").forEach((facade) => {
@@ -75,13 +75,18 @@ document.addEventListener("DOMContentLoaded", function () {
                 thumbnail.src = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
                 thumbnail.alt = "YouTube video thumbnail";
                 thumbnail.classList.add("video-thumbnail");
-                // Only apply lazy loading if it's below the fold
-                const rect = facade.getBoundingClientRect();
-                if (rect.top >= 0 && rect.top < window.innerHeight) {
-                    thumbnail.removeAttribute("loading"); // Loads immediately
-                } else {
-                    thumbnail.loading = "lazy"; // Defers loading for below-the-fold thumbnails
-                }
+
+                setTimeout(() => {
+                    const rect = facade.getBoundingClientRect();
+                    if (rect.top < window.innerHeight) {
+                        // Load immediately if above the fold
+                        thumbnail.removeAttribute("loading");
+                    } else {
+                        // Apply lazy loading if below the fold
+                        thumbnail.loading = "lazy";
+                    }
+                }, 0);
+
                 facade.insertBefore(thumbnail, facade.firstChild);
             }
 
@@ -114,6 +119,8 @@ document.addEventListener("DOMContentLoaded", function () {
             });
         });
     }
+
+    setupYouTubePlayers();
 
     function setupBiographySection() {
         document.querySelectorAll(".toggle-btn").forEach(btn => {
