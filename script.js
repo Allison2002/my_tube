@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
             .then(response => response.ok ? response.text() : Promise.reject(`HTTP error! Status: ${response.status}`))
             .then(data => {
                 document.getElementById(elementId).innerHTML = data;
-                if (elementId === "nav") setupNavbar();
+                if (elementId === "nav") setupNavbar(); // Ensure navbar is set up after loading
             })
             .catch(error => console.error(`❌ Error loading ${elementId}:`, error));
     }
@@ -26,7 +26,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (!navbar || !hamburgerIcon || !navMenu) return;
 
-        const handleScroll = () => navbar.classList.toggle("scrolled", window.scrollY > 0);
+        // ✅ Updated scroll trigger for ALL pages
+        const handleScroll = () => {
+            if (window.scrollY > 1) { // Trigger immediately on any scroll
+                navbar.classList.add("scrolled");
+            } else {
+                navbar.classList.remove("scrolled");
+            }
+        };
+
         const updateHamburgerVisibility = () => {
             hamburgerIcon.style.display = window.innerWidth > 768 || navMenu.classList.contains("active") ? "none" : "flex";
         };
@@ -47,6 +55,9 @@ document.addEventListener("DOMContentLoaded", function () {
         window.addEventListener("scroll", handleScroll, { passive: true });
         window.addEventListener("resize", updateHamburgerVisibility);
         updateHamburgerVisibility();
+        
+        // ✅ Ensure it applies instantly if page is loaded in a scrolled position
+        handleScroll();
     }
 
     console.log("✅ Using Correct Cloudinary AVIF Thumbnails!");
@@ -103,11 +114,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             // ✅ Disable Lazy Loading for Above-the-Fold Images
             const rect = facade.getBoundingClientRect();
-            if (rect.top < window.innerHeight) {
-                placeholder.loading = "eager"; // Loads immediately if above the fold
-            } else {
-                placeholder.loading = "lazy"; // Lazy loading for below-the-fold thumbnails
-            }
+            placeholder.loading = rect.top < window.innerHeight ? "eager" : "lazy";
 
             // ✅ Replace the placeholder
             facade.appendChild(placeholder);
@@ -133,6 +140,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
+    // ✅ Biography Section: Restore missing functionality
     function setupBiographySection() {
         document.querySelectorAll(".toggle-btn").forEach(btn => {
             btn.addEventListener("click", function () {
