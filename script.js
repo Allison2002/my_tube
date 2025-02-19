@@ -69,34 +69,38 @@ document.addEventListener("DOMContentLoaded", function () {
                 return;
             }
 
+            // ✅ Use Cloudinary to Convert YouTube Thumbnails to AVIF
+            const cloudinaryBaseUrl = "https://res.cloudinary.com/dnptzisuf/image/fetch/";
+            const youtubeThumbnailUrl = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
+
+            let optimizedThumbnailUrl = `${cloudinaryBaseUrl}f_avif,q_auto,w_320/${youtubeThumbnailUrl}`;
+
             // ✅ Detect container size to serve the optimal image
             let containerWidth = facade.offsetWidth;
-            let thumbnailUrl = "";
-
             if (containerWidth >= 480) {
-                thumbnailUrl = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`; // 480×360
+                optimizedThumbnailUrl = `${cloudinaryBaseUrl}f_avif,q_auto,w_480/${youtubeThumbnailUrl}`;
             } else if (containerWidth >= 320) {
-                thumbnailUrl = `https://img.youtube.com/vi/${videoId}/mqdefault.jpg`; // 320×180
-            } else {
-                thumbnailUrl = `https://img.youtube.com/vi/${videoId}/default.jpg`; // 120×90
+                optimizedThumbnailUrl = `${cloudinaryBaseUrl}f_avif,q_auto,w_320/${youtubeThumbnailUrl}`;
             }
 
             // ✅ Set Placeholder First to Avoid Layout Shift
             let placeholder = document.createElement("img");
-            placeholder.src = "https://via.placeholder.com/320x180/000000/ffffff?text=Loading...";
-            placeholder.alt = "Loading video...";
+            placeholder.src = optimizedThumbnailUrl;
+            placeholder.alt = "YouTube video thumbnail";
             placeholder.classList.add("video-thumbnail");
             placeholder.style.width = "100%";
             placeholder.style.height = "auto";
             placeholder.style.objectFit = "cover";
 
-            facade.appendChild(placeholder);
+            // ✅ Disable Lazy Loading for Above-the-Fold Images
+            const rect = facade.getBoundingClientRect();
+            if (rect.top < window.innerHeight) {
+                placeholder.loading = "eager"; // Loads immediately if above the fold
+            } else {
+                placeholder.loading = "lazy"; // Lazy loading for below-the-fold thumbnails
+            }
 
-            // ✅ Load Real Thumbnail to Reduce Load Time
-            setTimeout(() => {
-                placeholder.src = thumbnailUrl;
-                placeholder.loading = "lazy"; // Ensures optimization for page speed
-            }, 300); // Short delay for smooth transition
+            facade.appendChild(placeholder);
 
             // ✅ Clicking on Thumbnail Loads YouTube iFrame
             facade.addEventListener("click", function () {
@@ -153,7 +157,7 @@ document.addEventListener("DOMContentLoaded", function () {
             if (name) name.classList.add("hidden");
             content.style.height = "auto";
         } else {
-            button.src = "https://res.cloudinary.com/dnptzisuf/image/fetch/v1738766146/https://res.cloudinary.com/dnptzisuf/image/upload/f_avif%2Cq_auto%2Cw_100%2Ch_100%2Cc_fit/v1737994384/white-plus-sign_av8usw.png%3Fv%3D1";
+            button.src = "https://res.cloudinary.com/dnptzisuf/image/fetch/v1738766146/https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_auto,w_100,h_100,c_fit/v1737994384/white-plus-sign_av8usw.png";
             if (name) name.classList.remove("hidden");
             content.style.height = "0";
         }
