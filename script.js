@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (!navbar || !hamburgerIcon || !navMenu) return;
 
         const handleScroll = () => {
-            navbar.classList.add("solid"); // Turns red immediately on any scroll
+            navbar.classList.add("solid");
             navbar.classList.toggle("scrolled", window.scrollY > 0);
         };
 
@@ -69,21 +69,24 @@ document.addEventListener("DOMContentLoaded", function () {
                 return;
             }
 
+            // ✅ Step 1: Set a Placeholder First to Avoid Layout Shift
             let placeholder = document.createElement("img");
-            placeholder.src = "https://via.placeholder.com/560x315/000000/ffffff?text=Loading...";
+            placeholder.src = "https://via.placeholder.com/320x180/000000/ffffff?text=Loading...";
             placeholder.alt = "Loading video...";
             placeholder.classList.add("video-thumbnail");
             placeholder.style.width = "100%";
-            placeholder.style.height = "100%";
+            placeholder.style.height = "auto";
             placeholder.style.objectFit = "cover";
 
             facade.appendChild(placeholder);
 
-            // Load the real thumbnail AFTER page load to prevent layout shifts
+            // ✅ Step 2: Load Real Thumbnail to Reduce Load Time
             setTimeout(() => {
-                placeholder.src = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
-            }, 500); // Small delay to ensure CLS stability
+                placeholder.src = `https://img.youtube.com/vi/${videoId}/mqdefault.jpg`; // Use smaller-sized thumbnail
+                placeholder.loading = "lazy"; // Ensures optimization for page speed
+            }, 300); // Short delay for smooth transition
 
+            // ✅ Step 3: Clicking on Thumbnail Loads YouTube iFrame
             facade.addEventListener("click", function () {
                 console.log("▶️ Playing Video:", videoId);
                 let width = facade.clientWidth;
