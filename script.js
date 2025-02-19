@@ -69,7 +69,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 return;
             }
 
-            // ✅ Use Cloudinary to Fetch and Convert YouTube Thumbnails to AVIF
+            // ✅ Use Cloudinary to Convert to AVIF
             const cloudinaryBaseUrl = "https://res.cloudinary.com/dnptzisuf/image/fetch/";
             const youtubeThumbnailUrl = encodeURIComponent(`https://img.youtube.com/vi/${videoId}/hqdefault.jpg`);
 
@@ -82,6 +82,8 @@ document.addEventListener("DOMContentLoaded", function () {
             } else if (containerWidth >= 320) {
                 optimizedThumbnailUrl = `${cloudinaryBaseUrl}f_avif,q_auto,w_320,h_180/${youtubeThumbnailUrl}`;
             }
+
+            console.log("✅ Optimized Thumbnail URL:", optimizedThumbnailUrl); // Debugging
 
             // ✅ Set Placeholder First to Avoid Layout Shift
             let placeholder = document.createElement("img");
@@ -96,10 +98,13 @@ document.addEventListener("DOMContentLoaded", function () {
             const rect = facade.getBoundingClientRect();
             if (rect.top < window.innerHeight) {
                 placeholder.loading = "eager"; // Loads immediately if above the fold
+                console.log(`🔹 Loading ${videoId} eagerly (above the fold)`);
             } else {
                 placeholder.loading = "lazy"; // Lazy loading for below-the-fold thumbnails
+                console.log(`🔸 Loading ${videoId} lazily (below the fold)`);
             }
 
+            // ✅ Append the optimized thumbnail
             facade.appendChild(placeholder);
 
             // ✅ Clicking on Thumbnail Loads YouTube iFrame
