@@ -49,6 +49,11 @@
 
     <style>
       .blog-hero img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+      }
+      .blog-hero img {
         width: 100vw;
         height: 600px;
         object-fit: cover;
@@ -85,49 +90,38 @@
         <section>
           <div class="blog-hero">
             <picture>
-              <!-- AVIF format for modern browsers -->
+              <!-- Mobile Image -->
               <source
                 srcset="
-                  https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_auto:eco,w_480,h_150,c_fit/v1739329787/all-videos-wide_qmtdsg.avif   480w,
-                  https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_auto:eco,w_768,h_250,c_fit/v1739329787/all-videos-wide_qmtdsg.avif   768w,
-                  https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_auto:eco,w_1024,h_320,c_fit/v1739329787/all-videos-wide_qmtdsg.avif 1024w,
-                  https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_auto:eco,w_1440,h_450,c_fit/v1739329787/all-videos-wide_qmtdsg.avif 1440w,
-                  https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_auto:eco,w_1920,h_600,c_fit/v1739329787/all-videos-wide_qmtdsg.avif 1920w
+                  https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_auto:eco,w_768,h_240,c_fit,fl_attachment/v1739329787/all-videos-wide_qmtdsg.avif
                 "
-                sizes="(max-width: 480px) 480w,
-           (max-width: 768px) 768w,
-           (max-width: 1024px) 1024w,
-           (max-width: 1440px) 1440w,
-           1920w"
+                media="(max-width: 768px)"
                 type="image/avif"
               />
-
-              <!-- Fallback to WebP for browsers that don't support AVIF -->
+              <!-- Tablet Image -->
               <source
                 srcset="
-                  https://res.cloudinary.com/dnptzisuf/image/upload/f_webp,q_auto:eco,w_480,h_150,c_fit/v1739329787/all-videos-wide_qmtdsg.webp   480w,
-                  https://res.cloudinary.com/dnptzisuf/image/upload/f_webp,q_auto:eco,w_768,h_250,c_fit/v1739329787/all-videos-wide_qmtdsg.webp   768w,
-                  https://res.cloudinary.com/dnptzisuf/image/upload/f_webp,q_auto:eco,w_1024,h_320,c_fit/v1739329787/all-videos-wide_qmtdsg.webp 1024w,
-                  https://res.cloudinary.com/dnptzisuf/image/upload/f_webp,q_auto:eco,w_1440,h_450,c_fit/v1739329787/all-videos-wide_qmtdsg.webp 1440w,
-                  https://res.cloudinary.com/dnptzisuf/image/upload/f_webp,q_auto:eco,w_1920,h_600,c_fit/v1739329787/all-videos-wide_qmtdsg.webp 1920w
+                  https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_auto:eco,w_1024,h_320,c_fit,fl_attachment/v1739329787/all-videos-wide_qmtdsg.avif
                 "
-                sizes="(max-width: 480px) 480w,
-           (max-width: 768px) 768w,
-           (max-width: 1024px) 1024w,
-           (max-width: 1440px) 1440w,
-           1920w"
-                type="image/webp"
+                media="(max-width: 1024px)"
+                type="image/avif"
               />
-
-              <!-- JPEG Fallback for unsupported browsers -->
+              <!-- Desktop Image -->
+              <source
+                srcset="
+                  https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_auto:eco,w_1920,h_600,c_fit,fl_attachment/v1739329787/all-videos-wide_qmtdsg.avif
+                "
+                media="(min-width: 1025px)"
+                type="image/avif"
+              />
               <img
-                src="https://res.cloudinary.com/dnptzisuf/image/upload/f_auto,q_auto:eco,w_1920,h_600,c_fit/v1739329787/all-videos-wide_qmtdsg.jpg"
+                src="https://res.cloudinary.com/dnptzisuf/image/upload/f_auto,q_auto:eco,w_1920,h_600,c_fit,fl_attachment/v1739329787/all-videos-wide_qmtdsg.avif"
                 alt="All Videos Page Banner"
                 width="1920"
                 height="600"
                 loading="eager"
                 fetchpriority="high"
-                class="hero-image"
+                class="blog-hero-img"
                 decoding="async"
                 importance="high"
               />
@@ -136,6 +130,7 @@
         </section>
       </div>
     </header>
+
     <main>
       <section id="collections-page" class="category-article">
         <article class="category-page box-color1" id="feature">
