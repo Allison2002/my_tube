@@ -59,7 +59,7 @@ document.addEventListener("DOMContentLoaded", function () {
         updateHamburgerVisibility();
     }
 
-    console.log("✅ Optimized script loaded!");
+    console.log("✅ Fixing YouTube Video Thumbnails!");
 
     function setupYouTubePlayers() {
         document.querySelectorAll(".youtube-facade, .youtube-facade-all").forEach((facade) => {
@@ -119,8 +119,6 @@ document.addEventListener("DOMContentLoaded", function () {
             });
         });
     }
-
-    setupYouTubePlayers();
 
     function setupBiographySection() {
         document.querySelectorAll(".toggle-btn").forEach(btn => {
