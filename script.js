@@ -69,7 +69,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 return;
             }
 
-            // ✅ Use Cloudinary to Convert to AVIF
+            // ✅ Use Cloudinary to Convert YouTube Thumbnails to AVIF
             const cloudinaryBaseUrl = "https://res.cloudinary.com/dnptzisuf/image/fetch/";
             const youtubeThumbnailUrl = encodeURIComponent(`https://img.youtube.com/vi/${videoId}/hqdefault.jpg`);
 
