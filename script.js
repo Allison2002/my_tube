@@ -69,26 +69,20 @@ document.addEventListener("DOMContentLoaded", function () {
                 return;
             }
 
-            let thumbnail = facade.querySelector("img");
-            if (!thumbnail) {
-                thumbnail = document.createElement("img");
-                thumbnail.src = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
-                thumbnail.alt = "YouTube video thumbnail";
-                thumbnail.classList.add("video-thumbnail");
+            let placeholder = document.createElement("img");
+            placeholder.src = "https://via.placeholder.com/560x315/000000/ffffff?text=Loading...";
+            placeholder.alt = "Loading video...";
+            placeholder.classList.add("video-thumbnail");
+            placeholder.style.width = "100%";
+            placeholder.style.height = "100%";
+            placeholder.style.objectFit = "cover";
 
-                setTimeout(() => {
-                    const rect = facade.getBoundingClientRect();
-                    if (rect.top < window.innerHeight) {
-                        // Load immediately if above the fold
-                        thumbnail.removeAttribute("loading");
-                    } else {
-                        // Apply lazy loading if below the fold
-                        thumbnail.loading = "lazy";
-                    }
-                }, 0);
+            facade.appendChild(placeholder);
 
-                facade.insertBefore(thumbnail, facade.firstChild);
-            }
+            // Load the real thumbnail AFTER page load to prevent layout shifts
+            setTimeout(() => {
+                placeholder.src = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
+            }, 500); // Small delay to ensure CLS stability
 
             facade.addEventListener("click", function () {
                 console.log("▶️ Playing Video:", videoId);
