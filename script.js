@@ -76,12 +76,12 @@ document.addEventListener("DOMContentLoaded", function () {
                 thumbnail.alt = "YouTube video thumbnail";
                 thumbnail.classList.add("video-thumbnail");
                 // Only apply lazy loading if it's below the fold
-                if (facade.getBoundingClientRect().top > window.innerHeight) {
-                    thumbnail.loading = "lazy";
+                const rect = facade.getBoundingClientRect();
+                if (rect.top >= 0 && rect.top < window.innerHeight) {
+                    thumbnail.removeAttribute("loading"); // Loads immediately
                 } else {
-                    thumbnail.removeAttribute("loading");
+                    thumbnail.loading = "lazy"; // Defers loading for below-the-fold thumbnails
                 }
-
                 facade.insertBefore(thumbnail, facade.firstChild);
             }
 
