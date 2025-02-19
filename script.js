@@ -69,7 +69,19 @@ document.addEventListener("DOMContentLoaded", function () {
                 return;
             }
 
-            // ✅ Step 1: Set a Placeholder First to Avoid Layout Shift
+            // ✅ Detect container size to serve the optimal image
+            let containerWidth = facade.offsetWidth;
+            let thumbnailUrl = "";
+
+            if (containerWidth >= 480) {
+                thumbnailUrl = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`; // 480×360
+            } else if (containerWidth >= 320) {
+                thumbnailUrl = `https://img.youtube.com/vi/${videoId}/mqdefault.jpg`; // 320×180
+            } else {
+                thumbnailUrl = `https://img.youtube.com/vi/${videoId}/default.jpg`; // 120×90
+            }
+
+            // ✅ Set Placeholder First to Avoid Layout Shift
             let placeholder = document.createElement("img");
             placeholder.src = "https://via.placeholder.com/320x180/000000/ffffff?text=Loading...";
             placeholder.alt = "Loading video...";
@@ -80,13 +92,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
             facade.appendChild(placeholder);
 
-            // ✅ Step 2: Load Real Thumbnail to Reduce Load Time
+            // ✅ Load Real Thumbnail to Reduce Load Time
             setTimeout(() => {
-                placeholder.src = `https://img.youtube.com/vi/${videoId}/mqdefault.jpg`; // Use smaller-sized thumbnail
+                placeholder.src = thumbnailUrl;
                 placeholder.loading = "lazy"; // Ensures optimization for page speed
             }, 300); // Short delay for smooth transition
 
-            // ✅ Step 3: Clicking on Thumbnail Loads YouTube iFrame
+            // ✅ Clicking on Thumbnail Loads YouTube iFrame
             facade.addEventListener("click", function () {
                 console.log("▶️ Playing Video:", videoId);
                 let width = facade.clientWidth;
