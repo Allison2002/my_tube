@@ -6,15 +6,20 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function loadComponent(url, elementId) {
         fetch(basePath + url, { cache: "no-store" })
-            .then(response => response.ok ? response.text() : Promise.reject(`HTTP error! Status: ${response.status}`))
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                return response.text();
+            })
             .then(data => {
                 document.getElementById(elementId).innerHTML = data;
-                if (elementId === "nav") setupNavbar(); // Ensure navbar is set up after loading
+                if (elementId === "nav") setupNavbar(); // Ensure navbar JS executes
             })
             .catch(error => console.error(`❌ Error loading ${elementId}:`, error));
     }
 
-    // ✅ Load Navigation and Footer
+    // ✅ Load Navigation and Footer for All Pages
     loadComponent("nav.html", "nav");
     loadComponent("footer.html", "footer");
 
@@ -26,17 +31,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (!navbar || !hamburgerIcon || !navMenu) return;
 
-        // ✅ Updated scroll trigger for ALL pages
         const handleScroll = () => {
-            if (window.scrollY > 1) { // Trigger immediately on any scroll
-                navbar.classList.add("scrolled");
-            } else {
-                navbar.classList.remove("scrolled");
-            }
+            navbar.classList.add("solid"); // Turns red immediately on any scroll
+            navbar.classList.toggle("scrolled", window.scrollY > 0);
         };
 
         const updateHamburgerVisibility = () => {
-            hamburgerIcon.style.display = window.innerWidth > 768 || navMenu.classList.contains("active") ? "none" : "flex";
+            hamburgerIcon.style.display =
+                window.innerWidth > 768 || navMenu.classList.contains("active") ? "none" : "flex";
         };
 
         hamburgerIcon.addEventListener("click", (e) => {
@@ -55,75 +57,45 @@ document.addEventListener("DOMContentLoaded", function () {
         window.addEventListener("scroll", handleScroll, { passive: true });
         window.addEventListener("resize", updateHamburgerVisibility);
         updateHamburgerVisibility();
-        
-        // ✅ Ensure it applies instantly if page is loaded in a scrolled position
-        handleScroll();
     }
 
-    console.log("✅ Using Correct Cloudinary AVIF Thumbnails!");
+    console.log("✅ Fixing YouTube Video Thumbnails!");
 
     function setupYouTubePlayers() {
-        const cloudinaryThumbnails = {
-            "UMp4IiiYgJ8": "youtube_thumbnails_UMp4IiiYgJ8_n7pup4",
-            "lRTUIBVfLP4": "youtube_thumbnails_lRTUIBVfLP4_cxmbtp",
-            "l2rzjHtgoNc": "youtube_thumbnails_l2rzjHtgoNc_l0fvoh",
-            "HpzCtxzq-vo": "youtube_thumbnails_HpzCtxzq-vo_jnzxf8",
-            "i6AmT1cpKtI": "youtube_thumbnails_i6AmT1cpKtI_twvqf0",
-            "L9RX4mji2DY": "youtube_thumbnails_L9RX4mji2DY_wpbl7w",
-            "UKFCwrFe88Y": "youtube_thumbnails_UKFCwrFe88Y_zjmfky",
-            "pTkMh9FziC8": "youtube_thumbnails_pTkMh9FziC8_rm8kic",
-            "tDIJI9nE_ak": "youtube_thumbnails_tDIJI9nE_ak_smni6t"
-        };
-
         document.querySelectorAll(".youtube-facade, .youtube-facade-all").forEach((facade) => {
             const videoId = facade.dataset.videoId || facade.dataset.id;
-            if (!videoId || !cloudinaryThumbnails[videoId]) {
-                console.error(`❌ No Cloudinary thumbnail found for ${videoId}`);
+            if (!videoId) {
+                console.error("❌ No video ID found.");
                 return;
             }
 
-            // ✅ Detect container size and set proper width
-            let containerWidth = facade.offsetWidth;
-            let optimalWidth = 320; // Default
-            let optimalHeight = 180; // Default
-
-            if (containerWidth >= 640) {
-                optimalWidth = 640;
-                optimalHeight = 360;
-            } else if (containerWidth >= 480) {
-                optimalWidth = 480;
-                optimalHeight = 270;
-            } else if (containerWidth >= 320) {
-                optimalWidth = 320;
-                optimalHeight = 180;
-            }
-
-            // ✅ Build optimized Cloudinary AVIF URL with correct width & height
-            const optimizedThumbnailUrl = `https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_auto,w_${optimalWidth},h_${optimalHeight},c_fill/v1739982747/${cloudinaryThumbnails[videoId]}.avif`;
-
-            console.log(`🔗 Loading AVIF thumbnail for ${videoId}: ${optimizedThumbnailUrl}`);
-
-            // ✅ Set Placeholder First to Avoid Layout Shift
             let placeholder = document.createElement("img");
-            placeholder.src = optimizedThumbnailUrl;
-            placeholder.alt = "YouTube video thumbnail";
+            placeholder.src = "https://via.placeholder.com/560x315/000000/ffffff?text=Loading...";
+            placeholder.alt = "Loading video...";
             placeholder.classList.add("video-thumbnail");
-            placeholder.width = optimalWidth;
-            placeholder.height = optimalHeight;
+            placeholder.style.width = "100%";
+            placeholder.style.height = "100%";
             placeholder.style.objectFit = "cover";
 
-            // ✅ Disable Lazy Loading for Above-the-Fold Images
-            const rect = facade.getBoundingClientRect();
-            placeholder.loading = rect.top < window.innerHeight ? "eager" : "lazy";
-
-            // ✅ Replace the placeholder
             facade.appendChild(placeholder);
 
-            // ✅ Clicking on Thumbnail Loads YouTube iFrame
+            // Load the real thumbnail AFTER page load to prevent layout shifts
+            setTimeout(() => {
+                placeholder.src = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
+            }, 500); // Small delay to ensure CLS stability
+
             facade.addEventListener("click", function () {
-                console.log(`▶️ Playing Video: ${videoId}`);
+                console.log("▶️ Playing Video:", videoId);
                 let width = facade.clientWidth;
                 let height = facade.clientHeight;
+
+                if (facade.closest(".call2action-video")) {
+                    const parent = facade.closest(".call2action-video");
+                    if (parent) {
+                        width = parent.clientWidth;
+                        height = parent.clientHeight;
+                    }
+                }
 
                 const iframe = document.createElement("iframe");
                 iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&showinfo=0`;
@@ -133,6 +105,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
                 iframe.allowFullscreen = true;
                 iframe.style.objectFit = "cover";
+                iframe.style.width = `${width}px`;
+                iframe.style.height = `${height}px`;
 
                 facade.innerHTML = "";
                 facade.appendChild(iframe);
@@ -140,7 +114,6 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // ✅ Biography Section: Restore missing functionality
     function setupBiographySection() {
         document.querySelectorAll(".toggle-btn").forEach(btn => {
             btn.addEventListener("click", function () {
@@ -165,7 +138,7 @@ document.addEventListener("DOMContentLoaded", function () {
             if (name) name.classList.add("hidden");
             content.style.height = "auto";
         } else {
-            button.src = "https://res.cloudinary.com/dnptzisuf/image/upload/v1739375139/white-plus-sign_av8usw.webp";
+            button.src = "https://res.cloudinary.com/dnptzisuf/image/fetch/v1738766146/https://res.cloudinary.com/dnptzisuf/image/upload/f_avif%2Cq_auto%2Cw_100%2Ch_100%2Cc_fit/v1737994384/white-plus-sign_av8usw.png%3Fv%3D1";
             if (name) name.classList.remove("hidden");
             content.style.height = "0";
         }
