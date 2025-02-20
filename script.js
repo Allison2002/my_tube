@@ -59,43 +59,55 @@ document.addEventListener("DOMContentLoaded", function () {
         updateHamburgerVisibility();
     }
 
-    console.log("✅ Fixing YouTube Video Thumbnails!");
+    console.log("✅ Using AVIF for YouTube Video Thumbnails!");
 
     function setupYouTubePlayers() {
+        const cloudinaryThumbnails = {
+            "7Oj7IAJ7B_0": "youtube_thumbnails_7Oj7IAJ7B_0_n7pup4",
+            "9n0T6cQ7zbM": "youtube_thumbnails_9n0T6cQ7zbM_twvqf0",
+            "lRTUIBVfLP4": "youtube_thumbnails_lRTUIBVfLP4_cxmbtp",
+            // Add other video IDs as needed
+        };
+
         document.querySelectorAll(".youtube-facade, .youtube-facade-all").forEach((facade) => {
             const videoId = facade.dataset.videoId || facade.dataset.id;
-            if (!videoId) {
-                console.error("❌ No video ID found.");
+            if (!videoId || !cloudinaryThumbnails[videoId]) {
+                console.error(`❌ No Cloudinary thumbnail found for ${videoId}`);
                 return;
             }
 
+            let optimalWidth = 320, optimalHeight = 180;
+            const containerWidth = facade.offsetWidth;
+
+            if (containerWidth >= 640) {
+                optimalWidth = 640;
+                optimalHeight = 360;
+            } else if (containerWidth >= 480) {
+                optimalWidth = 480;
+                optimalHeight = 270;
+            }
+
+            // ✅ Use AVIF format from Cloudinary
+            const optimizedThumbnailUrl = `https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_auto,w_${optimalWidth},h_${optimalHeight},c_fill/v1739982747/${cloudinaryThumbnails[videoId]}.avif`;
+
+            console.log(`🔗 Loading AVIF thumbnail for ${videoId}: ${optimizedThumbnailUrl}`);
+
             let placeholder = document.createElement("img");
-            placeholder.src = "https://via.placeholder.com/560x315/000000/ffffff?text=Loading...";
-            placeholder.alt = "Loading video...";
+            placeholder.src = optimizedThumbnailUrl;
+            placeholder.alt = "YouTube video thumbnail";
             placeholder.classList.add("video-thumbnail");
-            placeholder.style.width = "100%";
-            placeholder.style.height = "100%";
+            placeholder.width = optimalWidth;
+            placeholder.height = optimalHeight;
             placeholder.style.objectFit = "cover";
+            placeholder.loading = "lazy";
 
             facade.appendChild(placeholder);
 
-            // Load the real thumbnail AFTER page load to prevent layout shifts
-            setTimeout(() => {
-                placeholder.src = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
-            }, 500); // Small delay to ensure CLS stability
-
+            // ✅ Clicking loads the video iframe
             facade.addEventListener("click", function () {
-                console.log("▶️ Playing Video:", videoId);
+                console.log(`▶️ Playing Video: ${videoId}`);
                 let width = facade.clientWidth;
                 let height = facade.clientHeight;
-
-                if (facade.closest(".call2action-video")) {
-                    const parent = facade.closest(".call2action-video");
-                    if (parent) {
-                        width = parent.clientWidth;
-                        height = parent.clientHeight;
-                    }
-                }
 
                 const iframe = document.createElement("iframe");
                 iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&showinfo=0`;
@@ -105,8 +117,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
                 iframe.allowFullscreen = true;
                 iframe.style.objectFit = "cover";
-                iframe.style.width = `${width}px`;
-                iframe.style.height = `${height}px`;
 
                 facade.innerHTML = "";
                 facade.appendChild(iframe);
