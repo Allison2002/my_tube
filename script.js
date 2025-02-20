@@ -14,16 +14,16 @@ document.addEventListener("DOMContentLoaded", function () {
             })
             .then(data => {
                 document.getElementById(elementId).innerHTML = data;
-                if (elementId === "nav") setupNavbar(); // Ensure navbar JS executes
+                if (elementId === "nav") setupNavbar();
             })
             .catch(error => console.error(`❌ Error loading ${elementId}:`, error));
     }
 
-    // ✅ Load Navigation and Footer for All Pages
+    // ✅ Load Navigation and Footer
     loadComponent("nav.html", "nav");
     loadComponent("footer.html", "footer");
 
-    // ✅ Navbar Behavior (Sticky Navbar, Mobile Menu, Scroll Effects)
+    // ✅ Navbar Behavior
     function setupNavbar() {
         const navbar = document.querySelector("nav");
         const hamburgerIcon = document.getElementById("menu-toggle");
@@ -32,9 +32,11 @@ document.addEventListener("DOMContentLoaded", function () {
         if (!navbar || !hamburgerIcon || !navMenu) return;
 
         const handleScroll = () => {
-            navbar.classList.add("solid"); // Turns red immediately on any scroll
+            navbar.classList.add("solid");
             navbar.classList.toggle("scrolled", window.scrollY > 0);
         };
+
+        window.addEventListener("scroll", handleScroll, { passive: true });
 
         const updateHamburgerVisibility = () => {
             hamburgerIcon.style.display =
@@ -54,25 +56,28 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         });
 
-        window.addEventListener("scroll", handleScroll, { passive: true });
         window.addEventListener("resize", updateHamburgerVisibility);
         updateHamburgerVisibility();
     }
 
-    console.log("✅ Using AVIF for YouTube Video Thumbnails!");
+    console.log("✅ Using Cloudinary AVIF for YouTube Thumbnails!");
 
     function setupYouTubePlayers() {
         const cloudinaryThumbnails = {
             "7Oj7IAJ7B_0": "youtube_thumbnails_7Oj7IAJ7B_0_n7pup4",
             "9n0T6cQ7zbM": "youtube_thumbnails_9n0T6cQ7zbM_twvqf0",
             "lRTUIBVfLP4": "youtube_thumbnails_lRTUIBVfLP4_cxmbtp",
-            // Add other video IDs as needed
+            // Ensure all thumbnails exist in Cloudinary
         };
 
         document.querySelectorAll(".youtube-facade, .youtube-facade-all").forEach((facade) => {
             const videoId = facade.dataset.videoId || facade.dataset.id;
             if (!videoId || !cloudinaryThumbnails[videoId]) {
-                console.error(`❌ No Cloudinary thumbnail found for ${videoId}`);
+                console.warn(`⚠️ No Cloudinary thumbnail found for ${videoId}. Using fallback image.`);
+
+                facade.innerHTML = `<img src="https://via.placeholder.com/560x315/000000/ffffff?text=Video" 
+                                    alt="YouTube Video Placeholder" class="video-thumbnail"
+                                    style="width: 100%; height: 100%; object-fit: cover;">`;
                 return;
             }
 
@@ -87,7 +92,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 optimalHeight = 270;
             }
 
-            // ✅ Use AVIF format from Cloudinary
+            // ✅ Corrected Cloudinary AVIF URL
             const optimizedThumbnailUrl = `https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_auto,w_${optimalWidth},h_${optimalHeight},c_fill/v1739982747/${cloudinaryThumbnails[videoId]}.avif`;
 
             console.log(`🔗 Loading AVIF thumbnail for ${videoId}: ${optimizedThumbnailUrl}`);
@@ -103,7 +108,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             facade.appendChild(placeholder);
 
-            // ✅ Clicking loads the video iframe
+            // ✅ Clicking loads the YouTube video
             facade.addEventListener("click", function () {
                 console.log(`▶️ Playing Video: ${videoId}`);
                 let width = facade.clientWidth;
