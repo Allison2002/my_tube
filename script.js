@@ -6,12 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function loadComponent(url, elementId) {
         fetch(basePath + url, { cache: "no-store" })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error(`HTTP error! Status: ${response.status}`);
-                }
-                return response.text();
-            })
+            .then(response => response.ok ? response.text() : Promise.reject(`HTTP error! Status: ${response.status}`))
             .then(data => {
                 document.getElementById(elementId).innerHTML = data;
                 if (elementId === "nav") setupNavbar();
@@ -31,17 +26,20 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (!navbar || !hamburgerIcon || !navMenu) return;
 
-        const handleScroll = () => {
-            navbar.classList.add("solid");
-            navbar.classList.toggle("scrolled", window.scrollY > 0);
-        };
+        function handleScroll() {
+            if (window.scrollY > 0) {
+                navbar.classList.add("scrolled");
+            } else {
+                navbar.classList.remove("scrolled");
+            }
+        }
 
-        window.addEventListener("scroll", handleScroll, { passive: true });
+        document.addEventListener("scroll", handleScroll, { passive: true });
+        window.addEventListener("resize", updateHamburgerVisibility);
 
-        const updateHamburgerVisibility = () => {
-            hamburgerIcon.style.display =
-                window.innerWidth > 768 || navMenu.classList.contains("active") ? "none" : "flex";
-        };
+        function updateHamburgerVisibility() {
+            hamburgerIcon.style.display = window.innerWidth > 768 || navMenu.classList.contains("active") ? "none" : "flex";
+        }
 
         hamburgerIcon.addEventListener("click", (e) => {
             e.stopPropagation();
@@ -56,44 +54,42 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         });
 
-        window.addEventListener("resize", updateHamburgerVisibility);
+        handleScroll();
         updateHamburgerVisibility();
     }
 
-    console.log("✅ Using Cloudinary AVIF for YouTube Thumbnails!");
+    console.log("✅ Using Correct Cloudinary AVIF Thumbnails!");
 
     function setupYouTubePlayers() {
         const cloudinaryThumbnails = {
-            "7Oj7IAJ7B_0": "youtube_thumbnails_7Oj7IAJ7B_0_n7pup4",
-            "9n0T6cQ7zbM": "youtube_thumbnails_9n0T6cQ7zbM_twvqf0",
+            "UMp4IiiYgJ8": "youtube_thumbnails_UMp4IiiYgJ8_n7pup4",
             "lRTUIBVfLP4": "youtube_thumbnails_lRTUIBVfLP4_cxmbtp",
-            // Ensure all thumbnails exist in Cloudinary
+            "l2rzjHtgoNc": "youtube_thumbnails_l2rzjHtgoNc_l0fvoh",
+            "HpzCtxzq-vo": "youtube_thumbnails_HpzCtxzq-vo_jnzxf8",
+            "i6AmT1cpKtI": "youtube_thumbnails_i6AmT1cpKtI_twvqf0",
+            "L9RX4mji2DY": "youtube_thumbnails_L9RX4mji2DY_wpbl7w",
+            "UKFCwrFe88Y": "youtube_thumbnails_UKFCwrFe88Y_zjmfky",
+            "pTkMh9FziC8": "youtube_thumbnails_pTkMh9FziC8_rm8kic",
+            "tDIJI9nE_ak": "youtube_thumbnails_tDIJI9nE_ak_smni6t",
+            "cGoeRZSfVyA": "youtube_thumbnails_cGoeRZSfVyA_gfwo3m",
+            "JfPXrfdYtSA": "youtube_thumbnails_JfPXrfdYtSA_llr8xx",
+            "UwIOARh1NTU": "youtube_thumbnails_UwIOARh1NTU_kd4cwj",
+            "mcqnBMMiNj4": "youtube_thumbnails_mcqnBMMiNj4_ch1plz",
+            "cfzjYJoBSTI": "youtube_thumbnails_cfzjYJoBSTI_c57f5e",
+            "jW8HAlAHRXU": "youtube_thumbnails_jW8HAlAHRXU_tqqmj3",
+            "vAC2almlat4": "youtube_thumbnails_vAC2almlat4_sgpmla",
+            "SQmh-KG7HqA": "youtube_thumbnails_SQmh-KG7HqA_hnvlu5",
+            "AQ2z_ujhhVs": "youtube_thumbnails_AQ2z_ujhhVs_vsrzkh"
         };
 
         document.querySelectorAll(".youtube-facade, .youtube-facade-all").forEach((facade) => {
             const videoId = facade.dataset.videoId || facade.dataset.id;
             if (!videoId || !cloudinaryThumbnails[videoId]) {
-                console.warn(`⚠️ No Cloudinary thumbnail found for ${videoId}. Using fallback image.`);
-
-                facade.innerHTML = `<img src="https://via.placeholder.com/560x315/000000/ffffff?text=Video" 
-                                    alt="YouTube Video Placeholder" class="video-thumbnail"
-                                    style="width: 100%; height: 100%; object-fit: cover;">`;
+                console.warn(`⚠️ No Cloudinary thumbnail found for ${videoId}. Using fallback.`);
                 return;
             }
 
-            let optimalWidth = 320, optimalHeight = 180;
-            const containerWidth = facade.offsetWidth;
-
-            if (containerWidth >= 640) {
-                optimalWidth = 640;
-                optimalHeight = 360;
-            } else if (containerWidth >= 480) {
-                optimalWidth = 480;
-                optimalHeight = 270;
-            }
-
-            // ✅ Corrected Cloudinary AVIF URL
-            const optimizedThumbnailUrl = `https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_auto,w_${optimalWidth},h_${optimalHeight},c_fill/v1739982747/${cloudinaryThumbnails[videoId]}.avif`;
+            let optimizedThumbnailUrl = `https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_auto,w_400,h_338,c_fill/v1739982747/${cloudinaryThumbnails[videoId]}.avif`;
 
             console.log(`🔗 Loading AVIF thumbnail for ${videoId}: ${optimizedThumbnailUrl}`);
 
@@ -101,23 +97,24 @@ document.addEventListener("DOMContentLoaded", function () {
             placeholder.src = optimizedThumbnailUrl;
             placeholder.alt = "YouTube video thumbnail";
             placeholder.classList.add("video-thumbnail");
-            placeholder.width = optimalWidth;
-            placeholder.height = optimalHeight;
+            placeholder.style.width = "100%";
+            placeholder.style.height = "auto";
             placeholder.style.objectFit = "cover";
             placeholder.loading = "lazy";
 
             facade.appendChild(placeholder);
 
-            // ✅ Clicking loads the YouTube video
             facade.addEventListener("click", function () {
                 console.log(`▶️ Playing Video: ${videoId}`);
-                let width = facade.clientWidth;
-                let height = facade.clientHeight;
 
-                const iframe = document.createElement("iframe");
+                // ✅ Capture the exact size of the thumbnail
+                const width = facade.clientWidth;
+                const height = facade.clientHeight;
+
+                let iframe = document.createElement("iframe");
                 iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&showinfo=0`;
-                iframe.width = width;
-                iframe.height = height;
+                iframe.width = width + "px";
+                iframe.height = height + "px";
                 iframe.frameBorder = "0";
                 iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
                 iframe.allowFullscreen = true;
@@ -126,6 +123,37 @@ document.addEventListener("DOMContentLoaded", function () {
                 facade.innerHTML = "";
                 facade.appendChild(iframe);
             });
+        });
+    }
+
+    function setupCallToActionVideo() {
+        const ctaVideo = document.querySelector(".call2action-video .youtube-facade");
+        if (!ctaVideo) return;
+
+        const videoId = ctaVideo.dataset.videoId;
+        if (!videoId) {
+            console.warn("⚠️ No video ID found for Call-to-Action video.");
+            return;
+        }
+
+        ctaVideo.addEventListener("click", function () {
+            console.log(`▶️ Playing CTA Video: ${videoId}`);
+
+            // ✅ Capture the exact size of the CTA video thumbnail
+            const width = ctaVideo.clientWidth;
+            const height = ctaVideo.clientHeight;
+
+            let iframe = document.createElement("iframe");
+            iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&showinfo=0`;
+            iframe.width = width + "px";
+            iframe.height = height + "px";
+            iframe.frameBorder = "0";
+            iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
+            iframe.allowFullscreen = true;
+            iframe.style.objectFit = "cover";
+
+            ctaVideo.innerHTML = "";
+            ctaVideo.appendChild(iframe);
         });
     }
 
@@ -153,7 +181,7 @@ document.addEventListener("DOMContentLoaded", function () {
             if (name) name.classList.add("hidden");
             content.style.height = "auto";
         } else {
-            button.src = "https://res.cloudinary.com/dnptzisuf/image/fetch/v1738766146/https://res.cloudinary.com/dnptzisuf/image/upload/f_avif%2Cq_auto%2Cw_100%2Ch_100%2Cc_fit/v1737994384/white-plus-sign_av8usw.png%3Fv%3D1";
+            button.src = "https://res.cloudinary.com/dnptzisuf/image/upload/v1739375139/white-plus-sign_av8usw.webp";
             if (name) name.classList.remove("hidden");
             content.style.height = "0";
         }
@@ -161,6 +189,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     setupNavbar();
     setupYouTubePlayers();
+    setupCallToActionVideo();
     setupBiographySection();
     console.log("✅ All Scripts Loaded Successfully!");
 });
