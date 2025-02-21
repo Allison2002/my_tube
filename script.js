@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-    console.log("✅ Optimized script with caching and CLS improvements loaded!");
+    console.log("✅ Optimized script with caching, CLS improvements, CTA fix, and Biography fix!");
 
     // ✅ Get Base Path Dynamically Based on the Page Location
     const basePath = window.location.pathname.includes("/pages/") || window.location.pathname.includes("/videos/") ? "../../" : "./";
@@ -85,7 +85,7 @@ document.addEventListener("DOMContentLoaded", function () {
             if (!videoId || !cloudinaryThumbnails[videoId]) return;
 
             if (!thumbnailCache[videoId]) {
-                let screenSize = window.innerWidth <= 768 ? "w_300,h_225" : "w_400,h_338";
+                let screenSize = window.innerWidth <= 768 ? "w_300,h_180" : "w_400,h_225";
                 thumbnailCache[videoId] = `https://res.cloudinary.com/dnptzisuf/image/upload/fl_attachment,fl_lossy,f_avif,q_auto:low,${screenSize},c_fill/v1739982747/${cloudinaryThumbnails[videoId]}.avif`;
             }
 
@@ -93,12 +93,10 @@ document.addEventListener("DOMContentLoaded", function () {
             placeholder.src = thumbnailCache[videoId];
             placeholder.alt = "YouTube video thumbnail";
             placeholder.classList.add("video-thumbnail");
-            placeholder.style.width = "400px"; // Explicit width to prevent layout shifts
-            placeholder.style.height = "338px"; // Explicit height
+            placeholder.style.width = "100%";
+            placeholder.style.height = "100%";
             placeholder.style.objectFit = "cover";
-            placeholder.style.display = "block"; // Prevent inline space issues
 
-            // ✅ Above-the-fold: No Lazy Loading
             if (index < 3) {
                 placeholder.fetchPriority = "high";
             } else {
@@ -106,12 +104,14 @@ document.addEventListener("DOMContentLoaded", function () {
                 placeholder.fetchPriority = "low";
             }
 
-            facade.appendChild(placeholder);
+            if (!facade.querySelector("img")) {
+                facade.appendChild(placeholder);
+            }
 
+            // ✅ Restore Click-to-Play Video Functionality
             facade.addEventListener("click", function () {
                 console.log(`▶️ Playing Video: ${videoId}`);
 
-                // ✅ Capture the exact size of the thumbnail
                 const width = facade.clientWidth;
                 const height = facade.clientHeight;
 
@@ -143,7 +143,6 @@ document.addEventListener("DOMContentLoaded", function () {
         ctaVideo.addEventListener("click", function () {
             console.log(`▶️ Playing CTA Video: ${videoId}`);
 
-            // ✅ Capture the exact size of the CTA video thumbnail
             const width = ctaVideo.clientWidth;
             const height = ctaVideo.clientHeight;
 
@@ -164,36 +163,35 @@ document.addEventListener("DOMContentLoaded", function () {
     function setupBiographySection() {
         document.querySelectorAll(".toggle-btn").forEach(btn => {
             btn.addEventListener("click", function () {
-                const bioId = btn.closest(".biography").id;
-                toggleBio(bioId);
+                const bio = btn.closest(".biography");
+                if (!bio) return;
+
+                const button = bio.querySelector(".toggle-btn img");
+                const name = bio.querySelector(".bio-name");
+                const content = bio.querySelector(".bio-content");
+
+                bio.classList.toggle("expanded");
+
+                if (bio.classList.contains("expanded")) {
+                    button.src = "https://res.cloudinary.com/dnptzisuf/image/upload/v1739375139/white-minus-sign_ptxfgg.webp";
+                    if (name) name.classList.add("hidden");
+                    content.style.maxHeight = "1000px"; // Ensures full expansion
+                    content.style.opacity = "1";
+                    content.style.transition = "max-height 0.3s ease, opacity 0.3s ease";
+                } else {
+                    button.src = "https://res.cloudinary.com/dnptzisuf/image/upload/v1739375139/white-plus-sign_av8usw.webp";
+                    if (name) name.classList.remove("hidden");
+                    content.style.maxHeight = "0";
+                    content.style.opacity = "0";
+                    content.style.transition = "max-height 0.3s ease, opacity 0.3s ease";
+                }
             });
         });
-    }
-
-    function toggleBio(bioId) {
-        const bio = document.getElementById(bioId);
-        if (!bio) return;
-
-        const button = bio.querySelector(".toggle-btn img");
-        const name = bio.querySelector(".bio-name");
-        const content = bio.querySelector(".bio-content");
-
-        bio.classList.toggle("expanded");
-
-        if (bio.classList.contains("expanded")) {
-            button.src = "https://res.cloudinary.com/dnptzisuf/image/upload/v1739375139/white-minus-sign_ptxfgg.webp";
-            if (name) name.classList.add("hidden");
-            content.style.height = "auto";
-        } else {
-            button.src = "https://res.cloudinary.com/dnptzisuf/image/upload/v1739375139/white-plus-sign_av8usw.webp";
-            if (name) name.classList.remove("hidden");
-            content.style.height = "0";
-        }
     }
 
     setupNavbar();
     setupYouTubePlayers();
     setupCallToActionVideo();
-    setupBiographySection();
+    setupBiographySection(); // ✅ FIXED: Now biography toggle works properly
     console.log("✅ All Scripts Loaded Successfully!");
 });
