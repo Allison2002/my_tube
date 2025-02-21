@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-    console.log("✅ Optimized script loaded!");
+    console.log("✅ Optimized script with caching improvements loaded!");
 
     // ✅ Get Base Path Dynamically Based on the Page Location
     const basePath = window.location.pathname.includes("/pages/") || window.location.pathname.includes("/videos/") ? "../../" : "./";
@@ -27,11 +27,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (!navbar || !hamburgerIcon || !navMenu) return;
 
         function handleScroll() {
-            if (window.scrollY > 0) {
-                navbar.classList.add("scrolled");
-            } else {
-                navbar.classList.remove("scrolled");
-            }
+            navbar.classList.toggle("scrolled", window.scrollY > 0);
         }
 
         document.addEventListener("scroll", handleScroll, { passive: true });
@@ -58,7 +54,7 @@ document.addEventListener("DOMContentLoaded", function () {
         updateHamburgerVisibility();
     }
 
-    console.log("✅ Using Correct Cloudinary AVIF Thumbnails!");
+    console.log("✅ Using Correct Cloudinary AVIF Thumbnails with fl_attachment!");
 
     function setupYouTubePlayers() {
         const cloudinaryThumbnails = {
@@ -89,9 +85,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 return;
             }
 
-            // Responsive sizing: Smaller for mobile, larger for desktop
+            // ✅ Responsive sizing: Smaller for mobile, larger for desktop
             let screenSize = window.innerWidth <= 768 ? "w_300,h_225" : "w_400,h_338";
-            let optimizedThumbnailUrl = `https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_auto:eco,${screenSize},c_fill/v1739982747/${cloudinaryThumbnails[videoId]}.avif`;
+            let optimizedThumbnailUrl = `https://res.cloudinary.com/dnptzisuf/image/upload/fl_attachment,f_avif,q_auto:eco,${screenSize},c_fill/v1739982747/${cloudinaryThumbnails[videoId]}.avif`;
 
             console.log(`🔗 Loading AVIF thumbnail for ${videoId}: ${optimizedThumbnailUrl}`);
 
@@ -109,7 +105,7 @@ document.addEventListener("DOMContentLoaded", function () {
             placeholder.style.height = "auto";
             placeholder.style.objectFit = "cover";
 
-            // ✅ Above the Fold: No Lazy Loading
+            // ✅ Above-the-fold: No Lazy Loading
             if (index < 3) {
                 placeholder.fetchPriority = "high";
             } else {
