@@ -87,7 +87,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             // ✅ Responsive sizing: Smaller for mobile, larger for desktop
             let screenSize = window.innerWidth <= 768 ? "w_300,h_225" : "w_400,h_338";
-            let optimizedThumbnailUrl = `https://res.cloudinary.com/dnptzisuf/image/upload/fl_attachment,f_avif,q_auto:eco,${screenSize},c_fill/v1739982747/${cloudinaryThumbnails[videoId]}.avif`;
+            let optimizedThumbnailUrl = `https://res.cloudinary.com/dnptzisuf/image/upload/fl_attachment,fl_lossy,f_avif,q_auto:low,${screenSize},c_fill/v1739982747/${cloudinaryThumbnails[videoId]}.avif`;
 
             console.log(`🔗 Loading AVIF thumbnail for ${videoId}: ${optimizedThumbnailUrl}`);
 
