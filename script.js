@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-    console.log("✅ Optimized script with caching improvements loaded!");
+    console.log("✅ Optimized script with caching and CLS improvements loaded!");
 
     // ✅ Get Base Path Dynamically Based on the Page Location
     const basePath = window.location.pathname.includes("/pages/") || window.location.pathname.includes("/videos/") ? "../../" : "./";
@@ -54,7 +54,7 @@ document.addEventListener("DOMContentLoaded", function () {
         updateHamburgerVisibility();
     }
 
-    console.log("✅ Using Correct Cloudinary AVIF Thumbnails with fl_attachment!");
+    console.log("✅ Using Correct Cloudinary AVIF Thumbnails with fl_attachment and caching!");
 
     function setupYouTubePlayers() {
         const cloudinaryThumbnails = {
@@ -78,32 +78,25 @@ document.addEventListener("DOMContentLoaded", function () {
             "AQ2z_ujhhVs": "youtube_thumbnails_AQ2z_ujhhVs_vsrzkh"
         };
 
+        const thumbnailCache = {}; // 🔥 Caches thumbnails to avoid duplicate requests
+
         document.querySelectorAll(".youtube-facade, .youtube-facade-all").forEach((facade, index) => {
             const videoId = facade.dataset.videoId || facade.dataset.id;
-            if (!videoId || !cloudinaryThumbnails[videoId]) {
-                console.warn(`⚠️ No Cloudinary thumbnail found for ${videoId}. Using fallback.`);
-                return;
-            }
+            if (!videoId || !cloudinaryThumbnails[videoId]) return;
 
-            // ✅ Responsive sizing: Smaller for mobile, larger for desktop
-            let screenSize = window.innerWidth <= 768 ? "w_300,h_225" : "w_400,h_338";
-            let optimizedThumbnailUrl = `https://res.cloudinary.com/dnptzisuf/image/upload/fl_attachment,fl_lossy,f_avif,q_auto:low,${screenSize},c_fill/v1739982747/${cloudinaryThumbnails[videoId]}.avif`;
-
-            console.log(`🔗 Loading AVIF thumbnail for ${videoId}: ${optimizedThumbnailUrl}`);
-
-            // Prevent duplicate images
-            if (facade.querySelector("img")) {
-                console.warn(`⚠️ Thumbnail already exists for ${videoId}, skipping duplicate.`);
-                return;
+            if (!thumbnailCache[videoId]) {
+                let screenSize = window.innerWidth <= 768 ? "w_300,h_225" : "w_400,h_338";
+                thumbnailCache[videoId] = `https://res.cloudinary.com/dnptzisuf/image/upload/fl_attachment,fl_lossy,f_avif,q_auto:low,${screenSize},c_fill/v1739982747/${cloudinaryThumbnails[videoId]}.avif`;
             }
 
             let placeholder = document.createElement("img");
-            placeholder.src = optimizedThumbnailUrl;
+            placeholder.src = thumbnailCache[videoId];
             placeholder.alt = "YouTube video thumbnail";
             placeholder.classList.add("video-thumbnail");
-            placeholder.style.width = "100%";
-            placeholder.style.height = "auto";
+            placeholder.style.width = "400px"; // Explicit width to prevent layout shifts
+            placeholder.style.height = "338px"; // Explicit height
             placeholder.style.objectFit = "cover";
+            placeholder.style.display = "block"; // Prevent inline space issues
 
             // ✅ Above-the-fold: No Lazy Loading
             if (index < 3) {
