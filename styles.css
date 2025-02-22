@@ -731,7 +731,8 @@ nav img {
   height: 70vh;
   width: 100%;
   overflow: hidden;
-  aspect-ratio: 3 / 2;
+  min-height: 200px;
+
 }
 
 .bio-img::before {
@@ -750,6 +751,7 @@ nav img {
   height: 100%;
   transition: filter .3s;
   object-fit: cover;
+  aspect-ratio: 3 / 2;
 }
 
 .biography:hover .bio-img::before {
