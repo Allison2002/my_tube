@@ -160,35 +160,31 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // ✅ Fix: Ensure biography section expands correctly
-    function setupBiographySection() {
-        document.querySelectorAll(".toggle-btn").forEach(btn => {
-            btn.addEventListener("click", function () {
-                const bio = btn.closest(".biography");
-                if (!bio) return;
+            // ✅ Fix: Ensure biography section expands correctly
+            function setupBiographySection() {
+            document.querySelectorAll(".toggle-btn").forEach(btn => {
+                btn.addEventListener("click", function () {
+                    const bio = btn.closest(".biography");
+                    if (!bio) return;
 
-                const button = bio.querySelector(".toggle-btn img");
-                const name = bio.querySelector(".bio-name");
-                const content = bio.querySelector(".bio-content");
+                    const button = bio.querySelector(".toggle-btn img");
+                    const content = bio.querySelector(".bio-content");
 
-                bio.classList.toggle("expanded");
+                    bio.classList.toggle("expanded");
 
-                if (bio.classList.contains("expanded")) {
-                    button.src = "https://res.cloudinary.com/dnptzisuf/image/upload/v1739375139/white-minus-sign_ptxfgg.webp";
-                    if (name) name.classList.add("hidden");
-                    content.style.maxHeight = "1000px";
-                    content.style.opacity = "1";
-                    content.style.transition = "max-height 0.3s ease, opacity 0.3s ease";
-                } else {
-                    button.src = "https://res.cloudinary.com/dnptzisuf/image/upload/v1739375139/white-plus-sign_av8usw.webp";
-                    if (name) name.classList.remove("hidden");
-                    content.style.maxHeight = "0";
-                    content.style.opacity = "0";
-                    content.style.transition = "max-height 0.3s ease, opacity 0.3s ease";
-                }
+                    if (bio.classList.contains("expanded")) {
+                        button.src = "https://res.cloudinary.com/dnptzisuf/image/upload/v1739375139/white-minus-sign_ptxfgg.webp";
+                        content.style.maxHeight = "1000px";
+                        content.style.opacity = "1";
+                    } else {
+                        button.src = "https://res.cloudinary.com/dnptzisuf/image/upload/v1739375139/white-plus-sign_av8usw.webp";
+                        content.style.maxHeight = "0";
+                        content.style.opacity = "0";
+                    }
+                });
             });
-        });
-    }
+        }
+
 
     // ✅ Ensure all functions run properly
     setupYouTubePlayers();
