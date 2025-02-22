@@ -730,7 +730,8 @@ nav img {
   justify-content: center;
   height: 70vh;
   width: 100%;
-  overflow: hidden
+  overflow: hidden;
+  aspect-ratio: 3 / 2;
 }
 
 .bio-img::before {
@@ -747,7 +748,8 @@ nav img {
 .bio-img img {
   width: 100%;
   height: 100%;
-  transition: filter .3s
+  transition: filter .3s;
+  object-fit: cover;
 }
 
 .biography:hover .bio-img::before {
