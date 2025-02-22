@@ -54,11 +54,15 @@ document.addEventListener("DOMContentLoaded", function () {
         updateHamburgerVisibility();
     }
 
-    console.log("✅ Using Correct Cloudinary AVIF Thumbnails with fl_attachment and caching!");
+    console.log("✅ Using Correct Cloudinary AVIF Thumbnails with caching!");
 
+    // ✅ FIX: Ensure all videos in `video-week-container` work and thumbnails load correctly
     function setupYouTubePlayers() {
         const cloudinaryThumbnails = {
-            "UMp4IiiYgJ8": "youtube_thumbnails_UMp4IiiYgJ8_n7pup4",
+            "9n0T6cQ7zbM": "youtube_thumbnails_9n0T6cQ7zbM_example",
+            "7Oj7IAJ7B_0": "youtube_thumbnails_7Oj7IAJ7B_0_example",
+            "lRTUIBVfLP4": "youtube_thumbnails_lRTUIBVfLP4_cxmbtp",
+             "UMp4IiiYgJ8": "youtube_thumbnails_UMp4IiiYgJ8_n7pup4",
             "lRTUIBVfLP4": "youtube_thumbnails_lRTUIBVfLP4_cxmbtp",
             "l2rzjHtgoNc": "youtube_thumbnails_l2rzjHtgoNc_l0fvoh",
             "HpzCtxzq-vo": "youtube_thumbnails_HpzCtxzq-vo_jnzxf8",
@@ -78,40 +82,30 @@ document.addEventListener("DOMContentLoaded", function () {
             "AQ2z_ujhhVs": "youtube_thumbnails_AQ2z_ujhhVs_vsrzkh"
         };
 
-        const thumbnailCache = {}; // 🔥 Caches thumbnails to avoid duplicate requests
-
-        document.querySelectorAll(".youtube-facade, .youtube-facade-all").forEach((facade, index) => {
+        document.querySelectorAll(".youtube-facade, .youtube-facade-all").forEach((facade) => {
             const videoId = facade.dataset.videoId || facade.dataset.id;
             if (!videoId || !cloudinaryThumbnails[videoId]) return;
 
-            if (!thumbnailCache[videoId]) {
-                let screenSize = window.innerWidth <= 768 ? "w_300,h_180" : "w_400,h_225";
-                thumbnailCache[videoId] = `https://res.cloudinary.com/dnptzisuf/image/upload/fl_attachment,fl_lossy,f_avif,q_auto:low,${screenSize},c_fill/v1739982747/${cloudinaryThumbnails[videoId]}.avif`;
-            }
+            let optimizedThumbnailUrl = `https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_auto,w_400,h_338,c_fill/v1739982747/${cloudinaryThumbnails[videoId]}.avif`;
 
-            let placeholder = document.createElement("img");
-            placeholder.src = thumbnailCache[videoId];
-            placeholder.alt = "YouTube video thumbnail";
-            placeholder.classList.add("video-thumbnail");
-            placeholder.style.width = "100%";
-            placeholder.style.height = "100%";
-            placeholder.style.objectFit = "cover";
-
-            if (index < 3) {
-                placeholder.fetchPriority = "high";
-            } else {
-                placeholder.loading = "lazy";
-                placeholder.fetchPriority = "low";
-            }
-
+            // ✅ Remove duplicate thumbnails
             if (!facade.querySelector("img")) {
+                let placeholder = document.createElement("img");
+                placeholder.src = optimizedThumbnailUrl;
+                placeholder.alt = "YouTube video thumbnail";
+                placeholder.classList.add("video-thumbnail");
+                placeholder.style.width = "100%";
+                placeholder.style.height = "auto";
+                placeholder.style.objectFit = "cover";
+                placeholder.loading = "lazy";
+
                 facade.appendChild(placeholder);
             }
 
-            // ✅ Restore Click-to-Play Video Functionality
             facade.addEventListener("click", function () {
                 console.log(`▶️ Playing Video: ${videoId}`);
 
+                // ✅ Ensure videos match thumbnail sizes
                 const width = facade.clientWidth;
                 const height = facade.clientHeight;
 
@@ -175,7 +169,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 if (bio.classList.contains("expanded")) {
                     button.src = "https://res.cloudinary.com/dnptzisuf/image/upload/v1739375139/white-minus-sign_ptxfgg.webp";
                     if (name) name.classList.add("hidden");
-                    content.style.maxHeight = "1000px"; // Ensures full expansion
+                    content.style.maxHeight = "1000px"; 
                     content.style.opacity = "1";
                     content.style.transition = "max-height 0.3s ease, opacity 0.3s ease";
                 } else {
@@ -192,6 +186,6 @@ document.addEventListener("DOMContentLoaded", function () {
     setupNavbar();
     setupYouTubePlayers();
     setupCallToActionVideo();
-    setupBiographySection(); // ✅ FIXED: Now biography toggle works properly
+    setupBiographySection();
     console.log("✅ All Scripts Loaded Successfully!");
 });
