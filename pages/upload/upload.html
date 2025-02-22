@@ -52,20 +52,40 @@
         padding: 2em;
         border-radius: 8px;
         box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-        padding-top: 1rem !important; /* Reduce top padding */
-        margin-top: 0 !important;
+        padding-top: 1rem; /* Reduce top padding */
+        margin-top: 0;
       }
 
       .upload-page form {
-        margin-top: 0 !important;
+        margin-top: 0;
         padding-top: 1.5rem; /* Adjust spacing */
       }
 
       .upload-page {
-        margin-bottom: 0 !important;
-        padding-bottom: 2rem !important; /* Adjust to fit layout */
+        margin-bottom: 0;
+        padding-bottom: 2rem; /* Adjust to fit layout */
       }
 
+      @media (max-width: 1024px) {
+        .blog-hero img {
+          width: 100vw;
+          height: auto; 
+        }
+
+        .logo-container {
+          display: flex;
+          justify-content: left;
+          align-items: center;
+          max-width: 100px;
+          width: 30%;
+          height: auto
+        }
+        .upload-page form {
+          width: 100%;
+          padding: 1em;
+          margin: 1em auto;
+        }
+      }
     </style>
   </head>
   <body>

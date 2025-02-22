@@ -163,7 +163,7 @@ p {
 }
 
 main {
-  min-height: 150vh;
+  min-height: auto;
   width: 100vw;
   display: flex;
   flex-direction: column;
@@ -2850,7 +2850,7 @@ input::placeholder {
   .logo-container {
     max-width: 100px;
     width: 30%;
-    height: auto
+    height: auto;
   }
 
   #sports,
@@ -2881,7 +2881,7 @@ input::placeholder {
   }
 
   .hero img {
-    height: 40vh;
+    height: 30vh;
     width: 100vw
   }
 
@@ -3029,7 +3029,8 @@ input::placeholder {
   .blog-hero img {
     object-fit: cover;
     width: 100vw;
-    height: auto
+    height: auto;
+    min-height: 250px;
   }
 }
 

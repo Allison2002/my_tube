@@ -1,69 +1,77 @@
+
 document.addEventListener("DOMContentLoaded", function () {
     console.log("✅ Optimized script with caching, CLS improvements, CTA fix, and Biography fix!");
 
     // ✅ Get Base Path Dynamically Based on the Page Location
     const basePath = window.location.pathname.includes("/pages/") || window.location.pathname.includes("/videos/") ? "../../" : "./";
 
-    function loadComponent(url, elementId) {
+    function loadComponent(url, elementId, callback) {
         fetch(basePath + url, { cache: "no-store" })
             .then(response => response.ok ? response.text() : Promise.reject(`HTTP error! Status: ${response.status}`))
             .then(data => {
                 document.getElementById(elementId).innerHTML = data;
-                if (elementId === "nav") setupNavbar();
+                if (callback) callback();
             })
             .catch(error => console.error(`❌ Error loading ${elementId}:`, error));
     }
 
-    // ✅ Load Navigation and Footer
-    loadComponent("nav.html", "nav");
+    // ✅ Load Navigation and Footer with proper initialization
+    loadComponent("nav.html", "nav", setupNavbar);
     loadComponent("footer.html", "footer");
 
-    // ✅ Navbar Behavior
+    // ✅ Navbar Behavior - Fix: Ensure Navbar Turns Solid Red on Scroll
     function setupNavbar() {
         const navbar = document.querySelector("nav");
         const hamburgerIcon = document.getElementById("menu-toggle");
         const navMenu = document.getElementById("nav-menu");
 
-        if (!navbar || !hamburgerIcon || !navMenu) return;
+        if (!navbar) {
+            console.error("❌ Navbar element not found.");
+            return;
+        }
 
         function handleScroll() {
             navbar.classList.toggle("scrolled", window.scrollY > 0);
+            navbar.style.backgroundColor = window.scrollY > 0 ? "red" : "transparent";
         }
 
         document.addEventListener("scroll", handleScroll, { passive: true });
         window.addEventListener("resize", updateHamburgerVisibility);
 
         function updateHamburgerVisibility() {
-            hamburgerIcon.style.display = window.innerWidth > 768 || navMenu.classList.contains("active") ? "none" : "flex";
+            if (hamburgerIcon && navMenu) {
+                hamburgerIcon.style.display = window.innerWidth > 768 || navMenu.classList.contains("active") ? "none" : "flex";
+            }
         }
 
-        hamburgerIcon.addEventListener("click", (e) => {
-            e.stopPropagation();
-            navMenu.classList.toggle("active");
-            updateHamburgerVisibility();
-        });
-
-        window.addEventListener("click", (e) => {
-            if (!navMenu.contains(e.target) && !hamburgerIcon.contains(e.target)) {
-                navMenu.classList.remove("active");
+        if (hamburgerIcon && navMenu) {
+            hamburgerIcon.addEventListener("click", (e) => {
+                e.stopPropagation();
+                navMenu.classList.toggle("active");
                 updateHamburgerVisibility();
-            }
-        });
+            });
 
-        handleScroll();
+            window.addEventListener("click", (e) => {
+                if (!navMenu.contains(e.target) && !hamburgerIcon.contains(e.target)) {
+                    navMenu.classList.remove("active");
+                    updateHamburgerVisibility();
+                }
+            });
+        }
+
+        handleScroll(); // Apply initial navbar state
         updateHamburgerVisibility();
     }
 
     console.log("✅ Using Correct Cloudinary AVIF Thumbnails with caching!");
 
-    // ✅ FIX: Ensure all videos in `video-week-container` work and thumbnails load correctly
+    // ✅ Fix: Ensure all videos in `video-week-container` work and thumbnails load correctly
     function setupYouTubePlayers() {
         const cloudinaryThumbnails = {
             "9n0T6cQ7zbM": "youtube_thumbnails_9n0T6cQ7zbM_example",
             "7Oj7IAJ7B_0": "youtube_thumbnails_7Oj7IAJ7B_0_example",
             "lRTUIBVfLP4": "youtube_thumbnails_lRTUIBVfLP4_cxmbtp",
-             "UMp4IiiYgJ8": "youtube_thumbnails_UMp4IiiYgJ8_n7pup4",
-            "lRTUIBVfLP4": "youtube_thumbnails_lRTUIBVfLP4_cxmbtp",
+            "UMp4IiiYgJ8": "youtube_thumbnails_UMp4IiiYgJ8_n7pup4",
             "l2rzjHtgoNc": "youtube_thumbnails_l2rzjHtgoNc_l0fvoh",
             "HpzCtxzq-vo": "youtube_thumbnails_HpzCtxzq-vo_jnzxf8",
             "i6AmT1cpKtI": "youtube_thumbnails_i6AmT1cpKtI_twvqf0",
@@ -88,7 +96,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
             let optimizedThumbnailUrl = `https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_auto,w_400,h_338,c_fill/v1739982747/${cloudinaryThumbnails[videoId]}.avif`;
 
-            // ✅ Remove duplicate thumbnails
             if (!facade.querySelector("img")) {
                 let placeholder = document.createElement("img");
                 placeholder.src = optimizedThumbnailUrl;
@@ -105,7 +112,6 @@ document.addEventListener("DOMContentLoaded", function () {
             facade.addEventListener("click", function () {
                 console.log(`▶️ Playing Video: ${videoId}`);
 
-                // ✅ Ensure videos match thumbnail sizes
                 const width = facade.clientWidth;
                 const height = facade.clientHeight;
 
@@ -154,6 +160,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
+    // ✅ Fix: Ensure biography section expands correctly
     function setupBiographySection() {
         document.querySelectorAll(".toggle-btn").forEach(btn => {
             btn.addEventListener("click", function () {
@@ -169,7 +176,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 if (bio.classList.contains("expanded")) {
                     button.src = "https://res.cloudinary.com/dnptzisuf/image/upload/v1739375139/white-minus-sign_ptxfgg.webp";
                     if (name) name.classList.add("hidden");
-                    content.style.maxHeight = "1000px"; 
+                    content.style.maxHeight = "1000px";
                     content.style.opacity = "1";
                     content.style.transition = "max-height 0.3s ease, opacity 0.3s ease";
                 } else {
@@ -183,7 +190,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    setupNavbar();
+    // ✅ Ensure all functions run properly
     setupYouTubePlayers();
     setupCallToActionVideo();
     setupBiographySection();
