@@ -1,4 +1,3 @@
-
 document.addEventListener("DOMContentLoaded", function () {
     console.log("✅ Optimized script with caching, CLS improvements, CTA fix, and Biography fix!");
 
@@ -19,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
     loadComponent("nav.html", "nav", setupNavbar);
     loadComponent("footer.html", "footer");
 
-    // ✅ Navbar Behavior - Fix: Ensure Navbar Turns Solid Red on Scroll
+    // ✅ Navbar Behavior - Ensures Navbar Turns Solid Red on Scroll Immediately
     function setupNavbar() {
         const navbar = document.querySelector("nav");
         const hamburgerIcon = document.getElementById("menu-toggle");
@@ -59,76 +58,15 @@ document.addEventListener("DOMContentLoaded", function () {
             });
         }
 
-        handleScroll(); // Apply initial navbar state
+        handleScroll();
         updateHamburgerVisibility();
     }
 
     console.log("✅ Using Correct Cloudinary AVIF Thumbnails with caching!");
 
-    console.log("✅ Optimized script with improved video containment!");
-        function setupVideoContainers() {
-            const isSportsHub = window.location.pathname.includes("sports_hub.html");
-            const isAllVideos = window.location.pathname.includes("all-videos.html");
-
-            if (isSportsHub) {
-                console.log("✅ Applying Sports Hub video grid fix");
-                document.querySelectorAll(".video-grid-collections").forEach(grid => {
-                    grid.style.display = "grid";
-                    grid.style.gridTemplateColumns = "repeat(auto-fit, minmax(200px, 1fr))";
-                    grid.style.gap = "20px";
-                    grid.style.justifyContent = "center";
-                });
-
-                document.querySelectorAll(".collections-box").forEach(box => {
-                    box.style.display = "flex";
-                    box.style.flexDirection = "column";
-                    box.style.alignItems = "center";
-                    box.style.overflow = "hidden";
-                    box.style.width = "100%";
-                    box.style.maxWidth = "350px";
-                });
-
-                document.querySelectorAll(".collections-box img").forEach(img => {
-                    img.style.width = "100%";
-                    img.style.height = "auto";
-                    img.style.objectFit = "cover";
-                    img.style.borderRadius = "10px";
-                    img.style.maxHeight = "200px";
-                });
-            }
-
-            if (isAllVideos) {
-                console.log("✅ Applying All Videos page fix");
-                document.querySelectorAll(".video-grid-collections").forEach(grid => {
-                    grid.style.display = "flex";
-                    grid.style.flexWrap = "wrap";
-                    grid.style.justifyContent = "center";
-                    grid.style.gap = "15px";
-                });
-
-                document.querySelectorAll(".collections-box").forEach(box => {
-                    box.style.display = "block";
-                    box.style.textAlign = "center";
-                    box.style.width = "250px";
-                });
-
-                document.querySelectorAll(".youtube-facade-all").forEach(thumb => {
-                    thumb.style.width = "100%";
-                    thumb.style.maxWidth = "250px";
-                    thumb.style.height = "auto";
-                });
-            }
-        }
-
-        // Ensure it runs on the correct pages
-        setupVideoContainers();
-        window.addEventListener("resize", setupVideoContainers);
-
-
-        console.log("✅ Video containment fixed!");
-
-    // ✅ Fix: Ensure all videos in `video-week-container` work and thumbnails load correctly
     function setupYouTubePlayers() {
+        const cloudinaryBase = "https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_auto,w_250,h_188,c_fill,fl_attachment,fl_lossy/v1739982747/";
+
         const cloudinaryThumbnails = {
             "9n0T6cQ7zbM": "youtube_thumbnails_9n0T6cQ7zbM_example",
             "7Oj7IAJ7B_0": "youtube_thumbnails_7Oj7IAJ7B_0_example",
@@ -156,7 +94,7 @@ document.addEventListener("DOMContentLoaded", function () {
             const videoId = facade.dataset.videoId || facade.dataset.id;
             if (!videoId || !cloudinaryThumbnails[videoId]) return;
 
-            let optimizedThumbnailUrl = `https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_auto,w_400,h_338,c_fill/v1739982747/${cloudinaryThumbnails[videoId]}.avif`;
+            let optimizedThumbnailUrl = cloudinaryBase + cloudinaryThumbnails[videoId] + ".avif";
 
             if (!facade.querySelector("img")) {
                 let placeholder = document.createElement("img");
@@ -171,6 +109,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 facade.appendChild(placeholder);
             }
 
+            // ✅ Restore Click-to-Play Functionality for Thumbnails
             facade.addEventListener("click", function () {
                 console.log(`▶️ Playing Video: ${videoId}`);
 
@@ -192,65 +131,73 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    function setupCallToActionVideo() {
-        const ctaVideo = document.querySelector(".call2action-video .youtube-facade");
-        if (!ctaVideo) return;
+    function setupVideoContainers() {
+        const isSportsHub = window.location.pathname.includes("sports_hub.html");
+        const isAllVideos = window.location.pathname.includes("all-videos.html");
 
-        const videoId = ctaVideo.dataset.videoId;
-        if (!videoId) {
-            console.warn("⚠️ No video ID found for Call-to-Action video.");
-            return;
-        }
+        if (isSportsHub) {
+            console.log("✅ Applying Sports Hub video grid fix");
+            document.querySelectorAll(".video-grid-collections").forEach(grid => {
+                grid.style.display = "grid";
+                grid.style.gridTemplateColumns = "repeat(auto-fit, minmax(200px, 1fr))";
+                grid.style.gap = "20px";
+                grid.style.justifyContent = "center";
+            });
 
-        ctaVideo.addEventListener("click", function () {
-            console.log(`▶️ Playing CTA Video: ${videoId}`);
-
-            const width = ctaVideo.clientWidth;
-            const height = ctaVideo.clientHeight;
-
-            let iframe = document.createElement("iframe");
-            iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&showinfo=0`;
-            iframe.width = width + "px";
-            iframe.height = height + "px";
-            iframe.frameBorder = "0";
-            iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
-            iframe.allowFullscreen = true;
-            iframe.style.objectFit = "cover";
-
-            ctaVideo.innerHTML = "";
-            ctaVideo.appendChild(iframe);
-        });
-    }
-
-            // ✅ Fix: Ensure biography section expands correctly
-            function setupBiographySection() {
-            document.querySelectorAll(".toggle-btn").forEach(btn => {
-                btn.addEventListener("click", function () {
-                    const bio = btn.closest(".biography");
-                    if (!bio) return;
-
-                    const button = bio.querySelector(".toggle-btn img");
-                    const content = bio.querySelector(".bio-content");
-
-                    bio.classList.toggle("expanded");
-
-                    if (bio.classList.contains("expanded")) {
-                        button.src = "https://res.cloudinary.com/dnptzisuf/image/upload/v1739375139/white-minus-sign_ptxfgg.webp";
-                        content.style.maxHeight = "1000px";
-                        content.style.opacity = "1";
-                    } else {
-                        button.src = "https://res.cloudinary.com/dnptzisuf/image/upload/v1739375139/white-plus-sign_av8usw.webp";
-                        content.style.maxHeight = "0";
-                        content.style.opacity = "0";
-                    }
-                });
+            document.querySelectorAll(".collections-box").forEach(box => {
+                box.style.display = "flex";
+                box.style.flexDirection = "column";
+                box.style.alignItems = "center";
+                box.style.overflow = "hidden";
+                box.style.width = "100%";
+                box.style.maxWidth = "350px";
             });
         }
 
+        if (isAllVideos) {
+            console.log("✅ Applying All Videos page fix");
+            document.querySelectorAll(".video-grid-collections").forEach(grid => {
+                grid.style.display = "flex";
+                grid.style.flexWrap = "wrap";
+                grid.style.justifyContent = "center";
+                grid.style.gap = "15px";
+            });
+
+            document.querySelectorAll(".collections-box").forEach(box => {
+                box.style.display = "block";
+                box.style.textAlign = "center";
+                box.style.width = "250px";
+            });
+        }
+    }
+
+    function setupBiographySection() {
+        document.querySelectorAll(".toggle-btn").forEach(btn => {
+            btn.addEventListener("click", function () {
+                const bio = btn.closest(".biography");
+                if (!bio) return;
+
+                const button = bio.querySelector(".toggle-btn img");
+                const content = bio.querySelector(".bio-content");
+
+                bio.classList.toggle("expanded");
+
+                if (bio.classList.contains("expanded")) {
+                    button.src = "https://res.cloudinary.com/dnptzisuf/image/upload/v1739375139/white-minus-sign_ptxfgg.webp";
+                    content.style.maxHeight = "1000px";
+                    content.style.opacity = "1";
+                } else {
+                    button.src = "https://res.cloudinary.com/dnptzisuf/image/upload/v1739375139/white-plus-sign_av8usw.webp";
+                    content.style.maxHeight = "0";
+                    content.style.opacity = "0";
+                }
+            });
+        });
+    }
 
     // ✅ Ensure all functions run properly
     setupYouTubePlayers();
-    setupCallToActionVideo();
+    setupVideoContainers();
     setupBiographySection();
     console.log("✅ All Scripts Loaded Successfully!");
 });
