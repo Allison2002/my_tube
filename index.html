@@ -118,7 +118,7 @@
       }
 
       /* Hero Image - Keep in Normal Flow */
-      .hero img {
+      .hero picture {
         width: 100vw;
         height: auto;
         min-height: 20vh;
@@ -129,6 +129,12 @@
         top: 0;
         left: 0;
         z-index: 0;
+      }
+
+      .hero-img img {
+        max-width: 100%;
+        height: auto;
+        object-fit: cover;
       }
 
       /* Buttons & Quick Links */
@@ -502,7 +508,7 @@
         <div id="nav"></div>
         <section class="hero">
           <picture class="hero-img">
-            <!-- AVIF Format (Best for Modern Browsers) -->
+            <!-- AVIF Format -->
             <source
               srcset="
                 https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_auto,w_480,h_270,c_fill/v1737993374/sports_tube_background_nkpr4r.avif    480w,
@@ -511,9 +517,10 @@
                 https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_auto,w_1920,h_1080,c_fill/v1737993374/sports_tube_background_nkpr4r.avif 1920w
               "
               type="image/avif"
+              sizes="(max-width: 600px) 90vw, (max-width: 1200px) 75vw, 60vw"
             />
 
-            <!-- WebP Format (Fallback for Older Browsers) -->
+            <!-- WebP Format -->
             <source
               srcset="
                 https://res.cloudinary.com/dnptzisuf/image/upload/f_webp,q_auto,w_480,h_270,c_fill/v1737993374/sports_tube_background_nkpr4r.webp    480w,
@@ -522,16 +529,16 @@
                 https://res.cloudinary.com/dnptzisuf/image/upload/f_webp,q_auto,w_1920,h_1080,c_fill/v1737993374/sports_tube_background_nkpr4r.webp 1920w
               "
               type="image/webp"
+              sizes="(max-width: 600px) 90vw, (max-width: 1200px) 75vw, 60vw"
             />
 
-            <!-- Fallback to Standard JPEG/PNG -->
+            <!-- Fallback -->
             <img
               src="https://res.cloudinary.com/dnptzisuf/image/upload/f_auto,q_auto,w_1280,h_720,c_fill/v1737993374/sports_tube_background_nkpr4r.jpg"
               alt="Sports Community Hub"
               width="1280"
               height="720"
               fetchpriority="high"
-              load="eager"
               decoding="async"
               style="
                 width: 100vw;
