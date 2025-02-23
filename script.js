@@ -65,6 +65,39 @@ document.addEventListener("DOMContentLoaded", function () {
 
     console.log("✅ Using Correct Cloudinary AVIF Thumbnails with caching!");
 
+    console.log("✅ Optimized script with improved video containment!");
+
+        function setupVideoContainers() {
+            document.querySelectorAll(".video-grid-collections").forEach(grid => {
+                grid.style.display = "grid";
+                grid.style.gridTemplateColumns = "repeat(auto-fit, minmax(200px, 1fr))";
+                grid.style.gap = "20px";
+                grid.style.justifyContent = "center";
+            });
+
+            document.querySelectorAll(".collections-box").forEach(box => {
+                box.style.display = "flex";
+                box.style.flexDirection = "column";
+                box.style.alignItems = "center";
+                box.style.overflow = "hidden";
+                box.style.width = "100%";
+                box.style.maxWidth = "350px";
+            });
+
+            document.querySelectorAll(".collections-box img").forEach(img => {
+                img.style.width = "100%";
+                img.style.height = "auto";
+                img.style.objectFit = "cover";
+                img.style.borderRadius = "10px";
+                img.style.maxHeight = "200px";
+            });
+        }
+
+        setupVideoContainers();
+        window.addEventListener("resize", setupVideoContainers);
+
+        console.log("✅ Video containment fixed!");
+
     // ✅ Fix: Ensure all videos in `video-week-container` work and thumbnails load correctly
     function setupYouTubePlayers() {
         const cloudinaryThumbnails = {
