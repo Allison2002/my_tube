@@ -1779,6 +1779,14 @@ input::placeholder {
   .logo-container img {
     width: 60%;
   }
+
+  .video-grid {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    margin-top: 20em;
+    max-width: 95%
+  }
 }
 
 @media (min-width:769px) and (max-width:1024px) {
@@ -2819,8 +2827,12 @@ input::placeholder {
     max-width: 250px
   }
 
-  .video-grid-collections {
-    grid-template-columns: 1fr
+  .video-grid {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    margin-top: 20em;
+    max-width: 95%
   }
 }
 
@@ -2883,7 +2895,8 @@ input::placeholder {
   }
 
   .video-grid {
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
     height: auto;
     margin-top: 20em;
     max-width: 95%
