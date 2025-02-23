@@ -167,6 +167,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 placeholder.style.height = "auto";
                 placeholder.style.objectFit = "cover";
                 placeholder.loading = "lazy";
+                placeholder.width = 320; 
+                placeholder.height = 270; 
 
                 facade.appendChild(placeholder);
             }
