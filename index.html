@@ -23,7 +23,6 @@
       as="font"
       type="font/woff2"
       crossorigin="anonymous"
-      importance="high"
     />
     <link
       rel="preload"
@@ -31,7 +30,6 @@
       as="font"
       type="font/woff2"
       crossorigin="anonymous"
-      importance="high"
     />
     <link
       rel="preload"
@@ -49,16 +47,16 @@
     <style>
       @font-face {
         font-family: "Roboto";
-        src: url("assets/fonts/Roboto/static/Roboto-Regular.woff2")
+        src: url("/assets/fonts/Roboto/static/Roboto-Regular.woff2")
           format("woff2");
-        font-display: swap;
+        font-display: block; /* 🚀 Fix: Prevent swap-based layout shift */
       }
 
       @font-face {
         font-family: "Bebas Neue";
-        src: url("assets/fonts/Bebas_Neue/BebasNeue-Regular.woff2")
+        src: url("/assets/fonts/Bebas_Neue/BebasNeue-Regular.woff2")
           format("woff2");
-        font-display: swap;
+        font-display: block; /* 🚀 Fix: Prevent swap-based layout shift */
       }
 
       .video-box img,
