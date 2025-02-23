@@ -522,6 +522,8 @@ nav img {
 .youtube-facade-all {
   display: block;
   width: 100%;
+  width: 320px;
+  height: 270px;
   max-width: 560px;
   aspect-ratio: 16/9
 }
