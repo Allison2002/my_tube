@@ -559,7 +559,7 @@ nav img {
   transform: translate(-50%, -50%);
   width: 60px;
   height: 60px;
-  background: url("https://res.cloudinary.com/dnptzisuf/image/upload/v1738094189/play-icon_s7jgug.svg") center/contain no-repeat;
+  background: url("https://res.cloudinary.com/dnptzisuf/image/upload/fl_attachment,fl_lossy,q_auto,c_fill,w_50,h_50,/v1738094189/play-icon_s7jgug.svg") center/contain no-repeat;
   pointer-events: none
 }
 
@@ -1065,7 +1065,7 @@ span {
 .join-section {
   width: 100vw;
   height: auto;
-  background-image: url("https://res.cloudinary.com/dnptzisuf/image/upload/f_auto,q_auto,w_1280/v1739375905/join-sports-tube_nwdnrl.avif");
+  background-image: url("https://res.cloudinary.com/dnptzisuf/image/upload/f_auto,fl_lossy,fl_attachment,q_auto,c_fill,w_1280/v1739375905/join-sports-tube_nwdnrl.avif");
   background-color: rgba(0, 0, 0, .5);
   background-blend-mode: darken;
   background-repeat: no-repeat;
@@ -1075,7 +1075,7 @@ span {
 
 @media (min-width:1200px) {
   .join-section {
-    background-image: url("https://res.cloudinary.com/dnptzisuf/image/upload/f_auto,q_auto,w_1280/v1739375905/join-sports-tube_nwdnrl.avif")
+    background-image: url("https://res.cloudinary.com/dnptzisuf/image/upload/f_auto,fl_lossy,fl_attachment,q_auto,c_fill,w_1280/v1739375905/join-sports-tube_nwdnrl.avif")
   }
 }
 
