@@ -33,6 +33,7 @@
       type="font/woff2"
       crossorigin="anonymous"
     />
+
     <link
       rel="preload"
       as="image"
@@ -51,7 +52,7 @@
         font-family: "Roboto";
         src: url("/assets/fonts/Roboto/static/Roboto-Regular.woff2")
           format("woff2");
-        font-display: swap; /* Ensure text remains visible while loading */
+        font-display: optional; /* Forces browser to wait until font is ready */
         font-weight: normal;
       }
 
@@ -59,12 +60,12 @@
         font-family: "Bebas Neue";
         src: url("/assets/fonts/Bebas_Neue/BebasNeue-Regular.woff2")
           format("woff2");
-        font-display: swap; /* Ensures a fallback font loads immediately */
+        font-display: optional; /* Prevents visible shift */
         font-weight: normal;
       }
 
       body {
-        font-family: "Roboto", Arial, sans-serif; /* Explicit fallback */
+        font-family: "Roboto", Arial, sans-serif; /* Ensure fallback is close */
       }
 
       .category-page {
@@ -81,10 +82,19 @@
         transform: translate(-50%, -50%);
         width: 60px;
         height: 60px;
-        background: url("https://res.cloudinary.com/dnptzisuf/image/upload/fl_attachment,fl_lossy/v1738094189/play-icon_s7jgug.svg")
+        background: url("https://res.cloudinary.com/dnptzisuf/image/upload/fl_attachment,fl_lossy/  v1738094189/play-icon_s7jgug.svg")
           no-repeat center;
         background-size: contain;
         pointer-events: none;
+      }
+
+      .blog-hero-img {
+        display: block;
+        width: 100%;
+        height: auto;
+        aspect-ratio: 16/5;
+        object-fit: cover;
+        min-height: 400px; /* Reserve space */
       }
     </style>
   </head>

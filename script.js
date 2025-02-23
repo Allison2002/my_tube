@@ -156,8 +156,10 @@ document.addEventListener("DOMContentLoaded", function () {
             const videoId = facade.dataset.videoId || facade.dataset.id;
             if (!videoId || !cloudinaryThumbnails[videoId]) return;
 
-            let optimizedThumbnailUrl = `https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_auto,w_400,h_338,c_fill,fl_attachment,fl_lossy/v1739982747/${cloudinaryThumbnails[videoId]}.avif`;
+            let optimizedThumbnailUrl = `https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_auto:low,w_250,h_140,c_fill,fl_attachment,fl_lossy/v1739982747/${cloudinaryThumbnails[videoId]}.avif`;
 
+
+            // ✅ Apply same overlay logic to `.youtube-facade-all`
             if (!facade.querySelector("img")) {
                 let placeholder = document.createElement("img");
                 placeholder.src = optimizedThumbnailUrl;
@@ -167,12 +169,20 @@ document.addEventListener("DOMContentLoaded", function () {
                 placeholder.style.height = "auto";
                 placeholder.style.objectFit = "cover";
                 placeholder.loading = "lazy";
-                placeholder.width = 320; 
-                placeholder.height = 270; 
+                
 
+                // ✅ Create play button overlay
+                let playButton = document.createElement("div");
+                playButton.classList.add("play-button-overlay");
+
+                // ✅ Append elements properly
                 facade.appendChild(placeholder);
+                facade.appendChild(playButton);
+
+                console.log(`✅ Thumbnail & overlay added for video: ${videoId}`);
             }
 
+            // ✅ Ensure clicking replaces thumbnail with iframe
             facade.addEventListener("click", function () {
                 console.log(`▶️ Playing Video: ${videoId}`);
 
@@ -188,6 +198,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 iframe.allowFullscreen = true;
                 iframe.style.objectFit = "cover";
 
+                // ✅ Ensure only the facade content is replaced
                 facade.innerHTML = "";
                 facade.appendChild(iframe);
             });
