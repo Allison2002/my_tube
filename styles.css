@@ -1780,13 +1780,10 @@ input::placeholder {
     width: 60%;
   }
 
-  .video-grid {
-    display: flex;
-    flex-direction: column;
-    height: auto;
-    margin-top: 20em;
-    max-width: 95%
+  .hero-btn {
+    margin-top: -5em;
   }
+
 }
 
 @media (min-width:769px) and (max-width:1024px) {
@@ -1830,21 +1827,21 @@ input::placeholder {
   }
 
   .hero-container {
-    min-height: 45vh !important;
-    height: 45vh !important;
+    min-height: 65vh;
+    height: auto;
     padding-left: 5%;
     position: relative;
     align-items: center;
-    max-width: unset !important
+    max-width: unset;
   }
 
   .hero img {
-    height: 45vh !important;
+    height: 65vh;
     width: 100vw
   }
 
   .hero-container-collections {
-    height: 45vh !important;
+    height: 45vh;
     top: 0;
     left: 0
   }
@@ -1876,13 +1873,14 @@ input::placeholder {
   }
 
   .page-heading h1 {
-    font-size: 2rem !important;
-    margin-top: 5em
+    font-size: 1.5rem;
+    margin-top: -8em;
   }
 
   .page-heading p {
-    font-size: 1.5rem !important
+    font-size: 1.2rem;
   }
+
 
   .video-week-container {
     display: flex;
@@ -1893,15 +1891,9 @@ input::placeholder {
     margin: 0 auto
   }
 
-  .thumbnail-container,
-  .video-grid {
+  .thumbnail-container {
     flex-direction: column;
     display: flex
-  }
-
-  .video-grid {
-    margin: 5em auto;
-    gap: 1.5em
   }
 
   .video-box {
@@ -2072,10 +2064,6 @@ input::placeholder {
     flex-direction: column
   }
 
-  .video-grid {
-    margin-top: 10em !important
-  }
-
   #sports-your-way,
   .grid-211 {
     max-width: 100%;
@@ -2084,7 +2072,7 @@ input::placeholder {
   }
 
   .grid-211 {
-    flex-direction: column !important;
+    flex-direction: column;
     width: 90%;
     gap: 1em;
     padding-bottom: 5em;
@@ -2093,13 +2081,13 @@ input::placeholder {
 
   .box1-211 {
     display: flex;
-    flex-direction: column !important;
+    flex-direction: column;
     padding: .5em
   }
 
   .box1-211 img {
-    width: 8vw !important;
-    height: auto !important
+    width: 8vw;
+    height: auto;
   }
 
   #sports-your-way {
@@ -2304,8 +2292,7 @@ input::placeholder {
 
   .footer-col ul,
   .social-media,
-  .thumbnail-container,
-  .video-grid {
+  .thumbnail-container {
     flex-direction: column;
     display: flex
   }
@@ -2315,14 +2302,9 @@ input::placeholder {
     margin-top: 0
   }
 
-  .video-grid {
-    margin: 3em auto;
-    gap: 2em
-  }
-
   .hero-container {
-    min-height: 40vh !important;
-    height: 40vh !important;
+    min-height: 40vh;
+    height: 40vh;
     padding-left: 5%;
     flex-direction: column;
     align-items: center
@@ -2333,7 +2315,7 @@ input::placeholder {
   }
 
   .hero img {
-    height: 40vh !important;
+    height: 40vh;
     width: 100vw
   }
 
@@ -2369,7 +2351,7 @@ input::placeholder {
   }
 
   .youtube-channel {
-    flex-direction: column !important;
+    flex-direction: column;
     padding: 1em
   }
 
@@ -2535,7 +2517,7 @@ input::placeholder {
 
   .biography-section {
     display: flex;
-    flex-direction: column !important;
+    flex-direction: column;
     align-items: center;
     width: 80%;
     padding: 2em 0 0
@@ -2826,14 +2808,6 @@ input::placeholder {
     padding: .5em 1em;
     max-width: 250px
   }
-
-  .video-grid {
-    display: flex;
-    flex-direction: column;
-    height: auto;
-    margin-top: 20em;
-    max-width: 95%
-  }
 }
 
 @media (max-width:480px) {
@@ -2889,18 +2863,13 @@ input::placeholder {
     padding-bottom: .5em
   }
 
+
   .video-week-container {
     position: relative;
     padding-top: 20rem
   }
 
-  .video-grid {
-    display: flex;
-    flex-direction: column;
-    height: auto;
-    margin-top: 20em;
-    max-width: 95%
-  }
+
 
   .section-title {
     position: relative;
