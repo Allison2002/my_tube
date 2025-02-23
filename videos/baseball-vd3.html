@@ -5,24 +5,30 @@
     <meta http-equiv="Cache-Control" content="max-age=31536000, immutable" />
     <meta name="description" content="Watch the craziest home runs in MLB history on Sports Tube! From record-breaking shots to game-winning hits, experience the most unbelievable baseball moments. Join the Sports Tube community and relive legendary home runs today!" />
     <title>Sports Tube</title>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="preconnect" href="https://res.cloudinary.com" crossorigin />
-    <link rel="dns-prefetch" href="https://res.cloudinary.com" />
-    <link rel="stylesheet" href="/styles.css" />
+    <link
+      rel="stylesheet"
+      href="styles.css"
+      media="print"
+      onload="this.onload=null;this.removeAttribute('media');"
+    />
+    <link rel="preconnect" href="https://res.cloudinary.com" crossorigin />
     <link
       rel="preload"
+      href="https://sports-tube.netlify.app/assets/fonts/Bebas_Neue/BebasNeue-Regular.woff2"
       as="font"
-      href="/assets/fonts/Bebas_Neue/BebasNeue-Regular.woff2"
       type="font/woff2"
       crossorigin="anonymous"
+      importance="high"
     />
     <link
       rel="preload"
-      href="/assets/fonts/Roboto/static/Roboto-Regular.woff2"
+      href="https://sports-tube.netlify.app/assets/fonts/Roboto/static/Roboto-Regular.woff2"
       as="font"
       type="font/woff2"
       crossorigin="anonymous"
+      importance="high"
     />
     <link
       rel="preload"
@@ -32,12 +38,13 @@
       fetchpriority="high"
       media="(min-width: 1024px)"
     />
-
-   <link
+    <link
       rel="icon"
-      href="https://res.cloudinary.com/dnptzisuf/image/upload/f_auto,q_auto:good,c_fit,fl_attachment/v1738106888/sports_tube_tab_logo_oajgbj.avif"
+      href="https://res.cloudinary.com/dnptzisuf/image/upload/f_auto,q_auto:good,c_fit/v1738106888/sports_tube_tab_logo_oajgbj.avif"
       type="image/avif"
     />
+
+
     <style>
       .blog-hero img {
         width: 100vw;
