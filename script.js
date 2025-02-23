@@ -156,7 +156,7 @@ document.addEventListener("DOMContentLoaded", function () {
             const videoId = facade.dataset.videoId || facade.dataset.id;
             if (!videoId || !cloudinaryThumbnails[videoId]) return;
 
-            let optimizedThumbnailUrl = `https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_auto,w_400,h_338,c_fill/v1739982747/${cloudinaryThumbnails[videoId]}.avif`;
+            let optimizedThumbnailUrl = `https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_auto,w_400,h_338,c_fill,fl_attachment,fl_lossy/v1739982747/${cloudinaryThumbnails[videoId]}.avif`;
 
             if (!facade.querySelector("img")) {
                 let placeholder = document.createElement("img");
