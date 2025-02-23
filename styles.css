@@ -389,8 +389,9 @@ nav ul li :hover {
 }
 
 .logo-container {
-  max-width: 200px;
-  width: 30%
+  width: 330px;
+  max-width: 330px;
+  min-width: 100px;
 }
 
 .logo-container img {
@@ -1144,7 +1145,7 @@ span {
 
 .collections-box iframe {
   width: 100%;
-  height: 17vw
+  height: 17vw;
 }
 
 .collections-box img {
@@ -1748,28 +1749,32 @@ input::placeholder {
   font-size: 1rem
 }
 
-.coming-soon-container {
-  width: 100%;
-  height: 100vh;
-  margin-top: -60px;
-  position: relative;
-  overflow: hidden;
-  max-width: 100%
-}
-
-.coming-soon {
-  margin-top: -45em !important
-}
-
-.background-video {
-  width: 100%;
-  height: auto;
-  max-width: 100%
-}
-
 @media (min-width:1025px) {
   .blog-hero img {
-    height: 600px
+    height: 600px;
+    margin-top: -60px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .category-page {
+    text-align: center;
+    padding: 2em 0;
+    max-width: 90%;
+    margin: 4em auto;
+  }
+
+  .logo-container {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    max-width: 300px;
+    width: 60%;
+    height: auto
+  }
+
+  .logo-container img {
+    width: 60%;
   }
 }
 
@@ -1801,7 +1806,8 @@ input::placeholder {
   }
 
   .blog-hero img {
-    height: 320px
+    height: 320px;
+    margin-top: -60px;
   }
 
   .youtube-channel {
@@ -1824,10 +1830,6 @@ input::placeholder {
   .hero img {
     height: 45vh !important;
     width: 100vw
-  }
-
-  .logo-container {
-    max-width: 150px
   }
 
   .hero-container-collections {
@@ -1918,7 +1920,20 @@ input::placeholder {
   .footer-content {
     display: flex;
     align-items: center;
-    padding: 2em 1em
+    padding: 2em 1em;
+  }
+
+  .bottom-logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 1em 0 0
+  }
+
+  .input-text {
+    justify-content: center;
+    text-align: center;
   }
 
   .footer-col {
@@ -1936,7 +1951,9 @@ input::placeholder {
   }
 
   .bottom-nav ul {
-    flex-direction: column;
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
     padding: 1em 0
   }
 
@@ -2143,10 +2160,6 @@ input::placeholder {
   .hero-container,
   .youtube-channel {
     text-align: center
-  }
-
-  .logo-container {
-    max-width: 120px
   }
 
   .join-section {
@@ -2773,20 +2786,12 @@ input::placeholder {
   }
 
   .bottom-nav ul {
-    flex-direction: column;
-    align-items: center
+    flex-direction: row;
+    align-items: center;
   }
 
   .bottom-nav ul li a {
     font-size: 1.2em
-  }
-
-  .bottom-logo {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    padding: 1em 0 0
   }
 
   .sports-grid {
@@ -2817,20 +2822,13 @@ input::placeholder {
 }
 
 @media (max-width:480px) {
-  .logo-container {
-    max-width: 100px;
-    width: 30%;
-    height: auto
+  .collections-box iframe {
+    height: 30vw
   }
 
   #sports,
   .article-video {
     max-width: 90%
-  }
-
-  .logo-container img {
-    width: 100%;
-    height: auto
   }
 
   .hero-container {
@@ -2996,7 +2994,8 @@ input::placeholder {
     object-fit: cover;
     width: 100vw;
     height: auto;
-    min-height: 250px
+    min-height: 250px;
+    margin-top: -60px;
   }
 }
 

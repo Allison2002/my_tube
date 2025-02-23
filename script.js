@@ -66,35 +66,64 @@ document.addEventListener("DOMContentLoaded", function () {
     console.log("✅ Using Correct Cloudinary AVIF Thumbnails with caching!");
 
     console.log("✅ Optimized script with improved video containment!");
-
         function setupVideoContainers() {
-            document.querySelectorAll(".video-grid-collections").forEach(grid => {
-                grid.style.display = "grid";
-                grid.style.gridTemplateColumns = "repeat(auto-fit, minmax(200px, 1fr))";
-                grid.style.gap = "20px";
-                grid.style.justifyContent = "center";
-            });
+            const isSportsHub = window.location.pathname.includes("sports_hub.html");
+            const isAllVideos = window.location.pathname.includes("all-videos.html");
 
-            document.querySelectorAll(".collections-box").forEach(box => {
-                box.style.display = "flex";
-                box.style.flexDirection = "column";
-                box.style.alignItems = "center";
-                box.style.overflow = "hidden";
-                box.style.width = "100%";
-                box.style.maxWidth = "350px";
-            });
+            if (isSportsHub) {
+                console.log("✅ Applying Sports Hub video grid fix");
+                document.querySelectorAll(".video-grid-collections").forEach(grid => {
+                    grid.style.display = "grid";
+                    grid.style.gridTemplateColumns = "repeat(auto-fit, minmax(200px, 1fr))";
+                    grid.style.gap = "20px";
+                    grid.style.justifyContent = "center";
+                });
 
-            document.querySelectorAll(".collections-box img").forEach(img => {
-                img.style.width = "100%";
-                img.style.height = "auto";
-                img.style.objectFit = "cover";
-                img.style.borderRadius = "10px";
-                img.style.maxHeight = "200px";
-            });
+                document.querySelectorAll(".collections-box").forEach(box => {
+                    box.style.display = "flex";
+                    box.style.flexDirection = "column";
+                    box.style.alignItems = "center";
+                    box.style.overflow = "hidden";
+                    box.style.width = "100%";
+                    box.style.maxWidth = "350px";
+                });
+
+                document.querySelectorAll(".collections-box img").forEach(img => {
+                    img.style.width = "100%";
+                    img.style.height = "auto";
+                    img.style.objectFit = "cover";
+                    img.style.borderRadius = "10px";
+                    img.style.maxHeight = "200px";
+                });
+            }
+
+            if (isAllVideos) {
+                console.log("✅ Applying All Videos page fix");
+                document.querySelectorAll(".video-grid-collections").forEach(grid => {
+                    grid.style.display = "flex";
+                    grid.style.flexWrap = "wrap";
+                    grid.style.justifyContent = "center";
+                    grid.style.gap = "15px";
+                });
+
+                document.querySelectorAll(".collections-box").forEach(box => {
+                    box.style.display = "block";
+                    box.style.textAlign = "center";
+                    box.style.width = "250px";
+                });
+
+                document.querySelectorAll(".youtube-facade-all").forEach(thumb => {
+                    thumb.style.width = "100%";
+                    thumb.style.maxWidth = "250px";
+                    thumb.style.height = "auto";
+                });
+            }
         }
 
+        // Ensure it runs on the correct pages
         setupVideoContainers();
         window.addEventListener("resize", setupVideoContainers);
+
 
         console.log("✅ Video containment fixed!");
 
