@@ -468,10 +468,10 @@
               <!-- AVIF Format Only -->
               <source
                 srcset="
-                  https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,fl_attachment,q_auto:low,w_480,h_270,c_fill/v1737993374/sports_tube_background_nkpr4r.avif    480w,
-                  https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,fl_attachment,q_auto:low,w_768,h_432,c_fill/v1737993374/sports_tube_background_nkpr4r.avif    768w,
-                  https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,fl_attachment,q_auto:low,w_1280,h_720,c_fill/v1737993374/sports_tube_background_nkpr4r.avif  1280w,
-                  https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,fl_attachment,q_auto:low,w_1920,h_1080,c_fill/v1737993374/sports_tube_background_nkpr4r.avif 1920w
+                  https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,fl_attachment,q_auto:low,w_480,h_270,ar_16:9,c_fill/v1737993374/sports_tube_background_nkpr4r.avif    480w,
+                  https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,fl_attachment,q_auto:low,w_768,h_432,ar_16:9,c_fill/v1737993374/sports_tube_background_nkpr4r.avif    768w,
+                  https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,fl_attachment,q_auto:low,w_1280,h_720,ar_16:9,c_fill/v1737993374/sports_tube_background_nkpr4r.avif  1280w,
+                  https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,fl_attachment,q_auto:low,w_1920,h_1080,ar_16:9,c_fill/v1737993374/sports_tube_background_nkpr4r.avif 1920w
                 "
                 type="image/avif"
                 sizes="(max-width: 600px) 100vw, (max-width: 1200px) 80vw, 60vw"
@@ -479,7 +479,7 @@
 
               <!-- Fallback (AVIF only) -->
               <img
-                src="https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,fl_attachment,q_auto,w_1280,h_720,c_fill/v1737993374/sports_tube_background_nkpr4r.avif"
+                src="https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,fl_attachment,q_auto,w_1280,h_720,ar_16:9,c_fill/v1737993374/sports_tube_background_nkpr4r.avif"
                 alt="Sports Community Hub"
                 width="1280"
                 height="720"
@@ -526,10 +526,13 @@
                   data-video-id="9n0T6cQ7zbM"
                 >
                   <img
-                  src="https://res.cloudinary.com/dnptzisuf/image/upload/f_auto,fl_attachment,q_auto:low,w_400,h_225,ar_16:9,c_fill,c_fill/v1740173740/thumbnaill-mAozdFiz4ng_w5z9k8.avif"
-                  alt="Football Video Thumbnail" loading="eager" aspect-ratio:
-                  16 / 9; object-fit: cover; max-width: 400px; min-width:
-                  300px;/>
+                    src="https://res.cloudinary.com/dnptzisuf/image/upload/f_auto,fl_attachment,q_auto:low,w_400,h_225,ar_16:9,c_fill/v1740173740/thumbnaill-mAozdFiz4ng_w5z9k8.avif"
+                    alt="Football Video Thumbnail"
+                    loading="eager"
+                    width="400"
+                    height="225"
+                    style="object-fit: cover; max-width: 100%"
+                  />
 
                   <div class="play-button-overlay"></div>
                 </div>
@@ -548,10 +551,15 @@
                   data-video-id="7Oj7IAJ7B_0"
                 >
                   <img
-                  src="https://res.cloudinary.com/dnptzisuf/image/upload/f_auto,fl_attachment,q_auto:low,w_400,h_225,ar_16:9,c_fill,c_fill/v1738106889/thumbnaik-7Oj7IAJ7B_0_heineh.avif"
-                  alt="Basketball Video Thumbnail" loading="eager" aspect-ratio:
-                  16 / 9; object-fit: cover; max-width: 400px; min-width: 300px;
+                    src="https://res.cloudinary.com/dnptzisuf/image/upload/f_auto,fl_attachment,q_auto:low,w_400,h_225,ar_16:9,c_fill/v1738106889/thumbnaik-7Oj7IAJ7B_0_heineh.avif"
+                    alt="Basketball Video Thumbnail"
+                    loading="eager"
+                    width="400"
+                    height="225"
+                    class="video-thumbnail"
+                    style="object-fit: cover; max-width: 100%"
                   />
+
                   <div class="play-button-overlay"></div>
                 </div>
               </div>
@@ -569,10 +577,19 @@
                   data-video-id="lRTUIBVfLP4"
                 >
                   <img
-                  src="https://res.cloudinary.com/dnptzisuf/image/fetch/v1738212484/https://res.cloudinary.com/dnptzisuf/image/upload/f_auto,fl_attachment,q_auto:low,w_400,h_225,ar_16:9,c_fit/v1739209644/thumbnails-unbelievable-plays_d23ogq.avif"
-                  alt="Baseball Video Thumbnail" loading="eager" aspect-ratio:
-                  16 / 9; object-fit: cover; max-width: 400px; min-width: 300px;
-                  /> />
+                    src="https://res.cloudinary.com/dnptzisuf/image/upload/f_auto,fl_attachment,q_auto:low,w_400,h_225,ar_16:9,c_fill/v1739209644/thumbnails-unbelievable-plays_d23ogq.avif"
+                    alt="Baseball Video Thumbnail"
+                    loading="eager"
+                    width="400"
+                    height="225"
+                    class="video-thumbnail"
+                    style="
+                      object-fit: cover;
+                      max-width: 100%;
+                      aspect-ratio: 16/9;
+                    "
+                  />
+
                   <div class="play-button-overlay"></div>
                 </div>
               </div>
