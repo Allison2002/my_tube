@@ -2969,20 +2969,21 @@
    .page-heading h1,
    .page-heading p {
      color: #fff;
-     width: 100%;
+     width: 90%;
    }
 
    .page-heading h1 {
      font-size: 1.2rem !important;
      padding-bottom: 1em !important;
      margin-top: -14em !important;
+     width: 90% !important;
    }
 
    .page-heading p {
      font-size: .995rem !important;
      line-height: 1.5 !important;
      padding-bottom: 1em !important;
-     width: 100%;
+     width: 90% !important;
    }
 
    .hero-btn {
