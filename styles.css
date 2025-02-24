@@ -854,9 +854,14 @@ nav img {
   z-index: 2
 }
 
+.minus-sign,
+.plus-sign {
+  width: 100px;
+}
+
 .minus-sign img,
 .plus-sign img {
-  width: 4vw
+  width: 100px;
 }
 
 .biography.expanded .toggle-btn::after {
