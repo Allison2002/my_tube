@@ -235,30 +235,41 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-            // ✅ Fix: Ensure biography section expands correctly
-            function setupBiographySection() {
-            document.querySelectorAll(".toggle-btn").forEach(btn => {
-                btn.addEventListener("click", function () {
-                    const bio = btn.closest(".biography");
-                    if (!bio) return;
+                function setupBiographySection() {
+                    document.querySelectorAll(".toggle-btn").forEach(btn => {
+                        btn.addEventListener("click", function () {
+                            const bio = btn.closest(".biography");
+                            if (!bio) return;
 
-                    const button = bio.querySelector(".toggle-btn img");
-                    const content = bio.querySelector(".bio-content");
+                            const button = bio.querySelector(".toggle-btn img");
+                            const content = bio.querySelector(".bio-content");
 
-                    bio.classList.toggle("expanded");
+                            if (!bio.classList.contains("expanded")) {
+                                // Expanding
+                                bio.classList.add("expanded");
+                                button.src = "https://res.cloudinary.com/dnptzisuf/image/upload/v1739375139/white-minus-sign_ptxfgg.webp";
+                                content.style.maxHeight = content.scrollHeight + "px"; // Dynamic height
+                                content.style.opacity = "1";
+                                content.style.overflow = "hidden";
+                                content.style.transition = "max-height 0.5s ease-in-out, opacity 0.3s ease-in-out";
+                            } else {
+                                // Collapsing with proper reset
+                                bio.classList.remove("expanded");
+                                button.src = "https://res.cloudinary.com/dnptzisuf/image/upload/v1739375139/white-plus-sign_av8usw.webp";
+                                content.style.maxHeight = content.scrollHeight + "px"; // Set height before collapse
 
-                    if (bio.classList.contains("expanded")) {
-                        button.src = "https://res.cloudinary.com/dnptzisuf/image/upload/v1739375139/white-minus-sign_ptxfgg.webp";
-                        content.style.maxHeight = "1000px";
-                        content.style.opacity = "1";
-                    } else {
-                        button.src = "https://res.cloudinary.com/dnptzisuf/image/upload/v1739375139/white-plus-sign_av8usw.webp";
-                        content.style.maxHeight = "0";
-                        content.style.opacity = "0";
-                    }
-                });
-            });
-        }
+                                requestAnimationFrame(() => {
+                                    requestAnimationFrame(() => {
+                                        content.style.maxHeight = "0px"; // Collapse properly
+                                        content.style.opacity = "0";
+                                    });
+                                });
+                            }
+                        });
+                    });
+                }
+
+
 
 
     // ✅ Ensure all functions run properly

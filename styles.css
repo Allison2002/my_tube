@@ -704,7 +704,7 @@ nav img {
   padding: 5em 0;
   max-width: 80%;
   margin: 5em auto;
-  transition: .3s
+  transition: .3s;
 }
 
 .biography {
@@ -754,7 +754,7 @@ nav img {
   height: 100%;
   transition: filter .3s;
   object-fit: cover;
-  aspect-ratio: 3/2
+  aspect-ratio: 3/2;
 }
 
 .biography:hover .bio-img::before {
@@ -775,7 +775,8 @@ nav img {
 
 #bio1 {
   border-top-left-radius: 3em;
-  border-bottom-left-radius: 3em
+  border-bottom-left-radius: 3em;
+  max-width: 100%;
 }
 
 #bio4 {
@@ -830,7 +831,8 @@ nav img {
   width: 100%;
   z-index: 2;
   transition: opacity .3s;
-  opacity: 0
+  opacity: 0;
+
 }
 
 .biography.expanded .plus-sign {
@@ -2150,6 +2152,11 @@ input::placeholder {
 }
 
 @media (max-width:768px) {
+  .biography-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 
   .button-padding,
   .nav-menu li,
@@ -2486,7 +2493,7 @@ input::placeholder {
 
   #player-biography {
     margin: 0 auto;
-    width: 100%
+    width: 100%;
   }
 
   .biography-section {
@@ -2563,7 +2570,7 @@ input::placeholder {
   #bio1 {
     border-top-left-radius: 2em;
     border-top-right-radius: 2em;
-    border-bottom-left-radius: 0
+    border-bottom-left-radius: 0;
   }
 
   #bio4 {
@@ -2818,10 +2825,12 @@ input::placeholder {
     /* Allows some flexibility */
     object-fit: cover;
     object-position: center top;
+    /* Keeps important part visible */
   }
 
   .hero-container {
     min-height: 40vh;
+    /* Ensures enough height for content */
     height: auto;
   }
 
