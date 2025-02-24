@@ -1780,13 +1780,23 @@ input::placeholder {
     width: 60%;
   }
 
-  .hero-btn {
+  .video-grid {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    margin-top: 20em;
+    max-width: 95%;
+  }
+
+  .video-week-container {
+    padding-top: 1.5em;
     margin-top: -5em;
   }
 
+
 }
 
-@media (min-width:769px) and (max-width:1024px) {
+@media (min-width: 768px) and (max-width: 1024px) {
 
   .bottom-footer-content,
   .footer-content,
@@ -1826,9 +1836,10 @@ input::placeholder {
     padding: 0 .5rem
   }
 
+
   .hero-container {
-    min-height: 65vh;
-    height: auto;
+    min-height: 30vh;
+    height: 45vh;
     padding-left: 5%;
     position: relative;
     align-items: center;
@@ -1854,41 +1865,6 @@ input::placeholder {
   .icon img {
     width: 30px;
     height: auto
-  }
-
-  .page-heading {
-    display: flex;
-    flex-direction: column;
-    justify-content: left;
-    text-align: left;
-    align-items: flex-start;
-    min-height: 100px;
-    transform: translateY(-10%);
-    width: 50%
-  }
-
-  .page-heading h1,
-  .page-heading p {
-    color: #fff
-  }
-
-  .page-heading h1 {
-    font-size: 1.5rem;
-    margin-top: -8em;
-  }
-
-  .page-heading p {
-    font-size: 1.2rem;
-  }
-
-
-  .video-week-container {
-    display: flex;
-    flex-direction: column;
-    max-width: 100vw;
-    width: 100vw;
-    height: auto;
-    margin: 0 auto
   }
 
   .thumbnail-container {
@@ -2004,7 +1980,7 @@ input::placeholder {
   .article-video {
     max-width: 90%;
     padding: 2em .5em;
-    margin: 1em 0 5em
+    margin: -12em 0 5em
   }
 
   .box2-grid {
@@ -2059,16 +2035,11 @@ input::placeholder {
     margin-top: 5em
   }
 
-  .call2action-container {
-    display: flex;
-    flex-direction: column
-  }
-
   #sports-your-way,
   .grid-211 {
     max-width: 100%;
     margin: 0 auto;
-    display: flex
+    display: flex;
   }
 
   .grid-211 {
@@ -2133,9 +2104,48 @@ input::placeholder {
     display: block;
     margin: 1em auto
   }
+
+  .hero-btn {
+    margin-top: -2em;
+  }
+
+  .page-heading {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    text-align: left;
+    align-items: flex-start;
+    min-height: 100px;
+    transform: translateY(-10%);
+    width: 80%;
+  }
+
+  .page-heading h1,
+  .page-heading p {
+    color: #fff;
+  }
+
+  .page-heading h1 {
+    font-size: 2.5rem;
+    margin-top: 1em;
+  }
+
+  .page-heading p {
+    font-size: 1.5rem;
+  }
+
+  .video-week-container {
+    display: flex;
+    flex-direction: column;
+    max-width: 100vw;
+    width: 100vw;
+    height: auto;
+    margin: 0 auto;
+  }
+
 }
 
-@media (max-width:768px) {
+@media (max-width: 768px) {
 
   .button-padding,
   .nav-menu li,
@@ -2302,21 +2312,8 @@ input::placeholder {
     margin-top: 0
   }
 
-  .hero-container {
-    min-height: 40vh;
-    height: 40vh;
-    padding-left: 5%;
-    flex-direction: column;
-    align-items: center
-  }
-
   .thumbnail-container {
     padding: 5em 0
-  }
-
-  .hero img {
-    height: 40vh;
-    width: 100vw
   }
 
   .bio-img img,
@@ -2324,30 +2321,6 @@ input::placeholder {
     width: 100%;
     height: auto;
     object-fit: cover
-  }
-
-  .page-heading {
-    transform: translateY(-10%);
-    width: 50%;
-    margin-top: -1em
-  }
-
-  .page-heading h1,
-  .page-heading p {
-    color: #fff;
-    width: 100%
-  }
-
-  .page-heading h1 {
-    font-size: 1.5rem;
-    padding-bottom: 1em
-  }
-
-  .page-heading p {
-    font-size: 2rem;
-    line-height: 1.5;
-    padding-bottom: 1em;
-    width: 100%
   }
 
   .youtube-channel {
@@ -2499,11 +2472,12 @@ input::placeholder {
   }
 
   .section-heading {
-    padding: 1em
+    padding: 1em;
   }
 
   .section-heading h2 {
-    padding: 3em 1em 0
+    padding: -3em 1em 0;
+    font-size: 3rem;
   }
 
   .section-heading p {
@@ -2808,9 +2782,25 @@ input::placeholder {
     padding: .5em 1em;
     max-width: 250px
   }
+
+  .video-grid {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    max-width: 95%;
+  }
+
+  .call2action {
+    margin-top: 5em;
+  }
+
+  .call2action-container {
+    display: flex;
+    flex-direction: column;
+  }
 }
 
-@media (max-width:480px) {
+@media (max-width: 480px) {
   .collections-box iframe {
     height: 30vw
   }
@@ -2820,18 +2810,7 @@ input::placeholder {
     max-width: 90%
   }
 
-  .hero-container {
-    min-height: 40vh;
-    height: 40vh;
-    padding-left: 5%;
-    position: relative;
-    flex-direction: column;
-    align-items: center;
-    text-align: center
-  }
-
   .box1-211,
-  .call2action-container,
   .footer-col,
   .footer-col ul,
   .grid-211,
@@ -2839,37 +2818,6 @@ input::placeholder {
     flex-direction: column;
     display: flex
   }
-
-  .hero img {
-    height: 30vh;
-    width: 100vw
-  }
-
-  .page-heading {
-    transform: translateY(-10%);
-    width: 90%;
-    margin-top: -1em
-  }
-
-  .page-heading h1 {
-    font-size: 1.5rem;
-    padding-bottom: 1em;
-    margin-top: 2em
-  }
-
-  .page-heading p {
-    font-size: 1rem;
-    line-height: 1.5;
-    padding-bottom: .5em
-  }
-
-
-  .video-week-container {
-    position: relative;
-    padding-top: 20rem
-  }
-
-
 
   .section-title {
     position: relative;
@@ -2881,11 +2829,6 @@ input::placeholder {
 
   .thumbnail-container {
     margin-bottom: 5em
-  }
-
-  .call2action-container {
-    max-width: 95%;
-    margin-top: 6em
   }
 
   .section-heading h2 {
@@ -2978,11 +2921,81 @@ input::placeholder {
   .blog-hero img {
     object-fit: cover;
     width: 100vw;
-    height: auto;
+    height: 35vh;
     min-height: 250px;
     margin-top: -60px;
   }
+
+  .video-grid {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    margin-top: 20em;
+    max-width: 95%;
+  }
+
+  .hero-container-collections {
+    height: 45vh;
+    top: 0;
+    left: 0
+  }
+
+  .page-heading {
+    transform: translateY(-10%);
+    width: 90%;
+    padding-top: 0;
+  }
+
+  .hero-container,
+  .hero-img,
+  .hero,
+  .hero img {
+    height: 35vh !important;
+    min-height: 35vh !important;
+    max-height: 35vh !important;
+  }
+
+  .hero-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .page-heading h1,
+  .page-heading p {
+    color: #fff;
+    width: 100%;
+  }
+
+  .page-heading h1 {
+    font-size: 1.2rem;
+    padding-bottom: 1em;
+    margin-top: -13em;
+  }
+
+  .page-heading p {
+    font-size: .995rem;
+    line-height: 1.5;
+    padding-bottom: 1em;
+    width: 100%;
+  }
+
+  .hero-btn {
+    margin-top: -1em;
+  }
+
+  .video-week-container {
+    position: relative;
+    padding-top: 20rem;
+  }
+
+  .call2action-container {
+    max-width: 95%;
+    margin-top: 6em;
+  }
 }
+
 
 @keyframes wobble {
 
