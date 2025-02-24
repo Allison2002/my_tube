@@ -1848,17 +1848,38 @@ input::placeholder {
   }
 
   .hero-container {
-    min-height: 30vh;
-    height: 45vh;
-    padding-left: 5%;
-    position: relative;
-    align-items: center;
-    max-width: unset
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    overflow: hidden !important;
+    min-height: 50vh;
+    /* Allows content to adjust dynamically */
+    height: auto;
   }
 
-  .hero img {
-    height: 65vh;
-    width: 100vw
+  .hero-img {
+    width: 100vw;
+    height: auto;
+    aspect-ratio: 16/9;
+    max-height: 100vh;
+    object-fit: cover;
+  }
+
+  .page-heading h1,
+  .page-heading p {
+    width: 90% !important;
+  }
+
+  .page-heading h1 {
+    font-size: 1.5rem !important;
+    padding-bottom: 1em !important;
+    margin-top: -8em !important;
+  }
+
+  .page-heading p {
+    font-size: 1rem !important;
+    line-height: 1.5 !important;
+    padding-bottom: 1em !important;
   }
 
   .hero-container-collections {
@@ -2117,28 +2138,6 @@ input::placeholder {
     margin-top: -2em
   }
 
-  .page-heading {
-    justify-content: left;
-    text-align: left;
-    align-items: flex-start;
-    min-height: 100px;
-    transform: translateY(-10%);
-    width: 80%
-  }
-
-  .page-heading h1,
-  .page-heading p {
-    color: #fff
-  }
-
-  .page-heading h1 {
-    font-size: 2.5rem;
-    margin-top: 1em
-  }
-
-  .page-heading p {
-    font-size: 1.5rem
-  }
 
   .video-week-container {
     display: flex;
@@ -2807,17 +2806,27 @@ input::placeholder {
   .hero-img,
   .hero,
   .hero img {
-    height: 40vh !important;
-    min-height: 40vh !important;
-    max-height: 40vh !important;
+    height: 45vh !important;
+    min-height: 45vh !important;
+    max-height: 45vh !important;
+  }
+
+  .hero-img {
+    width: 100vw;
+    height: auto;
+    max-height: 45vh;
+    /* Allows some flexibility */
+    object-fit: cover;
+    object-position: center top;
+    /* Keeps important part visible */
   }
 
   .hero-container {
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    overflow: hidden !important;
+    min-height: 40vh;
+    /* Ensures enough height for content */
+    height: auto;
   }
+
 
   .page-heading h1,
   .page-heading p {
@@ -2828,7 +2837,7 @@ input::placeholder {
   .page-heading h1 {
     font-size: 1.2rem !important;
     padding-bottom: 1em !important;
-    margin-top: -14em !important;
+    margin-top: -16em !important;
   }
 
   .page-heading p {
