@@ -1770,7 +1770,7 @@ input::placeholder {
 
 @media (max-width:1024px) {
   .hero-container {
-    background-image: url("https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_auto:best,w_1280,h_720/v1737993374/sports_tube_background_nkpr4r.avif");
+    background-image: url("https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,fl_lossy,q_auto:best,w_1280,h_720/v1737993374/sports_tube_background_nkpr4r.avif");
   }
 
   .category-page {
