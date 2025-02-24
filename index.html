@@ -193,22 +193,17 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        background-color: black;
         width: 100%;
         max-width: 400px;
-        height: 338px;
-        overflow: hidden;
-        object-fit: fill;
+        height: auto; /* Remove fixed height */
       }
 
+      .video-box img,
       .video-styled img {
-        object-fit: cover;
-        display: block;
         width: 100%;
-        max-width: 400px;
-        height: 338px;
-        overflow: hidden;
-        object-fit: fill;
+        height: auto; /* Remove forced height */
+        aspect-ratio: 16/9;
+        object-fit: cover; /* Ensures correct cropping */
       }
 
       .video-box {
@@ -436,9 +431,10 @@
 
       .video-thumbnail {
         width: 100%;
-        height: 100%;
+        height: auto;
+        aspect-ratio: 16/9; /* Ensures proper scaling */
         object-fit: cover;
-        border-radius: 10px;
+        display: block;
       }
 
       .play-button-overlay {
