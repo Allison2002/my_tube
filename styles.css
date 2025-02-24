@@ -2927,8 +2927,8 @@ input::placeholder {
   }
 
   .video-grid {
-    display: flex;
-    flex-direction: column;
+    display: flex !important;
+    flex-direction: column !important;
     height: auto;
     margin-top: 20em;
     max-width: 95%;
@@ -2987,6 +2987,7 @@ input::placeholder {
 
   .video-week-container {
     display: flex;
+    flex-direction: column;
     position: relative;
     padding-top: 20rem;
     margin-top: 0;
