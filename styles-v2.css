@@ -2986,8 +2986,10 @@ input::placeholder {
   }
 
   .video-week-container {
+    display: flex;
     position: relative;
     padding-top: 20rem;
+    margin-top: 0;
   }
 
   .call2action-container {
