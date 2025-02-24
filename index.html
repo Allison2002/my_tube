@@ -12,7 +12,7 @@
     <link rel="preconnect" href="https://res.cloudinary.com" crossorigin />
     <link
       rel="prefetch"
-      href="https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_auto:low,w_800,h_450,c_fill/v1737993374/sports_tube_background_nkpr4r.avif"
+      href="https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,fl_attachment,q_auto:best,w_1920,h_1080,c_fill/v1737993374/sports_tube_background_nkpr4r.avif"
     />
 
     <link
@@ -41,7 +41,7 @@
     <link
       rel="preload"
       as="image"
-      href="https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,fl_attachment,q_auto:low,w_600,h_338,c_fill/v1737993374/sports_tube_background_nkpr4r.avif"
+      href="https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,fl_attachment,q_auto:best,w_1920,h_1080,c_fill/v1737993374/sports_tube_background_nkpr4r.avif"
       type="image/avif"
       fetchpriority="high"
     />
@@ -98,10 +98,11 @@
       .hero-img img {
         width: 100%;
         height: auto;
-        max-width: 1920px;
-        min-height: 300px; /* Forces it to paint immediately */
-        aspect-ratio: 16/9;
+        aspect-ratio: 16 / 9;
         object-fit: cover;
+        display: block;
+        max-width: 1920px;
+        min-height: 600px; /* Prevent collapse */
       }
 
       .hero-img {
@@ -483,13 +484,9 @@
             <picture class="hero-img">
               <source
                 srcset="
-                  https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,fl_attachment,q_auto:low,w_480,h_270,c_fill/v1737993374/sports_tube_background_nkpr4r.avif     480w,
-                  https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,fl_attachment,q_auto:low,w_768,h_432,c_fill/v1737993374/sports_tube_background_nkpr4r.avif     768w,
-                  https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,fl_attachment,q_auto:low,w_1280,h_720,c_fill/v1737993374/sports_tube_background_nkpr4r.avif   1280w,
-                  https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,fl_attachment,q_auto:best,w_1920,h_1080,c_fill/v1737993374/sports_tube_background_nkpr4r.avif 1920w
+                  https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,fl_attachment,q_auto:low,w_10,h_6,c_fill/v1737993374/sports_tube_background_nkpr4r.avif
                 "
                 type="image/avif"
-                sizes="(max-width: 768px) 100vw, (max-width: 1280px) 80vw, 60vw"
               />
               <img
                 src="https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,fl_attachment,q_auto:low,w_10,h_6,c_fill/v1737993374/sports_tube_background_nkpr4r.avif"
@@ -505,8 +502,10 @@
                   height: auto;
                   aspect-ratio: 16/9;
                 "
+                onload="this.src=this.dataset.src"
               />
             </picture>
+
             <script>
               window.addEventListener("load", function () {
                 const img = document.querySelector(".hero-img img");
