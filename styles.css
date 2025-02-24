@@ -1769,6 +1769,10 @@ input::placeholder {
 }
 
 @media (max-width:1024px) {
+  .hero-container {
+    background-image: url("https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_auto:best,w_1280,h_720/v1737993374/sports_tube_background_nkpr4r.avif");
+  }
+
   .category-page {
     text-align: center;
     padding: 2em 0;
@@ -2152,6 +2156,10 @@ input::placeholder {
 }
 
 @media (max-width:768px) {
+  .hero-container {
+    background-image: url("https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_auto:best,w_768,h_432/v1737993374/sports_tube_background_nkpr4r.avif");
+  }
+
   .biography-section {
     display: flex;
     align-items: center;
