@@ -2818,12 +2818,10 @@ input::placeholder {
     /* Allows some flexibility */
     object-fit: cover;
     object-position: center top;
-    /* Keeps important part visible */
   }
 
   .hero-container {
     min-height: 40vh;
-    /* Ensures enough height for content */
     height: auto;
   }
 
