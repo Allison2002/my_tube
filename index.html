@@ -82,13 +82,13 @@
 
       .hero-img {
         width: 100vw;
-        height: 40vh;
-        min-height: 30vh;
-        max-width: 100%;
+        height: auto; /* Auto height to respect aspect ratio */
+        max-height: 100vh;
         object-fit: cover;
+        object-position: top center; /* Ensures top of image is visible */
+        aspect-ratio: 16/9;
         position: absolute;
         display: block;
-        aspect-ratio: 16/9;
         top: 0;
         left: 0;
         z-index: 0;
