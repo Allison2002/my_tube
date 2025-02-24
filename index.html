@@ -458,39 +458,40 @@
       <div class="hero-container">
         <div id="nav"></div>
         <section class="hero">
-          <picture
-            class="hero-img"
-            style="display: block; width: 100%; aspect-ratio: 16/9"
-          >
-            <!-- AVIF Format Only -->
-            <source
-              srcset="
-                https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,fl_attachment,fl_lossy,q_auto:low,w_480,h_270,c_fill/v1737993374/sports_tube_background_nkpr4r.avif    480w,
-                https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,fl_attachment,fl_lossy,q_auto:low,w_768,h_432,c_fill/v1737993374/sports_tube_background_nkpr4r.avif    768w,
-                https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,fl_attachment,fl_lossy,q_auto:low,w_1280,h_820,c_fill/v1737993374/sports_tube_background_nkpr4r.avif  1280w,
-                https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,fl_attachment,fl_lossy,q_auto:low,w_1920,h_1080,c_fill/v1737993374/sports_tube_background_nkpr4r.avif 1920w
-              "
-              type="image/avif"
-              sizes="(max-width: 600px) 100vw, (max-width: 1200px) 80vw, 60vw"
-            />
+          <section class="hero">
+            <picture
+              class="hero-img"
+              style="display: block; width: 100%; aspect-ratio: 16/9"
+            >
+              <!-- AVIF Format Only -->
+              <source
+                srcset="
+                  https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,fl_attachment,q_auto:low,w_480,h_270,c_fill/v1737993374/sports_tube_background_nkpr4r.avif    480w,
+                  https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,fl_attachment,q_auto:low,w_768,h_432,c_fill/v1737993374/sports_tube_background_nkpr4r.avif    768w,
+                  https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,fl_attachment,q_auto:low,w_1280,h_720,c_fill/v1737993374/sports_tube_background_nkpr4r.avif  1280w,
+                  https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,fl_attachment,q_auto:low,w_1920,h_1080,c_fill/v1737993374/sports_tube_background_nkpr4r.avif 1920w
+                "
+                type="image/avif"
+                sizes="(max-width: 600px) 100vw, (max-width: 1200px) 80vw, 60vw"
+              />
 
-            <!-- Fallback (AVIF only) -->
-            <img
-              src="https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,fl_attachment,fl_lossy,q_auto:low,w_1280,h_820,c_fill/v1737993374/sports_tube_background_nkpr4r.avif"
-              alt="Sports Community Hub"
-              width="1280"
-              height="820"
-              fetchpriority="high"
-              load="eager"
-              decoding="async"
-              style="
-                display: block;
-                max-width: 100vw;
-                height: auto;
-                aspect-ratio: 16/9;
-              "
-            />
-          </picture>
+              <!-- Fallback (AVIF only) -->
+              <img
+                src="https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,fl_attachment,q_auto,w_1280,h_720,c_fill/v1737993374/sports_tube_background_nkpr4r.avif"
+                alt="Sports Community Hub"
+                width="1280"
+                height="720"
+                fetchpriority="high"
+                decoding="async"
+                style="
+                  display: block;
+                  max-width: 100vw;
+                  height: auto;
+                  aspect-ratio: 16/9;
+                "
+              />
+            </picture>
+          </section>
         </section>
         <div class="hero-content">
           <div class="page-heading">
