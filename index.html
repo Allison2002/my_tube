@@ -40,7 +40,6 @@
       as="image"
       href="https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,fl_lossy,q_auto:best,w_1920,h_1080,c_fill/v1737993374/sports_tube_background_nkpr4r.avif"
       type="image/avif"
-      fetchpriority="high"
     />
 
     <link
@@ -84,12 +83,19 @@
       }
 
       .hero-container {
-        min-height: 100vh;
         background-color: #000;
         display: flex;
         justify-content: center;
         align-items: center;
         position: relative;
+      }
+
+      .hero-container {
+        background-image: url("https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_auto:best,w_1920,h_1080,c_fill/v1737993374/sports_tube_background_nkpr4r.avif");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        min-height: 100vh;
       }
 
       .hero-img {
@@ -308,6 +314,23 @@
         text-align: left;
         margin-top: 3em;
         min-height: 80px;
+      }
+
+      .page-heading h1 {
+        font-display: swap; /* Ensure text is visible before fonts load */
+        will-change: opacity, transform;
+        animation: fade-in 0.8s ease-in-out forwards;
+      }
+
+      @keyframes fade-in {
+        from {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
       }
 
       .page-heading h1,

@@ -5,14 +5,21 @@ document.addEventListener("DOMContentLoaded", function () {
     const basePath = window.location.pathname.includes("/pages/") || window.location.pathname.includes("/videos/") ? "../../" : "./";
 
     function loadComponent(url, elementId, callback) {
-        fetch(basePath + url, { cache: "no-store" })
+        const container = document.getElementById(elementId);
+        if (!container) return;
+
+        // Display temporary placeholder while fetching
+        container.innerHTML = `<div style="min-height: 50px; background: #f0f0f0;"></div>`;
+
+        fetch(url, { cache: "no-store" })
             .then(response => response.ok ? response.text() : Promise.reject(`HTTP error! Status: ${response.status}`))
             .then(data => {
-                document.getElementById(elementId).innerHTML = data;
+                container.innerHTML = data;
                 if (callback) callback();
             })
             .catch(error => console.error(`❌ Error loading ${elementId}:`, error));
     }
+
     // ✅ Load Navigation and Footer with proper initialization
     loadComponent("nav.html", "nav", setupNavbar);
     loadComponent("footer.html", "footer");
