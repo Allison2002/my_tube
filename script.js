@@ -1,9 +1,3 @@
-setTimeout(() => {
-    const img = document.querySelector(".hero-img img");
-    if (img) img.src = img.getAttribute("data-src");
-}, 500);
-
-
 document.addEventListener("DOMContentLoaded", function () {
     console.log("✅ Optimized script with caching, CLS improvements, CTA fix, and Biography fix!");
 
