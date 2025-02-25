@@ -17,9 +17,6 @@
 
     <!-- Preload the CSS file -->
     <link rel="preload" href="/styles.css" as="style" />
-
-    <!-- Non-blocking CSS loading -->
-    <link rel="preload" href="/styles.css" as="style" />
     <link
       rel="stylesheet"
       href="/styles.css"
@@ -27,7 +24,6 @@
       onload="this.onload=null;this.media='all';"
     />
     <noscript><link rel="stylesheet" href="/styles.css" /></noscript>
-    <script defer src="/script.js"></script>
 
     <link rel="preconnect" href="https://res.cloudinary.com" crossorigin />
     <link
@@ -51,6 +47,15 @@
       href="https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,fl_lossy,q_auto:low,w_1920,h_1080,c_fill/v1737993374/sports_tube_background_nkpr4r.avif"
       type="image/avif"
       fetchpriority="high"
+      media="(min-width: 1200px)"
+    />
+    <link
+      rel="preload"
+      as="image"
+      href="https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,fl_lossy,q_auto:low,w_1024,h_600,c_fill/v1737993374/sports_tube_background_nkpr4r.avif"
+      type="image/avif"
+      fetchpriority="high"
+      media="(max-width: 1200px)"
     />
 
     <link
@@ -64,14 +69,14 @@
         font-family: "Roboto";
         src: url("/assets/fonts/Roboto/static/Roboto-Regular.woff2")
           format("woff2");
-        font-display: swap; /* Ensure text remains visible while loading */
+        font-display: swap; /* Ensures text stays visible with fallback font */
       }
 
       @font-face {
         font-family: "Bebas Neue";
         src: url("/assets/fonts/Bebas_Neue/BebasNeue-Regular.woff2")
           format("woff2");
-        font-display: optional;
+        font-display: swap; /* Prevents CLS */
       }
 
       .video-box img,
@@ -99,6 +104,9 @@
         justify-content: center;
         align-items: center;
         position: relative;
+        width: 100%;
+        height: 100vh; /* Ensure height is reserved */
+        min-height: 720px; /* Prevents layout shift */
       }
 
       .hero-img {
