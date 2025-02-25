@@ -37,7 +37,7 @@
     <link
       rel="preload"
       as="image"
-      href="https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,fl_lossy,q_auto,w_1920,h_1080,c_fill/v1737993374/sports_tube_background_nkpr4r.avif"
+      href="https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,fl_lossy,q_auto,w_1080,h_608,c_fill/v1737993374/sports_tube_background_nkpr4r.avif"
       type="image/avif"
       fetchpriority="high"
     />
@@ -70,37 +70,34 @@
         object-fit: cover;
       }
 
+      .hero-content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 10;
+        text-align: center;
+        width: 90%;
+        max-width: 1200px;
+        opacity: 1;
+        visibility: visible;
+      }
+
       .hero-container {
-        min-height: 40vh;
+        min-height: 45vh;
         height: 100vh;
         min-height: 600px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        width: 100vw;
-        padding: 5%;
         position: relative;
         overflow: hidden;
+        top: 0;
+        margin-top: -60px;
       }
 
       .hero-img img {
         width: 100%;
-        height: auto;
         max-width: 1920px;
-        aspect-ratio: 16/9;
-      }
-
-      .hero-img {
-        width: 100%;
-        height: 100vh;
-        min-height: 600px;
-        object-fit: cover;
-        object-position: center;
-        position: absolute;
-        top: 0;
-        left: 0;
-        z-index: 0;
+        height: auto;
+        aspect-ratio: 16 / 9;
       }
 
       .hero-btn {
@@ -470,21 +467,28 @@
             <picture class="hero-img">
               <source
                 srcset="
-                  https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,fl_lossy,q_auto:best,w_1920,h_1080,c_fill/v1737993374/sports_tube_background_nkpr4r.avif
+                  https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,fl_lossy,q_auto,w_1080,h_608,c_fill/v1737993374/sports_tube_background_nkpr4r.avif  1080w,
+                  https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,fl_lossy,q_auto,w_1440,h_810,c_fill/v1737993374/sports_tube_background_nkpr4r.avif  1440w,
+                  https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,fl_lossy,q_auto,w_1920,h_1080,c_fill/v1737993374/sports_tube_background_nkpr4r.avif 1920w
                 "
+                sizes="(max-width: 600px) 100vw, (max-width: 1024px) 85vw, 75vw"
                 type="image/avif"
               />
-              <source
-                srcset="
-                  https://res.cloudinary.com/dnptzisuf/image/upload/f_webp,fl_lossy,q_auto:best,w_1920,h_1080,c_fill/v1737993374/sports_tube_background_nkpr4r.webp
-                "
-                type="image/webp"
-              />
               <img
-              src="https://res.cloudinary.com/dnptzisuf/image/upload/f_auto,fl_lossy,q_auto:best,w_1920,h_1080,c_fill/v1737993374/sports_tube_background_nkpr4r.jpg"
-              alt="Sports Community Hub" width="1920" height="1080"
-              decoding="async" fetchpriority="high" style="display: block;
-              width: 100%; height: auto; aspect-ratio: 16/9;" " />
+                src="https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,fl_lossy,q_auto,w_1080,h_608,c_fill/v1737993374/sports_tube_background_nkpr4r.avif"
+                alt="Sports Community Hub"
+                width="1920"
+                height="1080"
+                decoding="async"
+                loading="eager"
+                fetchpriority="high"
+                style="
+                  display: block;
+                  width: 100%;
+                  height: auto;
+                  aspect-ratio: 16/9;
+                "
+              />
             </picture>
           </section>
         </section>
