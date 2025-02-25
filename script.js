@@ -1,3 +1,8 @@
+setTimeout(() => {
+    const img = document.querySelector(".hero-img img");
+    if (img) img.src = img.getAttribute("data-src");
+}, 500);
+
 
 document.addEventListener("DOMContentLoaded", function () {
     console.log("✅ Optimized script with caching, CLS improvements, CTA fix, and Biography fix!");
@@ -66,6 +71,17 @@ document.addEventListener("DOMContentLoaded", function () {
     console.log("✅ Using Correct Cloudinary AVIF Thumbnails with caching!");
 
     console.log("✅ Optimized script with improved video containment!");
+    document.addEventListener("DOMContentLoaded", function () {
+        const img = document.querySelector(".hero-img img");
+
+        if (img) {
+            console.log("✅ Hero image found, applying optimizations.");
+            img.src = img.getAttribute("data-src"); // Assign new source
+        } else {
+            console.warn("⚠️ Hero image not found in DOM. Check class name or image load timing.");
+        }
+    });
+
         function setupVideoContainers() {
             const isSportsHub = window.location.pathname.includes("sports_hub.html");
             const isAllVideos = window.location.pathname.includes("all-videos.html");
@@ -268,9 +284,6 @@ document.addEventListener("DOMContentLoaded", function () {
                         });
                     });
                 }
-
-
-
 
     // ✅ Ensure all functions run properly
     setupYouTubePlayers();

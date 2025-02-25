@@ -11,6 +11,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="preconnect" href="https://res.cloudinary.com" crossorigin />
     <link
+      rel="prefetch"
+      href="https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,fl_attachment,q_auto:best,w_1920,h_1080,c_fill/v1737993374/sports_tube_background_nkpr4r.avif"
+    />
+
+    <link
       rel="stylesheet"
       href="/styles.css"
       media="print"
@@ -36,17 +41,8 @@
     <link
       rel="preload"
       as="image"
-      href="https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,fl_lossy,q_auto:good,w_1280,h_720/v1737993374/sports_tube_background_nkpr4r.avif"
+      href="https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,fl_attachment,q_auto:best,w_1920,h_1080,c_fill/v1737993374/sports_tube_background_nkpr4r.avif"
       type="image/avif"
-      media="(min-width: 1024px)"
-      fetchpriority="high"
-    />
-    <link
-      rel="preload"
-      as="image"
-      href="https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,fl_lossy,q_auto:good,w_768,h_432/v1737993374/sports_tube_background_nkpr4r.avif"
-      type="image/avif"
-      media="(max-width: 1023px)"
       fetchpriority="high"
     />
 
@@ -61,13 +57,14 @@
         font-family: "Roboto";
         src: url("/assets/fonts/Roboto/static/Roboto-Regular.woff2")
           format("woff2");
-        font-display: swap;
+        font-display: swap; /* Ensure text remains visible while loading */
       }
+
       @font-face {
         font-family: "Bebas Neue";
         src: url("/assets/fonts/Bebas_Neue/BebasNeue-Regular.woff2")
           format("woff2");
-        font-display: swap;
+        font-display: optional;
       }
 
       .video-box img,
@@ -78,23 +75,25 @@
       }
 
       .hero-container {
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-        width: 100vw;
+        min-height: 40vh;
         height: 100vh;
         min-height: 600px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100vw;
+        padding: 5%;
+        position: relative;
         overflow: hidden;
       }
 
       .hero-img img {
         width: 100%;
         height: auto;
-        aspect-ratio: 16 / 9;
+        aspect-ratio: 16 / 9; /* Ensures correct display ratio */
         object-fit: cover;
-        display: block;
         max-width: 1920px;
-        min-height: 600px; /* Prevent collapse */
       }
 
       .hero-img {
@@ -267,7 +266,7 @@
         transform: translate(-50%, -50%);
         width: 60px;
         height: 60px;
-        background: url("https://res.cloudinary.com/dnptzisuf/image/upload/fl_lossy/v1738094189/play-icon_s7jgug.svg")
+        background: url("https://res.cloudinary.com/dnptzisuf/image/upload/v1738094189/play-icon_s7jgug.svg")
           no-repeat center;
         background-size: contain;
         pointer-events: none;
@@ -473,40 +472,31 @@
         <div id="nav"></div>
         <section class="hero">
           <section class="hero">
-            <picture>
-              <!-- AVIF (Best format for modern browsers) -->
+            <picture class="hero-img">
               <source
                 srcset="
-                  https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,fl_lossy,q_auto:good,w_480,h_270/v1737993374/sports_tube_background_nkpr4r.avif    480w,
-                  https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,fl_lossy,q_auto:good,w_768,h_432/v1737993374/sports_tube_background_nkpr4r.avif    768w,
-                  https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,fl_lossy,q_auto:good,w_1280,h_720/v1737993374/sports_tube_background_nkpr4r.avif  1280w,
-                  https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,fl_lossy,q_auto:good,w_1920,h_1080/v1737993374/sports_tube_background_nkpr4r.avif 1920w
+                  https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,fl_attachment,q_auto:best,w_1920,h_1080,c_fill/v1737993374/sports_tube_background_nkpr4r.avif
                 "
                 type="image/avif"
-                sizes="(max-width: 768px) 100vw, (max-width: 1280px) 80vw, 60vw"
               />
-
-              <!-- WebP Fallback (For browsers that don't support AVIF) -->
               <source
                 srcset="
-                  https://res.cloudinary.com/dnptzisuf/image/upload/f_webp,fl_lossy,q_auto:good,w_480,h_270/v1737993374/sports_tube_background_nkpr4r.webp    480w,
-                  https://res.cloudinary.com/dnptzisuf/image/upload/f_webp,fl_lossy,q_auto:good,w_768,h_432/v1737993374/sports_tube_background_nkpr4r.webp    768w,
-                  https://res.cloudinary.com/dnptzisuf/image/upload/f_webp,fl_lossy,q_auto:good,w_1280,h_720/v1737993374/sports_tube_background_nkpr4r.webp  1280w,
-                  https://res.cloudinary.com/dnptzisuf/image/upload/f_webp,fl_lossy,q_auto:good,w_1920,h_1080/v1737993374/sports_tube_background_nkpr4r.webp 1920w
+                  https://res.cloudinary.com/dnptzisuf/image/upload/f_webp,fl_attachment,q_auto:best,w_1920,h_1080,c_fill/v1737993374/sports_tube_background_nkpr4r.webp
                 "
                 type="image/webp"
-                sizes="(max-width: 768px) 100vw, (max-width: 1280px) 80vw, 60vw"
               />
-
-              <!-- Fallback JPEG -->
               <img
-                src="https://res.cloudinary.com/dnptzisuf/image/upload/f_auto,fl_lossy,q_auto:good,w_1920,h_1080/v1737993374/sports_tube_background_nkpr4r.jpg"
+                src="https://res.cloudinary.com/dnptzisuf/image/upload/f_auto,fl_attachment,q_auto:best,w_1920,h_1080,c_fill/v1737993374/sports_tube_background_nkpr4r.jpg"
                 alt="Sports Community Hub"
                 width="1920"
                 height="1080"
-                fetchpriority="high"
                 decoding="async"
-                style="display: block; width: 100%; height: auto"
+                style="
+                  display: block;
+                  width: 100%;
+                  height: auto;
+                  aspect-ratio: 16/9;
+                "
               />
             </picture>
 
