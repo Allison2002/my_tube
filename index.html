@@ -10,10 +10,6 @@
     <title>Sports Tube - Your Ultimate Destination for Sports Videos</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="preconnect" href="https://res.cloudinary.com" crossorigin />
-    <!-- Preload navigation and footer for faster rendering -->
-    <link rel="preload" as="fetch" href="nav.html" crossorigin="anonymous" />
-    <link rel="preload" as="fetch" href="footer.html" crossorigin="anonymous" />
-
     <link
       rel="prefetch"
       href="https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,fl_attachment,q_auto:best,w_1920,h_1080,c_fill/v1737993374/sports_tube_background_nkpr4r.avif"
@@ -41,7 +37,7 @@
     <link
       rel="preload"
       as="image"
-      href="https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,fl_lossy,q_auto:best,w_1280,h_720,ar_16:9,c_fill/v1737993374/sports_tube_background_nkpr4r.avif"
+      href="https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,fl_lossy,q_auto:best,w_1280,h_720,ar_16:9/v1737993374/sports_tube_background_nkpr4r.avif"
       type="image/avif"
       fetchpriority="high"
     />
@@ -475,51 +471,31 @@
         <div id="nav"></div>
         <section class="hero">
           <picture class="hero-img">
-            <!-- Small version for mobile devices -->
             <source
-              srcset="
-                https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,fl_lossy,q_auto:low,w_960,h_540,ar_16:9,c_fill/v1737993374/sports_tube_background_nkpr4r.avif
-              "
-              sizes="(max-width: 600px) 100vw, (max-width: 1024px) 80vw, 60vw"
+              srcset="/assets/img/sports_tube_background.avif"
               type="image/avif"
+              media="(max-width: 600px)"
             />
-
-            <!-- Medium size for tablets and small desktops -->
             <source
-              srcset="
-                https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,fl_lossy,q_auto:good,w_1280,h_720,ar_16:9,c_fill/v1737993374/sports_tube_background_nkpr4r.avif
-              "
-              sizes="(max-width: 1024px) 80vw, 60vw"
-              type="image/avif"
+              srcset="/assets/img/sports_tube_background.webp"
+              type="image/webp"
+              media="(max-width: 600px)"
             />
-
-            <!-- Large size for larger screens but smaller than 1920x1080 -->
-            <source
-              srcset="
-                https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,fl_lossy,q_auto:best,w_1600,h_900,ar_16:9,c_fill/v1737993374/sports_tube_background_nkpr4r.avif
-              "
-              sizes="(min-width: 1025px) 60vw"
-              type="image/avif"
-            />
-
-            <!-- Fallback for unsupported formats -->
             <img
-              src="https://res.cloudinary.com/dnptzisuf/image/upload/f_auto,fl_lossy,q_auto:low,w_1280,h_720,ar_16:9,c_fill/v1737993374/sports_tube_background_nkpr4r.jpg"
-              alt="Sports Community Hub"
+              src="/assets/img/sports_tube_background.jpg"
+              data-src="https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,fl_lossy,q_auto:best,w_1280,h_720,ar_16:9/v1737993374/sports_tube_background_nkpr4r.avif"
               width="1280"
               height="720"
+              alt="Sports Community Hub"
               decoding="async"
               loading="eager"
               fetchpriority="high"
-              style="
-                display: block;
-                width: 100%;
-                height: auto;
-                aspect-ratio: 16/9;
-              "
+              class="lazyload"
+              style="aspect-ratio: 16/9; width: 100%; height: auto"
             />
           </picture>
         </section>
+
         <div class="hero-content">
           <div class="page-heading">
             <h1>YOUR ULTIMATE DESTINATION FOR SPORTS VIDEOS</h1>

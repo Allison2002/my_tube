@@ -18,7 +18,6 @@ document.addEventListener("DOMContentLoaded", function () {
     loadComponent("nav.html", "nav", setupNavbar);
     loadComponent("footer.html", "footer");
 
-    // ✅ Navbar Behavior - Fix: Ensure Navbar Turns Solid Red on Scroll
     function setupNavbar() {
         const navbar = document.querySelector("nav");
         const hamburgerIcon = document.getElementById("menu-toggle");
@@ -58,86 +57,12 @@ document.addEventListener("DOMContentLoaded", function () {
             });
         }
 
-        handleScroll(); // Apply initial navbar state
+        handleScroll();
         updateHamburgerVisibility();
     }
 
     console.log("✅ Using Correct Cloudinary AVIF Thumbnails with caching!");
 
-    console.log("✅ Optimized script with improved video containment!");
-    document.addEventListener("DOMContentLoaded", function () {
-        const img = document.querySelector(".hero-img img");
-
-        if (img) {
-            console.log("✅ Hero image found, applying optimizations.");
-            img.src = img.getAttribute("data-src"); // Assign new source
-        } else {
-            console.warn("⚠️ Hero image not found in DOM. Check class name or image load timing.");
-        }
-    });
-
-        function setupVideoContainers() {
-            const isSportsHub = window.location.pathname.includes("sports_hub.html");
-            const isAllVideos = window.location.pathname.includes("all-videos.html");
-
-            if (isSportsHub) {
-                console.log("✅ Applying Sports Hub video grid fix");
-                document.querySelectorAll(".video-grid-collections").forEach(grid => {
-                    grid.style.display = "grid";
-                    grid.style.gridTemplateColumns = "repeat(auto-fit, minmax(200px, 1fr))";
-                    grid.style.gap = "20px";
-                    grid.style.justifyContent = "center";
-                });
-
-                document.querySelectorAll(".collections-box").forEach(box => {
-                    box.style.display = "flex";
-                    box.style.flexDirection = "column";
-                    box.style.alignItems = "center";
-                    box.style.overflow = "hidden";
-                    box.style.width = "100%";
-                    box.style.maxWidth = "350px";
-                });
-
-                document.querySelectorAll(".collections-box img").forEach(img => {
-                    img.style.width = "100%";
-                    img.style.height = "auto";
-                    img.style.objectFit = "cover";
-                    img.style.borderRadius = "10px";
-                    img.style.maxHeight = "200px";
-                });
-            }
-
-            if (isAllVideos) {
-                console.log("✅ Applying All Videos page fix");
-                document.querySelectorAll(".video-grid-collections").forEach(grid => {
-                    grid.style.display = "flex";
-                    grid.style.flexWrap = "wrap";
-                    grid.style.justifyContent = "center";
-                    grid.style.gap = "15px";
-                });
-
-                document.querySelectorAll(".collections-box").forEach(box => {
-                    box.style.display = "block";
-                    box.style.textAlign = "center";
-                    box.style.width = "250px";
-                });
-
-                document.querySelectorAll(".youtube-facade-all").forEach(thumb => {
-                    thumb.style.width = "100%";
-                    thumb.style.maxWidth = "250px";
-                    thumb.style.height = "auto";
-                });
-            }
-        }
-
-        // Ensure it runs on the correct pages
-        setupVideoContainers();
-        window.addEventListener("resize", setupVideoContainers);
-
-
-        console.log("✅ Video containment fixed!");
-
-    // ✅ Fix: Ensure all videos in `video-week-container` work and thumbnails load correctly
     function setupYouTubePlayers() {
         const cloudinaryThumbnails = {
             "9n0T6cQ7zbM": "youtube_thumbnails_9n0T6cQ7zbM_example",
@@ -162,14 +87,23 @@ document.addEventListener("DOMContentLoaded", function () {
             "AQ2z_ujhhVs": "youtube_thumbnails_AQ2z_ujhhVs_vsrzkh"
         };
 
-        document.querySelectorAll(".youtube-facade, .youtube-facade-all").forEach((facade) => {
+        document.querySelectorAll(".youtube-facade, .youtube-facade-all").forEach((facade, index) => {
             const videoId = facade.dataset.videoId || facade.dataset.id;
             if (!videoId || !cloudinaryThumbnails[videoId]) return;
 
-            let optimizedThumbnailUrl = `https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_auto:low,w_250,h_140,c_fill,fl_attachment,fl_lossy/v1739982747/${cloudinaryThumbnails[videoId]}.avif`;
+            let optimizedThumbnailUrl = `https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_auto:low,w_400,h_225,c_fill,fl_attachment,fl_lossy/v1739982747/${cloudinaryThumbnails[videoId]}.avif`;
 
+            // ✅ Ensure correct aspect ratio and remove any black background
+            facade.style.backgroundColor = "transparent"; 
+            facade.style.display = "flex"; 
+            facade.style.justifyContent = "center"; 
+            facade.style.alignItems = "center";
+            facade.style.overflow = "hidden"; 
+            facade.style.aspectRatio = "16/9"; 
+            facade.style.width = "100%"; 
+            facade.style.maxWidth = "400px"; 
+            facade.style.margin = "0 auto"; 
 
-            // ✅ Apply same overlay logic to `.youtube-facade-all`
             if (!facade.querySelector("img")) {
                 let placeholder = document.createElement("img");
                 placeholder.src = optimizedThumbnailUrl;
@@ -178,110 +112,58 @@ document.addEventListener("DOMContentLoaded", function () {
                 placeholder.style.width = "100%";
                 placeholder.style.height = "auto";
                 placeholder.style.objectFit = "cover";
-                placeholder.loading = "lazy";
+                placeholder.style.borderRadius = "10px"; 
+                placeholder.style.boxShadow = "0px 4px 6px rgba(0, 0, 0, 0.1)"; 
                 
+                // ✅ Load first 3 thumbnails eagerly, others lazily
+                placeholder.loading = index < 3 ? "eager" : "lazy"; 
 
-                // ✅ Create play button overlay
                 let playButton = document.createElement("div");
                 playButton.classList.add("play-button-overlay");
 
                 // ✅ Append elements properly
+                facade.innerHTML = "";  // Ensure no black box is left
                 facade.appendChild(placeholder);
                 facade.appendChild(playButton);
 
-                console.log(`✅ Thumbnail & overlay added for video: ${videoId}`);
+                console.log(`✅ Thumbnail added for: ${videoId} (loading: ${placeholder.loading})`);
             }
+        });
+    }
 
-            // ✅ Ensure clicking replaces thumbnail with iframe
-            facade.addEventListener("click", function () {
-                console.log(`▶️ Playing Video: ${videoId}`);
+    function setupBiographySection() {
+        document.querySelectorAll(".toggle-btn").forEach(btn => {
+            btn.addEventListener("click", function () {
+                const bio = btn.closest(".biography");
+                if (!bio) return;
 
-                const width = facade.clientWidth;
-                const height = facade.clientHeight;
+                const button = bio.querySelector(".toggle-btn img");
+                const content = bio.querySelector(".bio-content");
 
-                let iframe = document.createElement("iframe");
-                iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&showinfo=0`;
-                iframe.width = width + "px";
-                iframe.height = height + "px";
-                iframe.frameBorder = "0";
-                iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
-                iframe.allowFullscreen = true;
-                iframe.style.objectFit = "cover";
+                if (!bio.classList.contains("expanded")) {
+                    bio.classList.add("expanded");
+                    button.src = "https://res.cloudinary.com/dnptzisuf/image/upload/v1739375139/white-minus-sign_ptxfgg.webp";
+                    content.style.maxHeight = content.scrollHeight + "px";
+                    content.style.opacity = "1";
+                    content.style.transition = "max-height 0.5s ease-in-out, opacity 0.3s ease-in-out";
+                } else {
+                    bio.classList.remove("expanded");
+                    button.src = "https://res.cloudinary.com/dnptzisuf/image/upload/v1739375139/white-plus-sign_av8usw.webp";
+                    content.style.maxHeight = content.scrollHeight + "px";
 
-                // ✅ Ensure only the facade content is replaced
-                facade.innerHTML = "";
-                facade.appendChild(iframe);
+                    requestAnimationFrame(() => {
+                        requestAnimationFrame(() => {
+                            content.style.maxHeight = "0px";
+                            content.style.opacity = "0";
+                        });
+                    });
+                }
             });
         });
     }
 
-    function setupCallToActionVideo() {
-        const ctaVideo = document.querySelector(".call2action-video .youtube-facade");
-        if (!ctaVideo) return;
-
-        const videoId = ctaVideo.dataset.videoId;
-        if (!videoId) {
-            console.warn("⚠️ No video ID found for Call-to-Action video.");
-            return;
-        }
-
-        ctaVideo.addEventListener("click", function () {
-            console.log(`▶️ Playing CTA Video: ${videoId}`);
-
-            const width = ctaVideo.clientWidth;
-            const height = ctaVideo.clientHeight;
-
-            let iframe = document.createElement("iframe");
-            iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&showinfo=0`;
-            iframe.width = width + "px";
-            iframe.height = height + "px";
-            iframe.frameBorder = "0";
-            iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
-            iframe.allowFullscreen = true;
-            iframe.style.objectFit = "cover";
-
-            ctaVideo.innerHTML = "";
-            ctaVideo.appendChild(iframe);
-        });
-    }
-
-                function setupBiographySection() {
-                    document.querySelectorAll(".toggle-btn").forEach(btn => {
-                        btn.addEventListener("click", function () {
-                            const bio = btn.closest(".biography");
-                            if (!bio) return;
-
-                            const button = bio.querySelector(".toggle-btn img");
-                            const content = bio.querySelector(".bio-content");
-
-                            if (!bio.classList.contains("expanded")) {
-                                // Expanding
-                                bio.classList.add("expanded");
-                                button.src = "https://res.cloudinary.com/dnptzisuf/image/upload/v1739375139/white-minus-sign_ptxfgg.webp";
-                                content.style.maxHeight = content.scrollHeight + "px"; // Dynamic height
-                                content.style.opacity = "1";
-                                content.style.overflow = "hidden";
-                                content.style.transition = "max-height 0.5s ease-in-out, opacity 0.3s ease-in-out";
-                            } else {
-                                // Collapsing with proper reset
-                                bio.classList.remove("expanded");
-                                button.src = "https://res.cloudinary.com/dnptzisuf/image/upload/v1739375139/white-plus-sign_av8usw.webp";
-                                content.style.maxHeight = content.scrollHeight + "px"; // Set height before collapse
-
-                                requestAnimationFrame(() => {
-                                    requestAnimationFrame(() => {
-                                        content.style.maxHeight = "0px"; // Collapse properly
-                                        content.style.opacity = "0";
-                                    });
-                                });
-                            }
-                        });
-                    });
-                }
-
-    // ✅ Ensure all functions run properly
+    // ✅ Run all functions
     setupYouTubePlayers();
-    setupCallToActionVideo();
     setupBiographySection();
     console.log("✅ All Scripts Loaded Successfully!");
 });
