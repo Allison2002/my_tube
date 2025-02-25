@@ -485,26 +485,11 @@
                 type="image/webp"
               />
               <img
-                src="https://res.cloudinary.com/dnptzisuf/image/upload/f_auto,fl_lossy,q_auto:best,w_1920,h_1080,c_fill/v1737993374/sports_tube_background_nkpr4r.jpg"
-                alt="Sports Community Hub"
-                width="1920"
-                height="1080"
-                decoding="async"
-                style="
-                  display: block;
-                  width: 100%;
-                  height: auto;
-                  aspect-ratio: 16/9;
-                "
-              />
+              src="https://res.cloudinary.com/dnptzisuf/image/upload/f_auto,fl_lossy,q_auto:best,w_1920,h_1080,c_fill/v1737993374/sports_tube_background_nkpr4r.jpg"
+              alt="Sports Community Hub" width="1920" height="1080"
+              decoding="async" fetchpriority="high" style="display: block;
+              width: 100%; height: auto; aspect-ratio: 16/9;" " />
             </picture>
-
-            <script>
-              window.addEventListener("load", function () {
-                const img = document.querySelector(".hero-img img");
-                img.src = img.getAttribute("data-src"); // Swap in high-res image
-              });
-            </script>
           </section>
         </section>
         <div class="hero-content">
