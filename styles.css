@@ -2851,18 +2851,24 @@ input::placeholder {
 
   .page-heading h1 {
     font-size: 1.2rem !important;
-    padding-bottom: 1em !important;
-    margin-top: -16em !important;
+    padding-bottom: 0.5em !important;
+    padding-top: 2em !important;
   }
 
   .page-heading p {
-    font-size: .995rem !important;
+    font-size: .985rem !important;
     line-height: 1.5 !important;
     padding-bottom: 1em !important;
+    font-weight: 600;
   }
 
   .hero-btn {
     margin-top: -1em !important;
+  }
+
+  .buttons {
+    padding: .50em 1em !important;
+    font-size: 985rem !important;
   }
 
   .video-week-container {
