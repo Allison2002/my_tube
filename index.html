@@ -468,36 +468,59 @@
   </head>
   <body>
     <header>
-      <picture class="hero-img">
-        <source
-          srcset="
-            https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,fl_lossy,q_auto,w_1920,h_1080,ar_16:9,c_fill/v1737993374/sports_tube_background_nkpr4r.avif
-          "
-          type="image/avif"
-        />
-        <source
-          srcset="
-            https://res.cloudinary.com/dnptzisuf/image/upload/f_webp,fl_lossy,q_auto,w_1920,h_1080,ar_16:9,c_fill/v1737993374/sports_tube_background_nkpr4r.webp
-          "
-          type="image/webp"
-        />
-        <img
-          src="https://res.cloudinary.com/dnptzisuf/image/upload/f_auto,fl_lossy,q_auto,w_1920,h_1080,ar_16:9,c_fill/v1737993374/sports_tube_background_nkpr4r.jpg"
-          alt="Sports Community Hub"
-          width="1920"
-          height="1080"
-          decoding="async"
-          loading="eager"
-          fetchpriority="high"
-          style="
-            display: block;
-            width: 100%;
-            height: auto;
-            aspect-ratio: 16 / 9;
-          "
-        />
-      </picture>
+      <div class="hero-container">
+        <div id="nav"></div>
+        <section class="hero">
+          <section class="hero">
+            <picture class="hero-img">
+              <source
+                srcset="
+                  https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,fl_lossy,q_auto,w_1920,h_1080,ar_16:9,c_fill/v1737993374/sports_tube_background_nkpr4r.avif
+                "
+                type="image/avif"
+              />
+              <source
+                srcset="
+                  https://res.cloudinary.com/dnptzisuf/image/upload/f_webp,fl_lossy,q_auto,w_1920,h_1080,ar_16:9,c_fill/v1737993374/sports_tube_background_nkpr4r.webp
+                "
+                type="image/webp"
+              />
+              <img
+                src="https://res.cloudinary.com/dnptzisuf/image/upload/f_auto,fl_lossy,q_auto,w_1920,h_1080,ar_16:9,c_fill/v1737993374/sports_tube_background_nkpr4r.jpg"
+                alt="Sports Community Hub"
+                width="1920"
+                height="1080"
+                decoding="async"
+                loading="eager"
+                fetchpriority="high"
+                style="
+                  display: block;
+                  width: 100%;
+                  height: auto;
+                  aspect-ratio: 16 / 9;
+                "
+              />
+            </picture>
+          </section>
+        </section>
+        <div class="hero-content">
+          <div class="page-heading">
+            <h1>YOUR ULTIMATE DESTINATION FOR SPORTS VIDEOS</h1>
+            <p>
+              Dive into a world where sports meet entertainment. Discover,
+              watch, and share your favorite moments from baseball, football,
+              basketball, and more!
+            </p>
+          </div>
+
+          <div class="hero-btn">
+            <a class="button" href="/pages/all_videos/all-videos.html">Watch</a>
+            <a class="button" href="/pages/upload/upload.html">Upload</a>
+          </div>
+        </div>
+      </div>
     </header>
+
     <main>
       <div class="video-week-container">
         <div class="section-title">
