@@ -36,7 +36,7 @@
     <link
       rel="preload"
       as="image"
-      href="https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_auto:best,w_1280,h_720/v1737993374/sports_tube_background_nkpr4r.avif"
+      href="https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,fl_lossy,q_auto:good,w_1280,h_720/v1737993374/sports_tube_background_nkpr4r.avif"
       type="image/avif"
       media="(min-width: 1024px)"
       fetchpriority="high"
@@ -44,7 +44,7 @@
     <link
       rel="preload"
       as="image"
-      href="https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_auto:best,w_768,h_432/v1737993374/sports_tube_background_nkpr4r.avif"
+      href="https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,fl_lossy,q_auto:good,w_768,h_432/v1737993374/sports_tube_background_nkpr4r.avif"
       type="image/avif"
       media="(max-width: 1023px)"
       fetchpriority="high"
@@ -61,14 +61,13 @@
         font-family: "Roboto";
         src: url("/assets/fonts/Roboto/static/Roboto-Regular.woff2")
           format("woff2");
-        font-display: swap; /* Ensure text remains visible while loading */
+        font-display: swap;
       }
-
       @font-face {
         font-family: "Bebas Neue";
         src: url("/assets/fonts/Bebas_Neue/BebasNeue-Regular.woff2")
           format("woff2");
-        font-display: optional;
+        font-display: swap;
       }
 
       .video-box img,
@@ -474,44 +473,40 @@
         <div id="nav"></div>
         <section class="hero">
           <section class="hero">
-            <picture class="hero-img">
-              <!-- AVIF format (best quality, lowest size) -->
+            <picture>
+              <!-- AVIF (Best format for modern browsers) -->
               <source
                 srcset="
-                  https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,fl_lossy,q_auto:best,w_480,h_270/v1737993374/sports_tube_background_nkpr4r.avif    480w,
-                  https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,fl_lossy,q_auto:best,w_768,h_432/v1737993374/sports_tube_background_nkpr4r.avif    768w,
-                  https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,fl_lossy,q_auto:best,w_1280,h_720/v1737993374/sports_tube_background_nkpr4r.avif  1280w,
-                  https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,fl_lossy,q_auto:best,w_1920,h_1080/v1737993374/sports_tube_background_nkpr4r.avif 1920w
+                  https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,fl_lossy,q_auto:good,w_480,h_270/v1737993374/sports_tube_background_nkpr4r.avif    480w,
+                  https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,fl_lossy,q_auto:good,w_768,h_432/v1737993374/sports_tube_background_nkpr4r.avif    768w,
+                  https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,fl_lossy,q_auto:good,w_1280,h_720/v1737993374/sports_tube_background_nkpr4r.avif  1280w,
+                  https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,fl_lossy,q_auto:good,w_1920,h_1080/v1737993374/sports_tube_background_nkpr4r.avif 1920w
                 "
                 type="image/avif"
                 sizes="(max-width: 768px) 100vw, (max-width: 1280px) 80vw, 60vw"
               />
 
-              <!-- WebP format (for browsers that don't support AVIF) -->
+              <!-- WebP Fallback (For browsers that don't support AVIF) -->
               <source
                 srcset="
-                  https://res.cloudinary.com/dnptzisuf/image/upload/f_webp,fl_lossy,q_auto:best,w_480,h_270/v1737993374/sports_tube_background_nkpr4r.webp    480w,
-                  https://res.cloudinary.com/dnptzisuf/image/upload/f_webp,fl_lossy,q_auto:best,w_768,h_432/v1737993374/sports_tube_background_nkpr4r.webp    768w,
-                  https://res.cloudinary.com/dnptzisuf/image/upload/f_webp,fl_lossy,q_auto:best,w_1280,h_720/v1737993374/sports_tube_background_nkpr4r.webp  1280w,
-                  https://res.cloudinary.com/dnptzisuf/image/upload/f_webp,fl_lossy,q_auto:best,w_1920,h_1080/v1737993374/sports_tube_background_nkpr4r.webp 1920w
+                  https://res.cloudinary.com/dnptzisuf/image/upload/f_webp,fl_lossy,q_auto:good,w_480,h_270/v1737993374/sports_tube_background_nkpr4r.webp    480w,
+                  https://res.cloudinary.com/dnptzisuf/image/upload/f_webp,fl_lossy,q_auto:good,w_768,h_432/v1737993374/sports_tube_background_nkpr4r.webp    768w,
+                  https://res.cloudinary.com/dnptzisuf/image/upload/f_webp,fl_lossy,q_auto:good,w_1280,h_720/v1737993374/sports_tube_background_nkpr4r.webp  1280w,
+                  https://res.cloudinary.com/dnptzisuf/image/upload/f_webp,fl_lossy,q_auto:good,w_1920,h_1080/v1737993374/sports_tube_background_nkpr4r.webp 1920w
                 "
                 type="image/webp"
                 sizes="(max-width: 768px) 100vw, (max-width: 1280px) 80vw, 60vw"
               />
 
-              <!-- Fallback JPEG/PNG (for old browsers) -->
+              <!-- Fallback JPEG -->
               <img
-                src="https://res.cloudinary.com/dnptzisuf/image/upload/f_auto,fl_lossy,q_auto:best,w_1920,h_1080/v1737993374/sports_tube_background_nkpr4r.jpg"
+                src="https://res.cloudinary.com/dnptzisuf/image/upload/f_auto,fl_lossy,q_auto:good,w_1920,h_1080/v1737993374/sports_tube_background_nkpr4r.jpg"
                 alt="Sports Community Hub"
                 width="1920"
                 height="1080"
+                fetchpriority="high"
                 decoding="async"
-                style="
-                  display: block;
-                  width: 100%;
-                  height: auto;
-                  aspect-ratio: 16/9;
-                "
+                style="display: block; width: 100%; height: auto"
               />
             </picture>
 
