@@ -13,26 +13,58 @@ document.addEventListener("DOMContentLoaded", function () {
             })
             .catch(error => console.error(`❌ Error loading ${elementId}:`, error));
     }
-
-    // ✅ Load Navbar & Footer
+    // ✅ Load Navigation and Footer with proper initialization
     loadComponent("nav.html", "nav", setupNavbar);
     loadComponent("footer.html", "footer");
 
-    // ✅ Navbar Scroll Behavior (Turns Red on Scroll)
+    // ✅ Navbar Behavior - Fix: Ensure Navbar Turns Solid Red on Scroll
     function setupNavbar() {
         const navbar = document.querySelector("nav");
-        if (!navbar) return;
+        const hamburgerIcon = document.getElementById("menu-toggle");
+        const navMenu = document.getElementById("nav-menu");
+
+        if (!navbar) {
+            console.error("❌ Navbar element not found.");
+            return;
+        }
 
         function handleScroll() {
+            navbar.classList.toggle("scrolled", window.scrollY > 0);
             navbar.style.backgroundColor = window.scrollY > 0 ? "red" : "transparent";
         }
 
         document.addEventListener("scroll", handleScroll, { passive: true });
-        handleScroll(); 
+        window.addEventListener("resize", updateHamburgerVisibility);
+
+        function updateHamburgerVisibility() {
+            if (hamburgerIcon && navMenu) {
+                hamburgerIcon.style.display = window.innerWidth > 768 || navMenu.classList.contains("active") ? "none" : "flex";
+            }
+        }
+
+        if (hamburgerIcon && navMenu) {
+            hamburgerIcon.addEventListener("click", (e) => {
+                e.stopPropagation();
+                navMenu.classList.toggle("active");
+                updateHamburgerVisibility();
+            });
+
+            window.addEventListener("click", (e) => {
+                if (!navMenu.contains(e.target) && !hamburgerIcon.contains(e.target)) {
+                    navMenu.classList.remove("active");
+                    updateHamburgerVisibility();
+                }
+            });
+        }
+
+        handleScroll(); // Apply initial navbar state
+        updateHamburgerVisibility();
     }
 
-    console.log("✅ Navbar Loaded & Scroll Effect Fixed!");
 
+    
+    console.log("✅ Navbar Loaded & Scroll Effect Fixed!");
+    
     // ✅ Function to Determine if an Element is Above the Fold
     function isAboveFold(element) {
         const rect = element.getBoundingClientRect();
