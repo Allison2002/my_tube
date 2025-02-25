@@ -1,7 +1,7 @@
-document.addEventListener("DOMContentLoaded", function () {
-    console.log("✅ Optimized script with caching, CLS improvements, CTA fix, and Biography fix!");
 
-    // ✅ Get Base Path Dynamically Based on the Page Location
+document.addEventListener("DOMContentLoaded", function () {
+    console.log("✅ Fully Optimized Script Loaded!");
+
     const basePath = window.location.pathname.includes("/pages/") || window.location.pathname.includes("/videos/") ? "../../" : "./";
 
     function loadComponent(url, elementId, callback) {
@@ -14,55 +14,32 @@ document.addEventListener("DOMContentLoaded", function () {
             .catch(error => console.error(`❌ Error loading ${elementId}:`, error));
     }
 
-    // ✅ Load Navigation and Footer with proper initialization
+    // ✅ Load Navbar & Footer
     loadComponent("nav.html", "nav", setupNavbar);
     loadComponent("footer.html", "footer");
 
+    // ✅ Navbar Scroll Behavior (Turns Red on Scroll)
     function setupNavbar() {
         const navbar = document.querySelector("nav");
-        const hamburgerIcon = document.getElementById("menu-toggle");
-        const navMenu = document.getElementById("nav-menu");
-
-        if (!navbar) {
-            console.error("❌ Navbar element not found.");
-            return;
-        }
+        if (!navbar) return;
 
         function handleScroll() {
-            navbar.classList.toggle("scrolled", window.scrollY > 0);
             navbar.style.backgroundColor = window.scrollY > 0 ? "red" : "transparent";
         }
 
         document.addEventListener("scroll", handleScroll, { passive: true });
-        window.addEventListener("resize", updateHamburgerVisibility);
-
-        function updateHamburgerVisibility() {
-            if (hamburgerIcon && navMenu) {
-                hamburgerIcon.style.display = window.innerWidth > 768 || navMenu.classList.contains("active") ? "none" : "flex";
-            }
-        }
-
-        if (hamburgerIcon && navMenu) {
-            hamburgerIcon.addEventListener("click", (e) => {
-                e.stopPropagation();
-                navMenu.classList.toggle("active");
-                updateHamburgerVisibility();
-            });
-
-            window.addEventListener("click", (e) => {
-                if (!navMenu.contains(e.target) && !hamburgerIcon.contains(e.target)) {
-                    navMenu.classList.remove("active");
-                    updateHamburgerVisibility();
-                }
-            });
-        }
-
-        handleScroll();
-        updateHamburgerVisibility();
+        handleScroll(); 
     }
 
-    console.log("✅ Using Correct Cloudinary AVIF Thumbnails with caching!");
+    console.log("✅ Navbar Loaded & Scroll Effect Fixed!");
 
+    // ✅ Function to Determine if an Element is Above the Fold
+    function isAboveFold(element) {
+        const rect = element.getBoundingClientRect();
+        return rect.top < window.innerHeight && rect.bottom >= 0;
+    }
+
+    // ✅ Setup YouTube Thumbnails & Lazy Loading
     function setupYouTubePlayers() {
         const cloudinaryThumbnails = {
             "9n0T6cQ7zbM": "youtube_thumbnails_9n0T6cQ7zbM_example",
@@ -87,13 +64,12 @@ document.addEventListener("DOMContentLoaded", function () {
             "AQ2z_ujhhVs": "youtube_thumbnails_AQ2z_ujhhVs_vsrzkh"
         };
 
-        document.querySelectorAll(".youtube-facade, .youtube-facade-all").forEach((facade, index) => {
+        document.querySelectorAll(".youtube-facade, .youtube-facade-all").forEach(facade => {
             const videoId = facade.dataset.videoId || facade.dataset.id;
             if (!videoId || !cloudinaryThumbnails[videoId]) return;
 
             let optimizedThumbnailUrl = `https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_auto:low,w_400,h_225,c_fill,fl_attachment,fl_lossy/v1739982747/${cloudinaryThumbnails[videoId]}.avif`;
 
-            // ✅ Ensure correct aspect ratio and remove any black background
             facade.style.backgroundColor = "transparent"; 
             facade.style.display = "flex"; 
             facade.style.justifyContent = "center"; 
@@ -103,6 +79,7 @@ document.addEventListener("DOMContentLoaded", function () {
             facade.style.width = "100%"; 
             facade.style.maxWidth = "400px"; 
             facade.style.margin = "0 auto"; 
+            facade.style.position = "relative"; 
 
             if (!facade.querySelector("img")) {
                 let placeholder = document.createElement("img");
@@ -114,23 +91,66 @@ document.addEventListener("DOMContentLoaded", function () {
                 placeholder.style.objectFit = "cover";
                 placeholder.style.borderRadius = "10px"; 
                 placeholder.style.boxShadow = "0px 4px 6px rgba(0, 0, 0, 0.1)"; 
-                
-                // ✅ Load first 3 thumbnails eagerly, others lazily
-                placeholder.loading = index < 3 ? "eager" : "lazy"; 
+
+                // ✅ Dynamically Set Lazy or Eager Loading
+                placeholder.loading = isAboveFold(facade) ? "eager" : "lazy"; 
 
                 let playButton = document.createElement("div");
                 playButton.classList.add("play-button-overlay");
+                playButton.innerHTML = "▶"; 
+                playButton.style.position = "absolute";
+                playButton.style.top = "50%";
+                playButton.style.left = "50%";
+                playButton.style.transform = "translate(-50%, -50%)";
+                playButton.style.fontSize = "2rem";
+                playButton.style.color = "white";
+                playButton.style.background = "rgba(0, 0, 0, 0.6)";
+                playButton.style.borderRadius = "50%";
+                playButton.style.width = "50px";
+                playButton.style.height = "50px";
+                playButton.style.display = "flex";
+                playButton.style.alignItems = "center";
+                playButton.style.justifyContent = "center";
+                playButton.style.cursor = "pointer";
+                playButton.style.transition = "background 0.3s ease-in-out";
 
-                // ✅ Append elements properly
-                facade.innerHTML = "";  // Ensure no black box is left
+                playButton.addEventListener("mouseenter", () => {
+                    playButton.style.background = "rgba(0, 0, 0, 0.8)";
+                });
+                playButton.addEventListener("mouseleave", () => {
+                    playButton.style.background = "rgba(0, 0, 0, 0.6)";
+                });
+
+                facade.innerHTML = ""; 
                 facade.appendChild(placeholder);
                 facade.appendChild(playButton);
 
                 console.log(`✅ Thumbnail added for: ${videoId} (loading: ${placeholder.loading})`);
             }
+
+            facade.addEventListener("click", function () {
+                console.log(`▶️ Playing Video: ${videoId}`);
+
+                const width = facade.clientWidth;
+                const height = facade.clientHeight;
+
+                let iframe = document.createElement("iframe");
+                iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&showinfo=0`;
+                iframe.width = width + "px";
+                iframe.height = height + "px";
+                iframe.frameBorder = "0";
+                iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
+                iframe.allowFullscreen = true;
+                iframe.style.objectFit = "cover";
+                iframe.style.borderRadius = "10px"; 
+
+                facade.innerHTML = "";
+                facade.appendChild(iframe);
+            });
         });
     }
 
+    // ✅ Fix Biography Section Toggle
     function setupBiographySection() {
         document.querySelectorAll(".toggle-btn").forEach(btn => {
             btn.addEventListener("click", function () {
@@ -162,7 +182,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // ✅ Run all functions
+    // ✅ Run All Functions
     setupYouTubePlayers();
     setupBiographySection();
     console.log("✅ All Scripts Loaded Successfully!");
