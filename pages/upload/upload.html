@@ -79,26 +79,70 @@
         <section>
           <div class="blog-hero">
             <picture>
-              <source 
-                srcset="https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_auto:low,w_768,h_240,c_fit,fl_attachment/v1739332968/upload-wide_qu2mg3.avif"
+              <!-- Mobile Image -->
+              <source
+                srcset="
+                  https://res.cloudinary.com/dnptzisuf/image/upload/f_webp,q_auto:low,w_768,h_240,c_fill,fl_attachment,fl_lossy/v1739332968/upload-wide_qu2mg3.webp
+                "
+                media="(max-width: 768px)"
+                type="image/webp"
+              />
+              <source
+                srcset="
+                  https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_auto:low,w_768,h_240,c_fill,fl_attachment,fl_lossy/v1739332968/upload-wide_qu2mg3.avif
+                "
                 media="(max-width: 768px)"
                 type="image/avif"
               />
-              <source 
-                srcset="https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_auto:low,w_1280,h_400,c_fit,fl_attachment/v1739332968/upload-wide_qu2mg3.avif"
-                media="(max-width: 1280px)"
+
+              <!-- Tablet Image -->
+              <source
+                srcset="
+                  https://res.cloudinary.com/dnptzisuf/image/upload/f_webp,q_auto:eco,w_1024,h_320,c_fill,fl_attachment,fl_lossy/v1739332968/upload-wide_qu2mg3.webp
+                "
+                media="(max-width: 1024px)"
+                type="image/webp"
+              />
+              <source
+                srcset="
+                  https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_auto:eco,w_1024,h_320,c_fill,fl_attachment,fl_lossy/v1739332968/upload-wide_qu2mg3.avif
+                "
+                media="(max-width: 1024px)"
                 type="image/avif"
               />
-              <img 
-                src="https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_auto:low,w_1920,h_600,c_fit,fl_attachment/v1739332968/upload-wide_qu2mg3.avif"
-                width="1920" height="600"
+
+              <!-- Desktop Image -->
+              <source
+                srcset="
+                  https://res.cloudinary.com/dnptzisuf/image/upload/f_webp,q_auto:eco,w_1200,h_400,c_fill,fl_attachment,fl_lossy/v1739332968/upload-wide_qu2mg3.webp
+                "
+                media="(min-width: 1025px)"
+                type="image/webp"
+              />
+              <source
+                srcset="
+                  https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_auto:eco,w_1200,h_400,c_fill,fl_attachment,fl_lossy/v1739332968/upload-wide_qu2mg3.avif
+                "
+                media="(min-width: 1025px)"
+                type="image/avif"
+              />
+
+              <img
+                src="https://res.cloudinary.com/dnptzisuf/image/upload/f_webp,q_auto:eco,w_1200,h_400,c_fill,fl_attachment,fl_lossy/v1739332968/upload-wide_qu2mg3.webp"
+                alt="Watch the latest sports highlights, trending moments, and user-uploaded videos on Sports Tube"
+                width="1200"
+                height="400"
                 loading="eager"
                 fetchpriority="high"
-                class="hero-image"
+                class="blog-hero-img"
                 decoding="async"
                 importance="high"
-                alt="All Videos Page Banner"
-                aspect-ratio: 1920 / 600;
+                style="
+                  aspect-ratio: 16 / 5;
+                  width: 100%;
+                  height: auto;
+                  object-fit: cover;
+                "
               />
             </picture>
           </div>
