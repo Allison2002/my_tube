@@ -67,6 +67,16 @@
         background-size: contain;
         pointer-events: none;
       }
+
+      .blog-hero-img {
+        aspect-ratio: 16 / 9;
+        object-fit: cover;
+      }
+
+      /* Ensures space is reserved even before image loads */
+      .blog-hero {
+        min-height: 400px; /* Match image height */
+      }
     </style>
   </head>
   <body>
@@ -81,6 +91,7 @@
                 srcset="
                   https://res.cloudinary.com/dnptzisuf/image/upload/f_webp,q_auto:low,w_768,h_240,c_fill,fl_attachment,fl_lossy/v1739332963/login-wide_fmjvtn.webp
                 "
+                A
                 media="(max-width: 768px)"
                 type="image/webp"
               />
