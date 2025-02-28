@@ -1,85 +1,90 @@
 
 document.addEventListener("DOMContentLoaded", function () {
-    console.log("✅ Fully Optimized Script Loaded!");
+        console.log("✅ Fully Optimized Script Loaded!");
 
-    const basePath = window.location.pathname.includes("/pages/") || window.location.pathname.includes("/videos/") ? "../../" : "./";
-
-    function loadComponent(url, elementId, callback) {
-        const container = document.getElementById(elementId);
-        if (!container) return;
-
-        // Display temporary placeholder while fetching
-        container.innerHTML = `<div style="min-height: 50px; background: #f0f0f0;"></div>`;
-
-        fetch(url, { cache: "no-store" })
-            .then(response => response.ok ? response.text() : Promise.reject(`HTTP error! Status: ${response.status}`))
-            .then(data => {
-                container.innerHTML = data;
-                if (callback) callback();
-            })
-            .catch(error => console.error(`❌ Error loading ${elementId}:`, error));
-    }
-
-    // ✅ Load Navigation and Footer with proper initialization
-    loadComponent("nav.html", "nav", setupNavbar);
-    loadComponent("footer.html", "footer");
-
-    function setupNavbar() {
-        const navbar = document.querySelector("nav");
-        const hamburgerIcon = document.getElementById("menu-toggle");
-        const navMenu = document.getElementById("nav-menu");
-
-        if (!navbar) {
-            console.error("❌ Navbar element not found.");
-            return;
+        function getBasePath() {
+            let depth = window.location.pathname.split("/").length - 2; 
+            return depth > 0 ? "../".repeat(depth) : "./";
         }
 
-        function handleScroll() {
-            navbar.classList.toggle("scrolled", window.scrollY > 0);
-            navbar.style.backgroundColor = window.scrollY > 0 ? "red" : "transparent";
+        function loadComponent(url, elementId, callback) {
+            const container = document.getElementById(elementId);
+            if (!container || container.dataset.loaded) return; 
+
+            const basePath = getBasePath(); // Dynamically compute base path
+            fetch(basePath + url, { cache: "no-store" })
+                .then(response => response.ok ? response.text() : Promise.reject(`HTTP error! Status: ${response.status}`))
+                .then(data => {
+                    container.innerHTML = data;
+                    container.dataset.loaded = "true";
+                    if (callback) callback();
+                })
+                .catch(error => console.error(`❌ Error loading ${elementId}:`, error));
         }
 
-        // Prevent Flashback to Index Issue
-        document.querySelectorAll("nav a").forEach(link => {
-            link.addEventListener("click", function (event) {
-                const url = new URL(this.href);
-                if (url.origin === window.location.origin) {
-                    event.preventDefault();
-                    window.location.href = this.href; 
-                }
-            });
-        });
+        // ✅ Load Navigation and Footer with the corrected base path
+        loadComponent("nav.html", "nav", setupNavbar);
+        loadComponent("footer.html", "footer");
 
-        document.addEventListener("scroll", handleScroll, { passive: true });
-        window.addEventListener("resize", updateHamburgerVisibility);
+        function setupNavbar() {
+            const navbar = document.querySelector("nav");
+            const hamburgerIcon = document.getElementById("menu-toggle");
+            const navMenu = document.getElementById("nav-menu");
 
-        function updateHamburgerVisibility() {
-            if (hamburgerIcon && navMenu) {
-                hamburgerIcon.style.display = window.innerWidth > 768 || navMenu.classList.contains("active") ? "none" : "flex";
+            if (!navbar) {
+                console.error("❌ Navbar element not found.");
+                return;
             }
-        }
 
-        if (hamburgerIcon && navMenu) {
-            hamburgerIcon.addEventListener("click", (e) => {
-                e.stopPropagation();
-                navMenu.classList.toggle("active");
-                updateHamburgerVisibility();
-            });
+            function handleScroll() {
+                navbar.classList.toggle("scrolled", window.scrollY > 0);
+                navbar.style.backgroundColor = window.scrollY > 0 ? "red" : "transparent";
+            }
 
-            window.addEventListener("click", (e) => {
-                if (!navMenu.contains(e.target) && !hamburgerIcon.contains(e.target)) {
-                    navMenu.classList.remove("active");
-                    updateHamburgerVisibility();
+            document.addEventListener("scroll", handleScroll, { passive: true });
+
+            function updateHamburgerVisibility() {
+                if (hamburgerIcon && navMenu) {
+                    hamburgerIcon.style.display = window.innerWidth > 768 || navMenu.classList.contains("active") ? "none" : "flex";
                 }
+            }
+
+            if (hamburgerIcon && navMenu) {
+                hamburgerIcon.addEventListener("click", (e) => {
+                    e.stopPropagation();
+                    navMenu.classList.toggle("active");
+                    updateHamburgerVisibility();
+                });
+
+                window.addEventListener("click", (e) => {
+                    if (!navMenu.contains(e.target) && !hamburgerIcon.contains(e.target)) {
+                        navMenu.classList.remove("active");
+                        updateHamburgerVisibility();
+                    }
+                });
+            }
+
+            // ✅ Fix: Ensure links navigate properly
+            document.querySelectorAll("nav a").forEach(link => {
+                link.addEventListener("click", function (event) {
+                    const url = new URL(this.href);
+                    if (url.origin === window.location.origin) {
+                        event.preventDefault(); // Prevent default link behavior
+                        if (window.location.pathname !== url.pathname) {
+                            window.location.href = this.href; // Navigate properly
+                        }
+                    }
+                });
             });
+
+            handleScroll();
+            updateHamburgerVisibility();
         }
 
-        handleScroll(); 
-        updateHamburgerVisibility();
-    }
+        console.log("✅ Navbar Loaded & Navigation Fixed!");
 
-    console.log("✅ Navbar Loaded & Scroll Effect Fixed!");
     
+
     // ✅ Function to Determine if an Element is Above the Fold
     function isAboveFold(element) {
         const rect = element.getBoundingClientRect();
