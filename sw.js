@@ -86,7 +86,10 @@ self.addEventListener("fetch", (event) => {
                         return networkResponse;
                     });
                 })
-                .catch(() => caches.match(request) || caches.match("/index.html"))
+                .catch(() => {
+                    // Only return from cache if it exists, avoid defaulting to index.html
+                    return caches.match(request);
+                })
         );
         return;
     }
@@ -100,8 +103,6 @@ self.addEventListener("fetch", (event) => {
                     return networkResponse;
                 });
             });
-        }).catch(() => {
-            console.warn("⚠️ Network request failed, and no cache found.");
         })
     );
 });
