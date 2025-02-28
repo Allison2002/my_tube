@@ -24,7 +24,6 @@ document.addEventListener("DOMContentLoaded", function () {
     loadComponent("nav.html", "nav", setupNavbar);
     loadComponent("footer.html", "footer");
 
-    // ✅ Navbar Behavior - Fix: Ensure Navbar Turns Solid Red on Scroll
     function setupNavbar() {
         const navbar = document.querySelector("nav");
         const hamburgerIcon = document.getElementById("menu-toggle");
@@ -39,6 +38,17 @@ document.addEventListener("DOMContentLoaded", function () {
             navbar.classList.toggle("scrolled", window.scrollY > 0);
             navbar.style.backgroundColor = window.scrollY > 0 ? "red" : "transparent";
         }
+
+        // Prevent Flashback to Index Issue
+        document.querySelectorAll("nav a").forEach(link => {
+            link.addEventListener("click", function (event) {
+                const url = new URL(this.href);
+                if (url.origin === window.location.origin) {
+                    event.preventDefault();
+                    window.location.href = this.href; 
+                }
+            });
+        });
 
         document.addEventListener("scroll", handleScroll, { passive: true });
         window.addEventListener("resize", updateHamburgerVisibility);
@@ -64,12 +74,10 @@ document.addEventListener("DOMContentLoaded", function () {
             });
         }
 
-        handleScroll(); // Apply initial navbar state
+        handleScroll(); 
         updateHamburgerVisibility();
     }
 
-
-    
     console.log("✅ Navbar Loaded & Scroll Effect Fixed!");
     
     // ✅ Function to Determine if an Element is Above the Fold
