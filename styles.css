@@ -2036,11 +2036,12 @@ input::placeholder {
   }
 
   .video-grid-collections {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1em;
-    height: auto;
-    padding: 0 .5em;
-    grid-template-columns: repeat(2, 1fr)
+    display: flex;
+    flex-direction: column;
+  }
+
+  .category-page {
+    padding: 4em;
   }
 
   #collections-page {
@@ -2886,6 +2887,28 @@ input::placeholder {
     max-width: 95%;
   }
 
+  .video-grid-collections {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .article {
+    width: 100%;
+    padding: 0.5em;
+  }
+
+  .channel-icon img {
+    width: 300px;
+    height: auto;
+  }
+
+  .article-page,
+  .category-page {
+    width: 95%;
+    padding: 1em;
+  }
+
   .box1-211,
   .footer-content {
     width: 90%
@@ -2971,9 +2994,9 @@ input::placeholder {
     height: 40px
   }
 
-  .channel-icon img {
-    width: 50px;
-    height: 50px
+  .channel-info p {
+    max-width: 100%;
+    width: 90%;
   }
 
   .sct-btn {
