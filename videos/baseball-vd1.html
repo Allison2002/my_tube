@@ -45,6 +45,47 @@
     />
 
     <style>
+      #single-video {
+        width: 100%;
+        max-width: 1000px; /* Increased width for a bigger player */
+        height: auto;
+        margin: 0 auto; /* Centers the video */
+        padding: 20px 0;
+      }
+
+      .youtube-facade-single {
+        width: 900px;
+        max-width: 100%;
+        height: auto;
+        aspect-ratio: 16 / 9; 
+        background-color: black;
+        position: relative;
+        overflow: hidden;
+        border-radius: 12px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: transform 0.2s ease-in-out;
+      }
+
+      .youtube-facade-single:hover {
+        transform: scale(1.02);
+      }
+
+      .youtube-facade-single img {
+        width: 900px;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        border-radius: 12px;
+      }
+
+
+      .youtube-facade-single:hover .play-button-overlay {
+        opacity: 1;
+      }
+
       .category-page {
         text-align: center;
         padding: 2em 0;
@@ -63,6 +104,12 @@
           no-repeat center;
         background-size: contain;
         pointer-events: none;
+      }
+
+      .youtube-facade[data-video-id="9n0T6cQ7zbM"] img {
+        width: 900px;
+        height: auto;
+        object-fit: cover
       }
     </style>
   </head>
@@ -125,8 +172,8 @@
               <img
                 src="https://res.cloudinary.com/dnptzisuf/image/upload/f_webp,q_auto:eco,w_1200,h_400,c_fill,fl_attachment,fl_lossy/v1739337714/mascot-laid-iout_cb9tr5.webp"
                 alt="Watch the latest sports highlights, trending moments, and user-uploaded videos on Sports Tube"
-                width="1200"
-                height="400"
+                width="auto"
+                height="800"
                 loading="eager"
                 fetchpriority="high"
                 class="blog-hero-img"
@@ -146,28 +193,21 @@
     </header>
     <main>      
       <section class="article" id="single-video-page">
-        <div class="article-page box-color1">
+        <div class="article-page box-color2">
           <div class="category-btn">
             <a class="button" href="/pages/baseball/baseball.html">Back</a>
+          </div>          
+          <div class="single-video-title">
+            <h2>Unbelievable Plays</h2>
           </div>
-          <div class="single-video-title collections-box">
-            <h2>Bloopers Oddities & Bizarre Moments</h2>
+          
+          <div class="collections-box" id="single-video">
+              <div class="youtube-facade youtube-facade-single" data-id="UMp4IiiYgJ8">
+                <div class="play-button-overlay"></div>
+              </div>
           </div>
-          <div id="single-video">
-              <iframe
-                id="baseball-vd1"
-                src="https://www.youtube.com/embed/UMp4IiiYgJ8?si=T_NXhfjrsZIliJPh"
-                title="YouTube video player"
-                frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                referrerpolicy="strict-origin-when-cross-origin"
-                allowfullscreen
-              ></iframe>
-          </div>  
           <div class="collections-text">
-            <div class="channel-info">
-              <h3>MLB | Bloopers - Oddities</h3>
-            </div>
+            <div class="video-info"><h3>MLB | Bloopers - Oddities</h3></div>
             <div class="youtube-channel">
               <div class="channel-icon">
                 <img src="https://res.cloudinary.com/dnptzisuf/image/upload/f_auto,q_auto,w_150,h_150,c_fit,fl_attachment//v1739338148/sporting-cut_f4wn3p.avif"

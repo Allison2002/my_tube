@@ -509,20 +509,10 @@ nav img {
   display: block
 }
 
-.youtube-facade img,
 .youtube-facade-all img {
   height: auto;
   width: 100%;
   aspect-ratio: 16/9
-}
-
-.youtube-facade {
-  width: 100%;
-  height: 100%
-}
-
-.youtube-facade img {
-  display: block
 }
 
 .youtube-facade-all {
@@ -591,7 +581,7 @@ nav img {
   aspect-ratio: 16/9
 }
 
-.box2-2grid-video .youtube-facade {
+.box2-2grid-video {
   display: flex;
   width: 100%;
   height: 100%;
@@ -599,8 +589,8 @@ nav img {
 }
 
 .channel-info p {
-  max-width: 50%;
-  width: 50%;
+  max-width: 80%;
+  width: 80%;
   margin: 0 auto
 }
 
@@ -634,7 +624,7 @@ nav img {
   flex-wrap: wrap;
   text-align: left;
   align-items: left;
-  max-width: 900px;
+  max-width: 300px;
   margin: 1.5em 0;
   padding: 1em;
   background: #f2f2f2;
@@ -675,8 +665,8 @@ nav img {
   max-width: 320px;
   padding: .75em;
   display: flex;
-  justify-content: center;
-  align-items: center
+  justify-content: left;
+  align-items: center;
 }
 
 .popular-videos a {
@@ -1142,7 +1132,7 @@ span {
   object-position: center bottom
 }
 
-#single-video iframe,
+#single-video,
 .collections-box img,
 .coming-soon-container {
   object-position: center
