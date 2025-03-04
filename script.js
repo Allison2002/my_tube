@@ -103,10 +103,9 @@ document.addEventListener("DOMContentLoaded", function () {
             if (isAllVideos) {
                 console.log("✅ Applying All Videos page fix");
                 document.querySelectorAll(".video-grid-collections").forEach(grid => {
-                    grid.style.display = "flex";
-                    grid.style.flexWrap = "wrap";
-                    grid.style.justifyContent = "center";
-                    grid.style.gap = "15px";
+                    grid.style.display = "grid";
+                    grid.style.gridTemplateColumns = "repeat(3, 1fr)";
+                    grid.style.gap = "20px";
                 });
 
                 document.querySelectorAll(".collections-box").forEach(box => {
@@ -159,7 +158,7 @@ document.addEventListener("DOMContentLoaded", function () {
             const videoId = facade.dataset.videoId || facade.dataset.id;
             if (!videoId || !cloudinaryThumbnails[videoId]) return;
 
-            let optimizedThumbnailUrl = `https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_auto:low,w_250,h_140,c_fill,fl_attachment,fl_lossy/v1739982747/${cloudinaryThumbnails[videoId]}.avif`;
+            let optimizedThumbnailUrl = `https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_auto,w_250,h_140,c_fill,fl_attachment,fl_lossy/v1739982747/${cloudinaryThumbnails[videoId]}.avif`;
 
 
             // ✅ Apply same overlay logic to `.youtube-facade-all`
@@ -238,39 +237,39 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-                function setupBiographySection() {
-                    document.querySelectorAll(".toggle-btn").forEach(btn => {
-                        btn.addEventListener("click", function () {
-                            const bio = btn.closest(".biography");
-                            if (!bio) return;
+    function setupBiographySection() {
+        document.querySelectorAll(".toggle-btn").forEach(btn => {
+            btn.addEventListener("click", function () {
+                const bio = btn.closest(".biography");
+                if (!bio) return;
 
-                            const button = bio.querySelector(".toggle-btn img");
-                            const content = bio.querySelector(".bio-content");
+                const button = bio.querySelector(".toggle-btn img");
+                const content = bio.querySelector(".bio-content");
 
-                            if (!bio.classList.contains("expanded")) {
-                                // Expanding
-                                bio.classList.add("expanded");
-                                button.src = "https://res.cloudinary.com/dnptzisuf/image/upload/v1739375139/white-minus-sign_ptxfgg.webp";
-                                content.style.maxHeight = content.scrollHeight + "px"; // Dynamic height
-                                content.style.opacity = "1";
-                                content.style.overflow = "hidden";
-                                content.style.transition = "max-height 0.5s ease-in-out, opacity 0.3s ease-in-out";
-                            } else {
-                                // Collapsing with proper reset
-                                bio.classList.remove("expanded");
-                                button.src = "https://res.cloudinary.com/dnptzisuf/image/upload/v1739375139/white-plus-sign_av8usw.webp";
-                                content.style.maxHeight = content.scrollHeight + "px"; // Set height before collapse
+                if (!bio.classList.contains("expanded")) {
+                    // Expanding
+                    bio.classList.add("expanded");
+                    button.src = "https://res.cloudinary.com/dnptzisuf/image/upload/v1739375139/white-minus-sign_ptxfgg.webp";
+                    content.style.maxHeight = content.scrollHeight + "px"; // Dynamic height
+                    content.style.opacity = "1";
+                    content.style.overflow = "hidden";
+                    content.style.transition = "max-height 0.5s ease-in-out, opacity 0.3s ease-in-out";
+                } else {
+                    // Collapsing with proper reset
+                    bio.classList.remove("expanded");
+                    button.src = "https://res.cloudinary.com/dnptzisuf/image/upload/v1739375139/white-plus-sign_av8usw.webp";
+                    content.style.maxHeight = content.scrollHeight + "px"; // Set height before collapse
 
-                                requestAnimationFrame(() => {
-                                    requestAnimationFrame(() => {
-                                        content.style.maxHeight = "0px"; // Collapse properly
-                                        content.style.opacity = "0";
-                                    });
-                                });
-                            }
+                    requestAnimationFrame(() => {
+                        requestAnimationFrame(() => {
+                            content.style.maxHeight = "0px"; // Collapse properly
+                            content.style.opacity = "0";
                         });
                     });
                 }
+            });
+        });
+    }
 
     // ✅ Ensure all functions run properly
     setupYouTubePlayers();

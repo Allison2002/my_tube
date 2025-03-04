@@ -77,16 +77,13 @@
 
       .video-grid-collections {
         display: grid;
-        grid-template-columns: repeat(
-          auto-fit,
-          minmax(280px, 1fr)
-        ); /* Ensures responsiveness */
+        grid-template-columns: repeat(3, 1fr); /* Ensures 3 columns */
         gap: 20px;
         justify-content: center;
         text-align: center;
         padding: 20px;
-        max-width: 1200px;
-        margin: 0 auto; /* Center align the grid */
+        max-width: 1200px; /* Prevents stretching beyond 1200px */
+        margin: 0 auto; /* Centers the grid */
       }
 
       .collections-box {

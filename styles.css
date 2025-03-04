@@ -518,10 +518,23 @@ nav img {
   aspect-ratio: 16/9
 }
 
-.video-grid,
-.video-grid-collections {
+.video-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr)
+}
+
+.video-grid-collections {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  /* Ensures 3 columns */
+  gap: 20px;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+  max-width: 1200px;
+  /* Prevents stretching beyond 1200px */
+  margin: 0 auto;
+  /* Centers the grid */
 }
 
 .youtube-facade-all iframe {
@@ -550,15 +563,6 @@ nav img {
   height: 60px;
   background: url("https://res.cloudinary.com/dnptzisuf/image/upload/fl_attachment,fl_lossy,q_auto,c_fill,w_50,h_50,/v1738094189/play-icon_s7jgug.svg") center/contain no-repeat;
   pointer-events: none;
-}
-
-.video-grid-collections {
-  gap: 1.5em;
-  max-width: 100%;
-  justify-content: center;
-  text-align: center;
-  padding: 0 1.5em;
-  min-height: auto
 }
 
 .video-grid {
@@ -1744,6 +1748,13 @@ input::placeholder {
   border: 1px solid #b0b0b0;
   border-radius: 5px;
   font-size: 1rem
+}
+
+@media (min-width: 1920px) {
+  .video-grid-collections {
+    max-width: 1440px;
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 @media (min-width:1025px) {
