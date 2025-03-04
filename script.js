@@ -29,11 +29,6 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
 
-        function handleScroll() {
-            navbar.classList.toggle("scrolled", window.scrollY > 0);
-            navbar.style.backgroundColor = window.scrollY > 0 ? "red" : "transparent";
-        }
-
         document.addEventListener("scroll", handleScroll, { passive: true });
         window.addEventListener("resize", updateHamburgerVisibility);
 
