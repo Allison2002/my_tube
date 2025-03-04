@@ -66,6 +66,32 @@
         background-size: contain;
         pointer-events: none;
       }
+
+      .video-grid-collections {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+        justify-content: center;
+        text-align: center;
+        padding: 20px;
+      }
+
+      .collections-box {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        overflow: hidden;
+        width: 100%;
+        max-width: 350px;
+      }
+
+      .collections-box img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+        border-radius: 10px;
+        max-height: 200px;
+      }
     </style>
   </head>
   <body>
