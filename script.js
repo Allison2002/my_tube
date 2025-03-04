@@ -72,6 +72,7 @@ document.addEventListener("DOMContentLoaded", function () {
         function setupVideoContainers() {
             const isSportsHub = window.location.pathname.includes("sports_hub.html");
             const isAllVideos = window.location.pathname.includes("all-videos.html");
+            const isCategoryPage = document.getElementById("single-video-page") !== null;
 
             if (isSportsHub) {
                 console.log("✅ Applying Sports Hub video grid fix");
@@ -90,6 +91,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     box.style.width = "100%";
                     box.style.maxWidth = "350px";
                 });
+                
 
                 document.querySelectorAll(".collections-box img").forEach(img => {
                     img.style.width = "100%";
@@ -118,6 +120,26 @@ document.addEventListener("DOMContentLoaded", function () {
                     thumb.style.width = "100%";
                     thumb.style.maxWidth = "250px";
                     thumb.style.height = "auto";
+                });
+            }
+
+            if (isCategoryPage) {
+                console.log("✅ Applying category page grid fix");
+                document.querySelectorAll(".collections-box").forEach(box => {
+                    grid.style.display = "grid";
+                    grid.style.gridTemplateColumns = "repeat(3, 1fr)";
+                    grid.style.gap = "20px";
+                });
+
+                document.querySelectorAll(".youtube-facade-single").forEach(thumb => {
+                    thumb.style.width = "100%";
+                    thumb.style.maxWidth = "900px";
+                    thumb.style.height = "auto";
+                });
+
+                document.querySelectorAll(".play-button-overlay").forEach(button => {
+                    button.style.width = "60px";
+                    button.style.height = "60px";
                 });
             }
         }
