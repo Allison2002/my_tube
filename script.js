@@ -29,7 +29,6 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
 
-        document.addEventListener("scroll", handleScroll, { passive: true });
         window.addEventListener("resize", updateHamburgerVisibility);
 
         function updateHamburgerVisibility() {
@@ -53,7 +52,6 @@ document.addEventListener("DOMContentLoaded", function () {
             });
         }
 
-        handleScroll(); // Apply initial navbar state
         updateHamburgerVisibility();
     }
 

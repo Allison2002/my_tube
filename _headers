@@ -24,4 +24,6 @@
 /sw.js
   Cache-Control: public, max-age=0, no-cache, no-store, must-revalidate
 
+/assets/fonts/*
+  Access-Control-Allow-Origin: *
 
