@@ -105,7 +105,7 @@ document.addEventListener("DOMContentLoaded", function () {
             if (isAllVideos) {
                 console.log("✅ Applying All Videos page fix");
                 document.querySelectorAll(".video-grid-collections").forEach(grid => {
-                    grid.style.display = "grid";
+                    grid.style.display = "box";
                     grid.style.gridTemplateColumns = "repeat(3, 1fr)";
                     grid.style.gap = "20px";
                 });
@@ -126,9 +126,9 @@ document.addEventListener("DOMContentLoaded", function () {
             if (isCategoryPage) {
                 console.log("✅ Applying category page grid fix");
                 document.querySelectorAll(".collections-box").forEach(box => {
-                    grid.style.display = "grid";
-                    grid.style.gridTemplateColumns = "repeat(3, 1fr)";
-                    grid.style.gap = "20px";
+                    box.style.display = "box";
+                    box.style.gridTemplateColumns = "repeat(3, 1fr)";
+                    box.style.gap = "20px";
                 });
 
                 document.querySelectorAll(".youtube-facade-single").forEach(thumb => {

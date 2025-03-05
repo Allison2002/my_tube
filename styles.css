@@ -277,6 +277,46 @@ nav ul {
   position: relative
 }
 
+.youtube-facade-single {
+  width: 900px;
+  max-width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  background-color: black;
+  position: relative;
+  /* ✅ This ensures play button positions correctly */
+  overflow: hidden;
+  border-radius: 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease-in-out;
+}
+
+.youtube-facade-single img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 12px;
+}
+
+.play-button-overlay {
+  position: absolute;
+  /* ✅ Makes it float over the video */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60px;
+  height: 60px;
+  background: url("https://res.cloudinary.com/dnptzisuf/image/upload/fl_attachment,fl_lossy,q_auto,c_fill,w_60,h_60/v1738094189/play-icon_s7jgug.svg") center/contain no-repeat;
+  pointer-events: none;
+  z-index: 10;
+  /* ✅ Ensures it stays on top */
+}
+
+
 .bio-img::before,
 .sct-btn {
   transition: background .3s
