@@ -34,15 +34,52 @@
       type="font/woff2"
       crossorigin="anonymous"
     />
+    <!-- Preconnect to Cloudinary for faster connection -->
+    <link rel="preconnect" href="https://res.cloudinary.com" crossorigin>
+
+    <!-- Preload for Desktop ≥ 941px -->
     <link
       rel="preload"
       as="image"
-      href="https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,fl_lossy,q_auto:best,w_1920,h_1080,c_fill/v1737993374/sports_tube_background_nkpr4r.avif"
+      href="https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_40,fl_lossy,fl_force_strip,dpr_auto,c_fill,g_auto,w_3840,h_2160/v1737993374/sports_tube_background_nkpr4r.avif"
       type="image/avif"
-      fetchpriority="high"
-      media="(min-width: 600px)"
+      media="(min-width: 941px)"
+      imagesrcset="https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_40,fl_lossy,fl_force_strip,dpr_auto,c_fill,g_auto,w_3840,h_2160/v1737993374/sports_tube_background_nkpr4r.avif"
+      imagesizes="100vw"
     />
 
+    <!-- Preload for Tablet 769px–940px -->
+    <link
+      rel="preload"
+      as="image"
+      href="https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_40,fl_lossy,fl_force_strip,dpr_auto,c_fill,g_auto,w_1880,h_1058/v1737993374/sports_tube_background_nkpr4r.avif"
+      type="image/avif"
+      media="(min-width: 769px) and (max-width: 940px)"
+      imagesrcset="https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_40,fl_lossy,fl_force_strip,dpr_auto,c_fill,g_auto,w_1880,h_1058/v1737993374/sports_tube_background_nkpr4r.avif"
+      imagesizes="100vw"
+    />
+
+    <!-- Preload for Mobile 481px–768px -->
+    <link
+      rel="preload"
+      as="image"
+      href="https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_40,fl_lossy,fl_force_strip,dpr_auto,c_fill,g_auto,w_1536,h_864/v1737993374/sports_tube_background_nkpr4r.avif"
+      type="image/avif"
+      media="(min-width: 481px) and (max-width: 768px)"
+      imagesrcset="https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_40,fl_lossy,fl_force_strip,dpr_auto,c_fill,g_auto,w_1536,h_864/v1737993374/sports_tube_background_nkpr4r.avif"
+      imagesizes="100vw"
+    />
+
+    <!-- Preload for Fallback ≤ 480px -->
+    <link
+      rel="preload"
+      as="image"
+      href="https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_40,fl_lossy,fl_force_strip,dpr_auto,c_fill,g_auto,w_960,h_760/v1737993374/sports_tube_background_nkpr4r.avif"
+      type="image/avif"
+      media="(max-width: 480px)"
+      imagesrcset="https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_40,fl_lossy,fl_force_strip,dpr_auto,c_fill,g_auto,w_960,h_760/v1737993374/sports_tube_background_nkpr4r.avif"
+      imagesizes="100vw"
+    />
     <link
       rel="icon"
       href="https://res.cloudinary.com/dnptzisuf/image/upload/f_auto,fl_attachment,q_auto:good,c_fit/v1738106888/sports_tube_tab_logo_oajgbj.avif"
@@ -484,6 +521,88 @@
         pointer-events: none;
       }
     </style>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Sports Tube",
+        "url": "https://sports-tube.netlify.app",
+        "description": "Join Sports Tube to stream live sports, upload videos, and connect with passionate fans worldwide. Learn how our platform works!",
+        "publisher": {
+          "@type": "Organization",
+          "name": "Allison Stock Inc.",
+          "url": "https://gennyallison.netlify.app",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://res.cloudinary.com/dnptzisuf/image/upload/v1748537741/footer-logo.avif",
+            "width": 200,
+            "height": 200
+          }
+        },
+        "author": {
+          "@type": "Person",
+          "name": "Genny Allison",
+          "url": "https://codecreations.netlify.app",
+          "sameAs": [
+            "https://github.com/Allison2002",
+            "https://www.linkedin.com/in/genny-allison"
+          ]
+        },
+        "inLanguage": "en-US",
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://sports-tube.netlify.app/search?q={search_term_string}",
+          "query-input": "required name=search_term_string"
+        },
+        "image": [
+          "https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_40,fl_lossy,dpr_auto,w_3840/v1737993374/sports_tube_background_nkpr4r.avif"
+        ],
+        "mainEntity": {
+          "@type": "WebPage",
+          "@id": "https://sports-tube.netlify.app/#home",
+          "name": "Sports Tube - Your Ultimate Destination for Sports Videos",
+          "url": "https://sports-tube.netlify.app",
+          "description": "Stream sports videos, upload your own highlights, and stay connected with the Sports Tube community featuring football, basketball, baseball, and more.",
+          "primaryImageOfPage": {
+            "@type": "ImageObject",
+            "url": "https://res.cloudinary.com/dnptzisuf/image/upload/f_auto,q_auto,w_960/v1737993374/sports_tube_background_nkpr4r.avif",
+            "width": 960,
+            "height": 760
+          }
+        },
+        "hasPart": [
+          {
+            "@type": "CollectionPage",
+            "name": "Football Videos",
+            "url": "https://sports-tube.netlify.app/pages/football/football.html"
+          },
+          {
+            "@type": "CollectionPage",
+            "name": "Basketball Videos",
+            "url": "https://sports-tube.netlify.app/pages/basketball/basketball.html"
+          },
+          {
+            "@type": "CollectionPage",
+            "name": "Baseball Videos",
+            "url": "https://sports-tube.netlify.app/pages/baseball/baseball.html"
+          },
+          {
+            "@type": "WebPage",
+            "name": "Upload Page",
+            "url": "https://sports-tube.netlify.app/pages/upload/upload.html"
+          },
+          {
+            "@type": "WebPage",
+            "name": "Community Blog",
+            "url": "https://sports-tube-community.netlify.app"
+          }
+        ],
+        "about": {
+          "@type": "Thing",
+          "name": "Sports Video Sharing Platform"
+        }
+      }
+    </script>
   </head>
   <body>
     <header>
