@@ -417,7 +417,12 @@ nav {
 
 .nav-right {
   display: flex;
+  align-content: center;
   gap: 0.5em;
+}
+
+.search-container {
+  margin: auto 0;
 }
 
 .nav-links li {
@@ -477,7 +482,18 @@ nav img {
 }
 
 #menu-toggle img {
-  width: 5vw
+  width: 100%;
+  max-width: 5vw;
+  height: auto;
+  display: block;
+  object-fit: contain;
+  padding: 0.2em;
+}
+
+.logo-container img {
+  width: 100%;
+  height: auto;
+  max-height: 5vw;
 }
 
 .hamburger-icon,
