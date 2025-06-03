@@ -18,42 +18,38 @@ document.addEventListener("DOMContentLoaded", function () {
     loadComponent("nav.html", "nav", setupNavbar);
     loadComponent("footer.html", "footer");
 
-    // ✅ Navbar Behavior - Fix: Ensure Navbar Turns Solid Red on Scroll
     function setupNavbar() {
+        console.log("✅ setupNavbar ran");
+
         const navbar = document.querySelector("nav");
         const hamburgerIcon = document.getElementById("menu-toggle");
         const navMenu = document.getElementById("nav-menu");
 
-        if (!navbar) {
-            console.error("❌ Navbar element not found.");
+        if (!navbar || !hamburgerIcon || !navMenu) {
+            console.error("❌ Navbar, hamburger icon, or nav menu not found.");
             return;
         }
 
-        window.addEventListener("resize", updateHamburgerVisibility);
-
+        // ✅ Show hamburger only on small screens
         function updateHamburgerVisibility() {
-            if (hamburgerIcon && navMenu) {
-                hamburgerIcon.style.display = window.innerWidth > 768 || navMenu.classList.contains("active") ? "none" : "flex";
+            hamburgerIcon.style.display = window.innerWidth <= 1024 ? "flex" : "none";
+        }
+
+        hamburgerIcon.addEventListener("click", (e) => {
+            e.stopPropagation();
+            navMenu.classList.toggle("active");
+        });
+
+        window.addEventListener("click", (e) => {
+            if (!navMenu.contains(e.target) && !hamburgerIcon.contains(e.target)) {
+                navMenu.classList.remove("active");
             }
-        }
+        });
 
-        if (hamburgerIcon && navMenu) {
-            hamburgerIcon.addEventListener("click", (e) => {
-                e.stopPropagation();
-                navMenu.classList.toggle("active");
-                updateHamburgerVisibility();
-            });
-
-            window.addEventListener("click", (e) => {
-                if (!navMenu.contains(e.target) && !hamburgerIcon.contains(e.target)) {
-                    navMenu.classList.remove("active");
-                    updateHamburgerVisibility();
-                }
-            });
-        }
-
+        window.addEventListener("resize", updateHamburgerVisibility);
         updateHamburgerVisibility();
     }
+
 
     console.log("✅ Using Correct Cloudinary AVIF Thumbnails with caching!");
 

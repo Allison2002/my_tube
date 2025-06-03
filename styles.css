@@ -87,8 +87,9 @@ p {
 }
 
 main {
-  min-height: 115vh;
-  width: 100vw;
+  min-height: 100vh;
+  width: 100%;
+  max-width: 100vw;
   display: flex;
   flex-direction: column;
   justify-content: center
@@ -127,7 +128,7 @@ nav ul li a {
   font-weight: 700
 }
 
-.menu-toggle img,
+#menu-toggle img,
 .sct-btn,
 html,
 img {
@@ -408,10 +409,15 @@ nav {
   width: 100%;
   height: 80px;
   padding: 1em 2em;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
   z-index: 1000;
   background-color: #fe0000;
+}
+
+.nav-right {
+  display: flex;
+  gap: 0.5em;
 }
 
 .nav-links li {
@@ -452,7 +458,7 @@ nav img {
   display: flex;
   text-align: right;
   align-items: last baseline;
-  width: 13vw
+  width: 13vw;
 }
 
 .search-container input {
@@ -467,17 +473,12 @@ nav img {
   padding-bottom: .5em
 }
 
-.menu-toggle {
-  align-items: center;
-  justify-content: center
-}
-
-.menu-toggle img {
+#menu-toggle img {
   width: 5vw
 }
 
 .hamburger-icon,
-.menu-toggle,
+#menu-toggle,
 .stay-updated-icon,
 .uploads-icon {
   width: 40px;
@@ -1451,8 +1452,9 @@ footer {
   bottom: 0;
   border-top: .0625em solid #1a1d9e;
   padding-top: 6em;
-  max-width: 100;
-  max-height: 20vh
+  width: 100%;
+  max-width: 100vw;
+  max-height: 20vh;
 }
 
 .footer-content {
@@ -1533,13 +1535,17 @@ footer {
 
 .input-text {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  justify-content: left;
+  align-content: center;
+  width: 100%;
+  max-width: 100vw;
   gap: .5em
 }
 
 .input-text input {
   padding: .5em;
-  width: 20em
+  width: 50%;
 }
 
 .join h4 {
@@ -1571,6 +1577,23 @@ button.submit-button {
   background-color: #1a1d9e;
   color: #fff;
   transition: background-color .3s
+}
+
+#input-submit-btn {
+  width: 50%;
+  max-width: 50%;
+  display: flex;
+  justify-content: left;
+}
+
+#input-submit-btn .btn2 {
+  width: 100%;
+  max-width: 100vw;
+  justify-content: left;
+}
+
+#input-submit-btn.sct-btn {
+  padding: 0;
 }
 
 .social-media img {
@@ -1823,6 +1846,10 @@ input::placeholder {
     height: 600px;
     margin-top: -60px
   }
+
+  #menu-toggle {
+    display: none;
+  }
 }
 
 @media (max-width:1024px) {
@@ -1862,6 +1889,28 @@ input::placeholder {
     padding-top: 1.5em;
     margin-top: -5em
   }
+
+  .nav-menu {
+    display: none;
+    flex-direction: column;
+    background: #000;
+    /* or your theme color */
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 100%;
+    z-index: 999;
+    padding: 1rem;
+  }
+
+  #menu-toggle {
+    display: flex;
+  }
+
+  .nav-links.active,
+  #nav-menu.active {
+    display: flex
+  }
 }
 
 @media (min-width:768px) and (max-width:1024px) {
@@ -1878,14 +1927,6 @@ input::placeholder {
   .youtube-channel {
     flex-direction: column;
     text-align: center
-  }
-
-  .nav-links {
-    display: none !important
-  }
-
-  .menu-toggle {
-    display: block !important
   }
 
   .sct-btn {
@@ -1936,7 +1977,6 @@ input::placeholder {
   .page-heading h1 {
     font-size: 1.5rem !important;
     padding-bottom: 1em !important;
-    margin-top: -8em !important;
   }
 
   .page-heading p {
@@ -2198,11 +2238,6 @@ input::placeholder {
     margin: 1em auto
   }
 
-  .hero-btn {
-    margin-top: -2em
-  }
-
-
   .video-week-container {
     display: flex;
     flex-direction: column;
@@ -2254,8 +2289,13 @@ input::placeholder {
 
   body,
   html {
+    width: 100%;
     max-width: 100vw;
     overflow-x: hidden
+  }
+
+  body {
+    min-height: 100vh;
   }
 
   main,
@@ -2289,16 +2329,16 @@ input::placeholder {
     background-color: #fe0000
   }
 
-  .nav-links.active,
-  .nav-menu.active {
-    display: flex
-  }
+
 
   .sub-heading {
     width: 40vw
   }
 
   nav {
+    width: 100%;
+    max-width: 100vw;
+    overflow: hidden;
     flex-direction: row;
     align-items: flex-start;
     flex-wrap: wrap
@@ -3089,7 +3129,6 @@ input::placeholder {
     max-width: 100vw;
     height: auto;
     min-height: 200px;
-    margin-top: -60px
   }
 
   .hero-container-collections {
