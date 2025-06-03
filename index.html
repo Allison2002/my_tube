@@ -83,21 +83,17 @@
       }
 
       .hero-container {
-        background-color: #000;
         display: flex;
         justify-content: center;
         align-items: center;
         position: relative;
         width: 100%;
-        height: 100vh;
-        min-height: 500px;
+        height: auto;
+        min-height: auto;
       }
 
       .hero-container {
-        background-color: #222; /* Placeholder color */
-        background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 5"><rect width="10" height="5" fill="%23222222"/></svg>'); /* Lightweight placeholder */
-        background-size: cover;
-        min-height: 500px;
+        background-color: #222;
       }
 
       .hero-img {
@@ -111,7 +107,6 @@
         width: 100%;
         height: auto;
         max-width: 1920px;
-        aspect-ratio: 16 / 9;
         object-fit: cover;
       }
 
@@ -494,52 +489,40 @@
     <header>
       <div class="hero-container">
         <div id="nav"></div>
-        <section class="hero">
-          <picture>
-            <!-- Mobile (max-width: 600px) -->
-            <source
-              srcset="
-                https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,fl_lossy,q_auto:low,w_600,h_400,c_fill/v1737993374/sports_tube_background_nkpr4r.avif
-              "
-              media="(max-width: 600px)"
-              width="600"
-              height="400"
-            />
+        <picture> 
+          <!-- Desktop ≥ 941px -->
+          <source
+            srcset="https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_40,fl_lossy,fl_force_strip,dpr_auto,c_fill,g_auto,w_3840,h_2160/v1737993374/sports_tube_background_nkpr4r.avif"
+            media="(min-width: 941px)"
+            type="image/avif"
+          />
 
-            <!-- Tablet (601px - 1200px) -->
-            <source
-              srcset="
-                https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,fl_lossy,q_auto:low,w_1024,h_600,c_fill/v1737993374/sports_tube_background_nkpr4r.avif
-              "
-              media="(max-width: 1200px)"
-              width="1024"
-              height="600"
-            />
+          <!-- Tablet 769px–940px -->
+          <source
+            srcset="https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_40,fl_lossy,fl_force_strip,dpr_auto,c_fill,g_auto,w_1880,h_1058/v1737993374/sports_tube_background_nkpr4r.avif"
+            media="(min-width: 769px) and (max-width: 940px)"
+            type="image/avif"
+          />
 
-            <!-- Desktop (1201px+) -->
-            <source
-              srcset="
-                https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,fl_lossy,q_auto:low,w_1920,h_1080,c_fill/v1737993374/sports_tube_background_nkpr4r.avif
-              "
-              media="(min-width: 1201px)"
-              width="1920"
-              height="1080"
-            />
+          <!-- Mobile 481px–768px -->
+          <source
+            srcset="https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_40,fl_lossy,fl_force_strip,dpr_auto,c_fill,g_auto,w_1536,h_864/v1737993374/sports_tube_background_nkpr4r.avif"
+            media="(min-width: 481px) and (max-width: 768px)"
+            type="image/avif"
+          />
 
-            <img
-              src="https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,fl_lossy,q_auto:low,w_1280,h_720,c_fill/v1737993374/sports_tube_background_nkpr4r.avif"
-              alt="Sports Community Hub"
-              width="1280"
-              height="720"
-              decoding="async"
-              loading="eager"
-              fetchpriority="high"
-              sizes="(max-width: 600px) 100vw, (max-width: 1200px) 80vw, 60vw"
-              style="object-fit: cover; width: 100%; height: auto"
-            />
-          </picture>
-        </section>
-
+          <!-- Fallback ≤480px -->
+          <img
+            src="https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_40,fl_lossy,fl_force_strip,dpr_auto,c_fill,g_auto,w_960,h_760/v1737993374/sports_tube_background_nkpr4r.avif"
+            alt="Hero image of Sports Tube Video Blog homepage showcasing responsive, SEO-optimized design"
+            width="480"
+            height="380"
+            style="object-fit: cover;"
+            fetchpriority="high"
+            loading="eager"
+            decoding="async"
+          />
+        </picture>
         <div class="hero-content">
           <div class="page-heading">
             <h1>YOUR ULTIMATE DESTINATION FOR SPORTS VIDEOS</h1>
