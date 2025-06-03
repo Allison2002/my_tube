@@ -438,9 +438,12 @@ nav ul li :hover {
 }
 
 .logo-container {
-  width: 330px;
-  max-width: 330px;
-  min-width: 100px
+  width: 100%;
+  max-width: 225px;
+  height: auto;
+  display: block;
+  object-fit: contain;
+  padding: 0.2em;
 }
 
 .logo-container img {
