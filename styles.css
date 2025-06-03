@@ -73,7 +73,8 @@ a {
 .sct-btn,
 nav,
 nav ul li a {
-  color: #fff
+  color: #fff;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.85);
 }
 
 body {
@@ -2944,8 +2945,8 @@ input::placeholder {
   }
 
   .video-grid-collections {
-    display: flex;
-    flex-direction: column;
+    display: flex !important;
+    flex-direction: column !important;
     width: 100%;
   }
 
@@ -3084,9 +3085,10 @@ input::placeholder {
 
   .blog-hero img {
     object-fit: cover;
-    width: 100vw;
-    height: 35vh;
-    min-height: 250px;
+    width: 100%;
+    max-width: 100vw;
+    height: auto;
+    min-height: 200px;
     margin-top: -60px
   }
 

@@ -5,12 +5,15 @@
   "main": "script.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-     "build": "critical --src index.html --css styles.css --width 1300 --height 900 --inline"
+    "build": "critical --src index.html --css styles.css --width 1300 --height 900 --inline"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "critical": "^7.2.1"
+  },
+  "dependencies": {
+    "my_tube": "file:"
   }
 }
