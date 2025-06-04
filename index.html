@@ -80,7 +80,6 @@
       imagesizes="100vw"
     />
 
-    <!-- Mobile fallback ≤480px -->
     <link
       rel="preload"
       as="image"
@@ -771,7 +770,12 @@
             type="image/avif"
           />
           <img
-            src="https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_40,w_480,h_285/v1748537741/sports-tube-mobile_j2lush.avif"
+            src="https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_40,w_320,h_190/v1748537741/sports-tube-mobile_j2lush.avif"
+            srcset="
+              https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_40,w_320,h_190/v1748537741/sports-tube-mobile_j2lush.avif 320w,
+              https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_40,w_480,h_285/v1748537741/sports-tube-mobile_j2lush.avif 480w
+            "
+            sizes="100vw"
             alt="Hero image of Sports Tube Video Blog homepage showcasing responsive, SEO-optimized design"
             width="480"
             height="285"
@@ -780,6 +784,7 @@
             loading="eager"
             decoding="async"
           />
+
         </picture>
         <div class="hero-content">
           <div class="page-heading">
