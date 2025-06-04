@@ -312,7 +312,7 @@ nav ul {
   transform: translate(-50%, -50%);
   width: 60px;
   height: 60px;
-  background: url("https://res.cloudinary.com/dnptzisuf/image/upload/fl_attachment,fl_lossy,q_auto,c_fill,w_60,h_60/v1738094189/play-icon_s7jgug.svg") center/contain no-repeat;
+  background: url("https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_auto,fl_lossy,fl_force_strip,dpr_auto,c_fill,g_auto,w_60,h_60/v1738094189/play-icon_s7jgug.svg") center/contain no-repeat;
   pointer-events: none;
   z-index: 10;
   /* ✅ Ensures it stays on top */
