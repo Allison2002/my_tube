@@ -131,6 +131,9 @@
         width: 100%;
         max-width: 100vw;
         min-height: 352px;
+        aspect-ration: 1920 / 1080;
+        overflow: hidden;
+
       }
 
       .hero-container {
@@ -336,10 +339,14 @@
 
       .section-title {
         width: 100%;
+        max-width: 100vw;
         text-align: center;
         padding: 2rem 0;
         font-size: 2.5rem;
         font-weight: bold;
+        line-height: 1.2;
+        text-wrap: balance;
+        min-height: 3em;
         text-transform: uppercase;
         color: black;
         position: relative;
@@ -355,8 +362,7 @@
         min-height: 12rem;
       }
 
-      .page-heading h1 {
-        font-display: swap; /* Ensure text is visible before fonts load */
+      .page-heading h1 
         will-change: opacity, transform;
         animation: fade-in 0.8s ease-in-out forwards;
       }
