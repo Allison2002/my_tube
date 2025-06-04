@@ -32,13 +32,19 @@ h2 {
 @font-face {
   font-family: "Bebas Neue";
   src: url("/assets/fonts/Bebas_Neue/BebasNeue-Regular.woff2") format("woff2");
-  font-display: swap
+  ffont-display: swap;
+  ascent-override: 92%;
+  descent-override: 8%;
+  line-gap-override: 0%;
 }
 
 @font-face {
   font-family: Roboto;
   src: url("/assets/fonts/Roboto/static/Roboto-Regular.woff2") format("woff2");
-  font-display: swap
+  font-display: swap;
+  ascent-override: 92%;
+  descent-override: 8%;
+  line-gap-override: 0%;
 }
 
 .fonts-loaded body {
