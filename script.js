@@ -10,9 +10,25 @@ document.addEventListener("DOMContentLoaded", function () {
         document.documentElement.classList.remove("fonts-loading");
         document.documentElement.classList.add("fonts-loaded");
     });
-    
+
     console.log("✅ Optimized script with caching, CLS improvements, CTA fix, and Biography fix!");
 
+    document.documentElement.classList.add("fonts-loading");
+
+    if ("fonts" in document) {
+        Promise.all([
+        document.fonts.load('1em "Roboto"'),
+        document.fonts.load('700 1em "Roboto"'),
+        document.fonts.load('1em "Bebas Neue"'),
+        document.fonts.load('1em "Origin"')
+        ]).then(() => {
+        document.documentElement.classList.remove("fonts-loading");
+        document.documentElement.classList.add("fonts-loaded");
+        });
+    } else {
+        document.documentElement.classList.remove("fonts-loading");
+        document.documentElement.classList.add("fonts-loaded");
+    }
     // ✅ Get Base Path Dynamically Based on the Page Location
     const basePath = window.location.pathname.includes("/pages/") || window.location.pathname.includes("/videos/") ? "../../" : "./";
 

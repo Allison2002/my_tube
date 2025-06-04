@@ -95,6 +95,27 @@
       type="image/avif"
     />
     <style>
+      .fonts-loading .page-heading h1 {
+        font-family: 'Bebas Neue', sans-serif;
+        font-size: 1rem;
+        line-height: 1;
+        font-weight: normal;
+        opacity: 0.01; /* Keeps dimensions without visual cost */
+      }
+
+      .fonts-loading .page-heading p {
+        font-family: Roboto, Arial, sans-serif;
+        font-size: 1rem;
+        line-height: 1;
+        font-weight: normal;
+        opacity: 0.01; /* Keeps dimensions without visual cost */
+      }
+
+      .fonts-loaded .page-heading h1,
+      .fonts-loaded .page-heading p {
+        opacity: 1;
+        transition: opacity 0.3s ease-in-out;
+      }
 
       .video-box img,
       .video-box iframe {
@@ -727,7 +748,7 @@
       }
     </script>
   </head>
-  <body>
+  <body class="fonts-loading">
     <header>
       <div id="nav"></div>
       <div class="hero-container">
@@ -901,6 +922,28 @@
                 class="youtube-facade video-styled video-thumbnail"
                 data-video-id="lRTUIBVfLP4"
               >
+                <picture>
+                  <source
+                    srcset="https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_40,fl_lossy,fl_force_strip,dpr_auto,c_fill,g_auto,w_800,h_450/v1739209644/thumbnails-unbelievable-plays_d23ogq.avif"
+                    type="image/avif"
+                    media="(min-width: 1200px)"
+                    sizes="100vw"
+                  />
+                  <source
+                    srcset="https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_40,fl_lossy,fl_force_strip,dpr_auto,c_fill,g_auto,w_800,h_450/v1739209644/thumbnails-unbelievable-plays_d23ogq.avif"
+                    type="image/avif"
+                    media="(min-width: 481px) and (max-width: 1199px)"
+                    sizes="100vw"
+                  />
+                  <img 
+                    src="https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_40,fl_lossy,fl_force_strip,dpr_auto,c_fill,g_auto,w_800,h_450/v1739209644/thumbnails-unbelievable-plays_d23ogq.avif"
+                    alt="Basketball Video Thumbnail"
+                    loading="auto"
+                    width="400"
+                    height="225"
+                    style="object-fit: cover;"
+                  />
+                </picture>
                 <img
                   src="https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_40,fl_lossy,fl_force_strip,dpr_auto,c_fill,g_auto,w_720,h_404/v1739209644/thumbnails-unbelievable-plays_d23ogq.avif"
                   alt="Baseball Video Thumbnail"
