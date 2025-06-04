@@ -445,16 +445,16 @@ nav ul li :hover {
 .logo-container {
   width: 100%;
   max-width: 225px;
+  max-height: 100px;
   height: auto;
-  display: block;
-  object-fit: contain;
   padding: 0.2em;
 }
 
 .logo-container img {
   width: 100%;
   height: auto;
-  max-height: 80px
+  display: block;
+  object-fit: contain;
 }
 
 nav img {
@@ -488,11 +488,6 @@ nav img {
   display: block;
   object-fit: contain;
   padding: 0.2em;
-}
-
-.logo-container img {
-  width: 100%;
-  height: auto;
 }
 
 .hamburger-icon,
@@ -2678,11 +2673,6 @@ input::placeholder {
     height: 30vh;
     object-fit: cover;
     object-position: center
-  }
-
-  .logo-container {
-    padding: 0;
-    margin-left: 0
   }
 
   .join-section {

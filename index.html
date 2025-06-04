@@ -109,6 +109,7 @@
         color: white;
         font-size: 1.5rem;
         max-width: 80%;
+        height: auto;
       }
 
       .hero-container {
@@ -118,10 +119,9 @@
         position: relative;
         width: 100%;
         max-width: 100vw;
-        min-height: 300px;
-        aspect-ration: 1920 / 1080;
+        min-height: 800px;
+        height: auto;
         overflow: hidden;
-
       }
 
       .hero-container {
@@ -133,10 +133,10 @@
         height: auto;
         display: block;
         object-fit: cover;
+        min-height: 800px;
       }
 
       .hero-container picture img {
-        aspect-ratio: 1920 / 1080;
         width: 100%;
         max-width: 100vw;
         height: auto;
@@ -150,19 +150,74 @@
         object-fit: cover;
       }
 
+      .sub-heading {
+        width: 40vw;
+      }
+
+      .section-title {
+        width: 100%;
+        max-width: 100vw;
+        text-align: center;
+        padding: 1em 0 0;
+        font-size: 2.5rem;
+        font-weight: bold;
+        line-height: 1.2;
+        text-wrap: balance;
+        min-height: 2em;
+        text-transform: uppercase;
+        color: black;
+        z-index: 10;
+        background: #e1e5e8;
+      }
+
+      .page-heading {
+        padding-top: 2em;
+        width: 50%;
+        text-align: left;
+        margin-top: 3em;
+        min-height: 12rem;
+      }
+
+      .page-heading h1  {
+        will-change: opacity, transform;
+        animation: fade-in 0.8s ease-in-out forwards;
+      }
+
+      @keyframes fade-in {
+        from {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .page-heading h1,
+      .page-heading p {
+        color: white;
+      }
+
+      .page-heading h1 {
+        font-size: 3rem;
+        padding-bottom: 1em;
+      }
+
+      .page-heading p {
+        font-size: 2rem;
+        line-height: 1.5;
+        padding-bottom: 1em;
+      }
+
       .hero-btn {
         display: flex;
         flex-direction: row;
-        gap: 10px;
-        margin-top: 1em;
-        position: relative;
+        flex-wrap: wrap;
+        gap: 1rem;
         z-index: 20;
         opacity: 1;
         visibility: visible;
-      }
-
-      .sub-heading {
-        width: 40vw;
       }
 
       .video-week-container {
@@ -193,8 +248,9 @@
         text-align: center;
         width: 100%;
         max-width: 500px;
+        margin: 0 auto;
       }
-      
+
       .video-box {
         width: 100%;
         max-width: 500px;
@@ -318,73 +374,6 @@
         width: 100%;
         height: 100%;
         overflow: hidden;
-      }
-
-      .section-title {
-        width: 100%;
-        max-width: 100vw;
-        text-align: center;
-        padding: 1em 0 0;
-        font-size: 2.5rem;
-        font-weight: bold;
-        line-height: 1.2;
-        text-wrap: balance;
-        min-height: 2em;
-        text-transform: uppercase;
-        color: black;
-        z-index: 10;
-        background: #e1e5e8;
-      }
-
-      .page-heading {
-        padding-top: 2em;
-        width: 50%;
-        text-align: left;
-        margin-top: 3em;
-        min-height: 12rem;
-      }
-
-      .page-heading h1  {
-        will-change: opacity, transform;
-        animation: fade-in 0.8s ease-in-out forwards;
-      }
-
-      @keyframes fade-in {
-        from {
-          opacity: 0;
-          transform: translateY(10px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
-      .page-heading h1,
-      .page-heading p {
-        color: white;
-      }
-
-      .page-heading h1 {
-        font-size: 3rem;
-        padding-bottom: 1em;
-      }
-
-      .page-heading p {
-        font-size: 2rem;
-        line-height: 1.5;
-        padding-bottom: 1em;
-      }
-
-      .hero-btn {
-        display: flex;
-        flex-direction: row;
-        gap: 10px;
-        margin-top: -1em;
-        position: relative;
-        z-index: 20;
-        opacity: 1;
-        visibility: visible;
       }
 
       .call2action-container {
@@ -537,40 +526,13 @@
           justify-content: center;
           overflow: hidden;
           height: auto;
+          min-height: 400px;
         }
 
-        .hero-img {
-          width: 100vw;
-          height: auto;
-          aspect-ratio: 16/9;
-          max-height: 100vh;
-          object-fit: cover;
-        }
-        .video-week-container { 
-          display: flex;
-          flex-direction: column;
-          max-width: 90vw;
-          width: 90%;
-          height: auto;
-          padding: 0;
-          gap: 1em;
-          margin: 3em auto 0;
-        }
-
-        .video-grid {
-          display: flex;
-          flex-direction: column;
-          height: auto;
-          width: 95%;
-          max-width: 95vw;
-          margin: 1em auto 0;
-        }
-
-        .call2action {
-          margin: 0 auto;
-          padding: 0 1em;
-          width: 90%;
-          max-width: 90vw;
+        .hero-container img,
+        .hero-container picture img {
+          aspect-ratio: auto;
+          min-height: 400px;
         }
 
         .page-heading h1,
@@ -593,9 +555,50 @@
           padding: 0;
           width: 100%
         }
+
+        .hero-img {
+          width: 100vw;
+          height: auto;
+          max-height: 100vh;
+          object-fit: content;
+        }
+
+        .video-week-container { 
+          display: flex;
+          flex-direction: column;
+          max-width: 90vw;
+          width: 90%;
+          height: auto;
+          padding: 0;
+          gap: 1em;
+          margin: 3em auto 0;
+        }
+
+        .video-grid {
+          display: flex;
+          flex-direction: column;
+          height: auto;
+          min-height: auto;
+          width: 95%;
+          max-width: 95vw;
+          margin: 1em auto 0;
+        }
+
+        .call2action {
+          margin: 0 auto;
+          padding: 0 1em;
+          width: 90%;
+          max-width: 90vw;
+        
       }
 
       @media (max-width:480px) {
+
+        .hero-container img,
+        .hero-container picture img {
+          aspect-ratio: 480 / 380;
+        }
+        
         .page-heading {
           transform: translateY(-10%);
           width: 90%;
@@ -624,6 +627,15 @@
         .buttons {
           padding: .50em 1em;
           font-size: 985rem;
+        }
+
+      }
+
+      @media (max-width: 400px) {
+
+        .hero-container img,
+        .hero-container picture img {
+          aspect-ratio: 320 / 500;
         }
       }
     </style>
@@ -712,8 +724,8 @@
   </head>
   <body>
     <header>
+      <div id="nav"></div>
       <div class="hero-container">
-        <div id="nav"></div>
         <picture> 
           <!-- Desktop ≥ 941px -->
           <source
@@ -738,16 +750,16 @@
 
           <!-- Fallback ≤480px -->
           <img
-            src="https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_40,fl_lossy,fl_force_strip,dpr_auto,c_fill,g_auto,w_960,h_720/v1748537741/sports-tube-mobile_j2lush.avif"
+            src="https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_40,fl_lossy,fl_force_strip,dpr_auto,c_fill,g_auto,w_960,h_760/v1748537741/sports-tube-mobile_j2lush.avif"
             srcset="
-              https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_40,fl_lossy,fl_force_strip,dpr_auto,c_fill,g_auto,w_480,h_360/v1748537741/sports-tube-mobile_j2lush.avif 1x,
-              https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_40,fl_lossy,fl_force_strip,dpr_auto,c_fill,g_auto,w_960,h_720/v1748537741/sports-tube-mobile_j2lush.avif 2x
+              https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_40,fl_lossy,fl_force_strip,dpr_auto,c_fill,g_auto,w_480,h_380/v1748537741/sports-tube-mobile_j2lush.avif 1x,
+              https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_40,fl_lossy,fl_force_strip,dpr_auto,c_fill,g_auto,w_960,h_760/v1748537741/sports-tube-mobile_j2lush.avif 2x
             "
             sizes="(max-width: 480px) 100vw"
             alt="Hero image of Sports Tube Video Blog homepage showcasing responsive, SEO-optimized design"
             width="480"
-            height="360"
-            style="object-fit: cover; aspect-ratio: 480 / 360;"
+            height="380"
+            style="object-fit: cover;"
             fetchpriority="high"
             loading="eager"
             decoding="async"
