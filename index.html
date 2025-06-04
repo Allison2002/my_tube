@@ -37,7 +37,7 @@
     <!-- Preconnect to Cloudinary for faster connection -->
     <link rel="preconnect" href="https://res.cloudinary.com" crossorigin>
 
-    <!-- Desktop ≥ 1440px -->
+        <!-- Desktop ≥ 1440px -->
     <link
       rel="preload"
       as="image"
@@ -45,9 +45,7 @@
       type="image/avif"
       media="(min-width: 1440px)"
       imagesrcset="
-        https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_40,w_1440,h_810/v1737993374/sports_tube_background_nkpr4r.avif 1440w,
-        https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_40,w_1920,h_1080/v1737993374/sports_tube_background_nkpr4r.avif 1920w,
-        https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_40,w_2560,h_1440/v1737993374/sports_tube_background_nkpr4r.avif 2560w
+        https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_40,w_1920,h_1080/v1737993374/sports_tube_background_nkpr4r.avif 1920w
       "
       imagesizes="100vw"
     />
@@ -60,7 +58,6 @@
       type="image/avif"
       media="(min-width: 769px) and (max-width: 940px)"
       imagesrcset="
-        https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_40,w_768,h_432/v1737993374/sports_tube_background_nkpr4r.avif 768w,
         https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_40,w_940,h_528/v1737993374/sports_tube_background_nkpr4r.avif 940w
       "
       imagesizes="100vw"
@@ -74,12 +71,12 @@
       type="image/avif"
       media="(min-width: 481px) and (max-width: 768px)"
       imagesrcset="
-        https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_40,w_480,h_285/v1748537741/sports-tube-mobile_j2lush.avif 480w,
         https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_40,w_768,h_432/v1748537741/sports-tube-mobile_j2lush.avif 768w
       "
       imagesizes="100vw"
     />
 
+    <!-- Mobile ≤480px -->
     <link
       rel="preload"
       as="image"
@@ -87,12 +84,10 @@
       type="image/avif"
       media="(max-width: 480px)"
       imagesrcset="
-        https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_40,w_320,h_267/v1748537741/sports-tube-mobile_j2lush.avif 320w,
         https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_40,w_480,h_400/v1748537741/sports-tube-mobile_j2lush.avif 480w
       "
       imagesizes="100vw"
     />
-
 
     <link
       rel="icon"
@@ -737,7 +732,8 @@
               https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_40,w_1920,h_1080/v1737993374/sports_tube_background_nkpr4r.avif 1920w,
               https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_40,w_2560,h_1440/v1737993374/sports_tube_background_nkpr4r.avif 2560w
             "
-            sizes="(min-width: 941px) 100vw"
+            media="(min-width: 941px)"
+            sizes="100vw"
             type="image/avif"
           />
 
@@ -747,7 +743,8 @@
               https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_40,w_768,h_432/v1737993374/sports_tube_background_nkpr4r.avif 768w,
               https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_40,w_940,h_528/v1737993374/sports_tube_background_nkpr4r.avif 940w
             "
-            sizes="(min-width: 769px) and (max-width: 940px) 100vw"
+            media="(min-width: 769px) and (max-width: 940px)"
+            sizes="100vw"
             type="image/avif"
           />
 
@@ -757,19 +754,23 @@
               https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_40,w_480,h_285/v1748537741/sports-tube-mobile_j2lush.avif 480w,
               https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_40,w_768,h_432/v1748537741/sports-tube-mobile_j2lush.avif 768w
             "
-            sizes="(min-width: 481px) and (max-width: 768px) 100vw"
+            media="(min-width: 481px) and (max-width: 768px)"
+            sizes="100vw"
             type="image/avif"
           />
 
+          <!-- Mobile ≤480px -->
           <source
             srcset="
               https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_40,w_320,h_500/v1748537741/sports-tube-mobile_j2lush.avif 320w,
               https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_40,w_480,h_400/v1748537741/sports-tube-mobile_j2lush.avif 480w
             "
-            sizes="100vw"
             media="(max-width: 480px)"
+            sizes="100vw"
             type="image/avif"
           />
+
+          <!-- Fallback <img> -->
           <img
             src="https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_40,w_480,h_400/v1748537741/sports-tube-mobile_j2lush.avif"
             srcset="
@@ -785,8 +786,6 @@
             loading="eager"
             decoding="async"
           />
-
-
         </picture>
         <div class="hero-content">
           <div class="page-heading">
