@@ -26,29 +26,7 @@ html {
 
 h1,
 h2 {
-  font-family: 'Bebas Neue', sans-serif
-}
-
-@font-face {
-  font-family: "Bebas Neue";
-  src: url("/assets/fonts/Bebas_Neue/BebasNeue-Regular.woff2") format("woff2");
-  ffont-display: swap;
-  ascent-override: 92%;
-  descent-override: 8%;
-  line-gap-override: 0%;
-}
-
-@font-face {
-  font-family: Roboto;
-  src: url("/assets/fonts/Roboto/static/Roboto-Regular.woff2") format("woff2");
-  font-display: swap;
-  ascent-override: 92%;
-  descent-override: 8%;
-  line-gap-override: 0%;
-}
-
-.fonts-loaded body {
-  font-family: 'Bebas Neue', Roboto, sans-serif
+  font-family: "Segoe UI", Arial, sans-serif;
 }
 
 h1 {
@@ -62,7 +40,8 @@ h2 {
 
 a,
 h3 {
-  font-family: Roboto, sans-serif
+
+  font-family: Arial, sans-serif;
 }
 
 h3 {
@@ -84,11 +63,11 @@ nav ul li a {
 }
 
 body {
-  font-family: Roboto, Arial, sans-serif
+  font-family: Arial, sans-serif;
 }
 
 p {
-  font-family: Roboto, Arial, sans-serif;
+  font-family: Arial, sans-serif;
   letter-spacing: .02em
 }
 
