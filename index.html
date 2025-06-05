@@ -11,19 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="preconnect" href="https://res.cloudinary.com" crossorigin />
     <link rel="preload" href="/styles.css" as="style" />
-    <link
-      rel="stylesheet"
-      href="/styles.css"
-      media="print"
-      onload="this.onload=null;this.media='all';"
-    />
-    <noscript><link rel="stylesheet" href="/styles.css" /></noscript>
-
-    <link rel="preconnect" href="https://res.cloudinary.com" crossorigin />
-
-    <!-- Preconnect to Cloudinary for faster connection -->
-    <link rel="preconnect" href="https://res.cloudinary.com" crossorigin>
-
+  
         <!-- Desktop ≥ 1440px -->
     <link
       rel="preload"
@@ -81,6 +69,10 @@
       href="https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_auto:good,fl_lossy,fl_force_strip,dpr_auto,c_fill,g_auto,/v1738106888/sports_tube_tab_logo_oajgbj.avif"
       type="image/avif"
     />
+    <link rel="preload" href="/styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+
+    <noscript><link rel="stylesheet" href="/styles.css"></noscript>
+
     <style>
       .video-box img,
       .video-box iframe {
