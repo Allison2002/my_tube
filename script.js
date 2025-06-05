@@ -1,16 +1,4 @@
 document.addEventListener("DOMContentLoaded", function () {
-    document.documentElement.classList.add("fonts-loading");
-
-    // Wait for all critical fonts
-    Promise.all([
-        document.fonts.load('1em "Bebas Neue"'),
-        document.fonts.load('1em "Roboto"'),
-        document.fonts.load('1em "Origin"') // only if you're using this
-    ]).then(() => {
-        document.documentElement.classList.remove("fonts-loading");
-        document.documentElement.classList.add("fonts-loaded");
-    });
-
     console.log("✅ Optimized script with caching, CLS improvements, CTA fix, and Biography fix!");
 
     

@@ -2186,18 +2186,6 @@ input::placeholder {
     visibility: visible;
   }
 
-  html.fonts-loading body {
-    visibility: hidden;
-  }
-
-  html.fonts-loaded body {
-    visibility: visible;
-  }
-
-  body.fonts-loading {
-    visibility: hidden;
-  }
-
   main,
   nav ul li {
     padding: 0
