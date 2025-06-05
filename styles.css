@@ -522,7 +522,7 @@ nav img {
 }
 
 section {
-  min-height: auto;
+  min-height: 100vh;
 }
 
 .blog-hero-section {
