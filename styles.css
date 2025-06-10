@@ -1138,7 +1138,7 @@ span {
 .join-container {
   display: flex;
   flex-direction: column;
-  height: 50vh;
+  height: auto;
   padding: 6em;
   margin: 0 auto;
   max-width: 80%;
@@ -1457,13 +1457,17 @@ footer {
 .bottom-logo {
   display: flex;
   align-items: center;
-  justify-content: left
+  justify-content: left;
+  width: 30vw;
+  height: auto;
+  margin: 0 auto;
 }
 
 .bottom-logo img {
   text-align: left;
-  width: 320px;
-  height: auto
+  width: 100%;
+  height: auto;
+  display: block;
 }
 
 .bottom-footer-content {
@@ -1962,7 +1966,7 @@ input::placeholder {
 
   .box2-grid,
   .input-text {
-    justify-content: center
+    justify-content: center;
   }
 
   .footer-col {
@@ -2000,30 +2004,7 @@ input::placeholder {
     margin: 0 .5em
   }
 
-  .join-section {
-    background-size: cover;
-    padding: 3em 1em
-  }
 
-  .join-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 2em 1em;
-    max-width: 90%
-  }
-
-  .join-text {
-    width: 100%
-  }
-
-  .join-text h2 {
-    font-size: 2rem
-  }
-
-  .join-text p {
-    font-size: 1.2rem
-  }
 
   .box2-grid {
     display: flex;
@@ -2179,10 +2160,6 @@ input::placeholder {
     text-align: center
   }
 
-  .join-section {
-    height: auto
-  }
-
   body,
   html {
     width: 100%;
@@ -2286,8 +2263,6 @@ input::placeholder {
     padding: 2em 0
   }
 
-
-
   .lm-subheadings {
     width: 100%;
     padding: 1em 0
@@ -2311,6 +2286,45 @@ input::placeholder {
 
   #single-video {
     max-width: 100%
+  }
+
+  .join-section {
+    background-size: cover;
+    padding: 3em 1em;
+    height: auto;
+  }
+
+  .join-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2em 1em;
+    max-width: 90%
+  }
+
+  .join-section {
+    padding: 1rem 0 2rem;
+  }
+
+  .join-text {
+    width: 100%;
+    padding-bottom: 1rem;
+  }
+
+  .button {
+    padding: 0.5em 1em;
+  }
+
+  .btn3 a {
+    font-size: 1rem;
+  }
+
+  .join-text h2 {
+    font-size: 1.3rem
+  }
+
+  .join-text p {
+    font-size: 1rem
   }
 
   .footer-col ul,
@@ -2475,11 +2489,7 @@ input::placeholder {
   }
 
   .section-heading {
-    padding: 1em
-  }
-
-  .section-heading h2 {
-    font-size: 3rem
+    padding: 0 1em 1em;
   }
 
   .section-heading p {
@@ -2489,6 +2499,7 @@ input::placeholder {
   .biography-section {
     flex-direction: column;
     align-items: center;
+    padding: 0;
   }
 
   .biography {
@@ -2717,6 +2728,17 @@ input::placeholder {
     font-size: 1.2rem
   }
 
+  .join-bottom {
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-content: center;
+  }
+
+  .email {
+    margin: 0 auto;
+  }
+
   .input-text input::placeholder {
     padding: 0
   }
@@ -2747,8 +2769,10 @@ input::placeholder {
   }
 
   .social-media img {
-    width: 2em;
-    padding: .5em
+    width: 48px;
+    height: 48px;
+    padding: .5em;
+
   }
 
   .bottom-footer-content {
@@ -2795,7 +2819,7 @@ input::placeholder {
 
 
   .call2action {
-    margin-top: 5em
+    margin-top: 0;
   }
 }
 
@@ -2882,9 +2906,9 @@ input::placeholder {
 
   .sct-btn {
     padding: 0;
-    text-align: left;
-    align-items: start;
-    justify-content: left
+    text-align: center;
+    align-items: center;
+    justify-content: center;
   }
 
   .sports-box,
