@@ -42,11 +42,11 @@
     <link
       rel="preload"
       as="image"
-      href="https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_40,fl_lossy,fl_force_strip,dpr_auto,c_fill,g_auto,w_768,h_432/v1749075830/sports-tube-tablet_k9pg7j.avif"
+      href="https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_40,fl_lossy,fl_force_strip,dpr_auto,c_fill,g_auto,w_768,h_432/v1748995107/sports_tube_background_nxaz9j.avif"
       type="image/avif"
       media="(min-width: 481px) and (max-width: 768px)"
       imagesrcset="
-        https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_40,fl_lossy,fl_force_strip,dpr_auto,c_fill,g_auto,w_768,h_432/v1749075830/sports-tube-tablet_k9pg7j.avif
+        https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_40,fl_lossy,fl_force_strip,dpr_auto,c_fill,g_auto,w_768,h_432/v1748995107/sports_tube_background_nxaz9j.avif
       "
       imagesizes="100vw"
     />
@@ -55,11 +55,11 @@
     <link
       rel="preload"
       as="image"
-      href="https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_40,fl_lossy,fl_force_strip,dpr_auto,c_fill,g_auto,w_480,h_400/v1749075830/sports-tube-mobile_fbqqig.avif"
+      href="https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_40,fl_lossy,fl_force_strip,dpr_auto,c_fill,g_auto,w_480,h_400/v1748995107/sports_tube_background_nxaz9j.avif"
       type="image/avif"
       media="(max-width: 480px)"
       imagesrcset="
-        https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_40,fl_lossy,fl_force_strip,dpr_auto,c_fill,g_auto,w_480,h_400/v1749075830/sports-tube-mobile_fbqqig.avif 
+        https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_40,fl_lossy,fl_force_strip,dpr_auto,c_fill,g_auto,w_480,h_400/v1748995107/sports_tube_background_nxaz9j.avif 
       "
       imagesizes="100vw"
     />
@@ -113,7 +113,6 @@
         background-color: #222;
       }
 
-      .hero-container picture,
       .hero-container picture img {
         display: block;
         width: 100%;
@@ -510,8 +509,7 @@
           min-height: 400px;
         }
 
-        .hero-container img,
-        .hero-container picture img {
+        .hero-container img {
           aspect-ratio: auto;
           min-height: 400px;
         }
@@ -541,7 +539,6 @@
           width: 100vw;
           height: auto;
           max-height: 100vh;
-          object-fit: content;
         }
 
         .video-week-container { 
@@ -575,15 +572,15 @@
 
       @media (max-width:480px) {
 
-        .hero-container img,
-        .hero-container picture img {
+        .hero-container img {
           aspect-ratio: 480 / 609;
           top: 0 !important;
           padding: 0 !important;
-          margin: -100px; !important;
+          margin: 0;
           width: 100%;
           max-width: 480px;
-          height: auto;
+          height: 100%;
+          max-height: 100vh;
         }
         
         .page-heading {
@@ -988,9 +985,9 @@
           <!-- Desktop ≥ 941px -->
           <source
             srcset="
-              https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_40,fl_lossy,fl_force_strip,dpr_auto,c_fill,g_auto,w_2880,h_1620/v1749075830/sports-tube-desktop_fvj0gg.avif,
-              https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_40,fl_lossy,fl_force_strip,dpr_auto,c_fill,g_auto,w_3840,h_2160/v1749075830/sports-tube-desktop_fvj0gg.avif,
-              https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_40,fl_lossy,fl_force_strip,dpr_auto,c_fill,g_auto,w_5120,h_2880/v1749075830/sports-tube-desktop_fvj0gg.avif
+              https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_40,fl_lossy,fl_force_strip,dpr_auto,c_fill,g_auto,w_2880,h_1620/v1748995107/sports_tube_background_nxaz9j.avif,
+              https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_40,fl_lossy,fl_force_strip,dpr_auto,c_fill,g_auto,w_3840,h_2160/v1748995107/sports_tube_background_nxaz9j.avif,
+              https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_40,fl_lossy,fl_force_strip,dpr_auto,c_fill,g_auto,w_5120,h_2880/v1748995107/sports_tube_background_nxaz9j.avif
             "
             media="(min-width: 941px)"
             sizes="100vw"
@@ -1000,8 +997,8 @@
           <!-- Tablet 769px–940px -->
           <source
             srcset="
-              https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_40,fl_lossy,fl_force_strip,dpr_auto,c_fill,g_auto,w_1536,h_864/v1749075830/sports-tube-tablet_k9pg7j.avif 768w,
-              https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_40,fl_lossy,fl_force_strip,dpr_auto,c_fill,g_auto,w_1880,h_1056/v1749075830/sports-tube-tablet_k9pg7j.avif 
+              https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_40,fl_lossy,fl_force_strip,dpr_auto,c_fill,g_auto,w_1536,h_864/v1748995107/sports_tube_background_nxaz9j.avif 768w,
+              https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_40,fl_lossy,fl_force_strip,dpr_auto,c_fill,g_auto,w_1880,h_1056v1748995107/sports_tube_background_nxaz9j.avif 
             "
             media="(min-width: 769px) and (max-width: 940px)"
             sizes="100vw"
@@ -1011,8 +1008,8 @@
           <!-- Mobile 481px–768px -->
           <source
             srcset="
-              https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_40,fl_lossy,fl_force_strip,dpr_auto,c_fill,g_auto,w_960,h_570/v1749075830/sports-tube-tablet_k9pg7j.avif,
-              https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_40,fl_lossy,fl_force_strip,dpr_auto,c_fill,g_auto,w_1536,h_864/v1749075830/sports-tube-tablet_k9pg7j.avif
+              https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_40,fl_lossy,fl_force_strip,dpr_auto,c_fill,g_auto,w_960,h_570/v1748995107/sports_tube_background_nxaz9j.avif,
+              https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_40,fl_lossy,fl_force_strip,dpr_auto,c_fill,g_auto,w_1536,h_864/v1748995107/sports_tube_background_nxaz9j.avif
             "
             media="(min-width: 481px) and (max-width: 768px)"
             sizes="100vw"
@@ -1022,8 +1019,8 @@
           <!-- Mobile ≤480px -->
           <source
             srcset="
-              https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_40,fl_lossy,fl_force_strip,dpr_auto,c_fill,g_auto,w_649,h_1000/v1749075830/sports-tube-mobile_fbqqig.avif,
-              https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_40,fl_lossy,fl_force_strip,dpr_auto,c_fill,g_auto,w_960,h_1218/v1749075830/sports-tube-mobile_fbqqig.avif
+              https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_40,fl_lossy,fl_force_strip,dpr_auto,c_fill,g_auto,w_649,h_1000/v1748995107/sports_tube_background_nxaz9j.avif,
+              https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_40,fl_lossy,fl_force_strip,dpr_auto,c_fill,g_auto,w_960,h_1218/v1748995107/sports_tube_background_nxaz9j.avif
             "
             media="(max-width: 480px)"
             sizes="100vw"
@@ -1032,17 +1029,17 @@
 
           <!-- Fallback <img> -->
           <img
-            src="https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_40,fl_lossy,fl_force_strip,dpr_auto,c_fill,g_auto,w_960,h_1218/v1749075830/sports-tube-mobile_fbqqig.avif"
+            src="https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_40,fl_lossy,fl_force_strip,dpr_auto,c_fill,g_auto,w_960,h_1218/v1748995107/sports_tube_background_nxaz9j.avif"
             srcset="
-              https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_40,fl_lossy,fl_force_strip,dpr_auto,c_fill,g_auto,w_640,h_534/v1749075830/sports-tube-mobile_fbqqig.avif,
-              https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_40,fl_lossy,fl_force_strip,dpr_auto,c_fill,g_auto,w_960,h_1218/v1749075830/sports-tube-mobile_fbqqig.avif
+              https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_40,fl_lossy,fl_force_strip,dpr_auto,c_fill,g_auto,w_640,h_534/v1748995107/sports_tube_background_nxaz9j.avif,
+              https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_40,fl_lossy,fl_force_strip,dpr_auto,c_fill,g_auto,w_960,h_1218/v1748995107/sports_tube_background_nxaz9j.avif
             "
             media="(max-width: 480px)"
             sizes="100vw"
             alt="Hero image of Sports Tube Video Blog homepage showcasing responsive, SEO-optimized design"
             width="480"
             height="609"
-            style="object-fit: cover;"
+            style="object-fit: cover; object-position: left;"
             fetchpriority="high"
             loading="eager"
             decoding="async"
