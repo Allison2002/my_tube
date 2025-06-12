@@ -4,7 +4,24 @@
     <meta charset="UTF-8" />
     <meta http-equiv="Cache-Control" content="max-age=31536000, immutable" />
     <meta name="description" content="Exciting sports content is coming soon to Sports Tube! Stay tuned for football, basketball, baseball, hockey, soccer, and MMA videos. Join our sports community now and be the first to access exclusive content!" />
-    <title>Coming Soong</title>
+    <title>Coming Soong | Sports Tube</title>
+    <!-- Open Graph (Facebook, LinkedIn) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Coming Soon | Sports Tube" />
+    <meta property="og:description" content="Exciting sports content is coming soon to Sports Tube! Stay tuned for football, basketball, baseball, hockey, soccer, and MMA videos. Join our sports community now and be the first to access exclusive content!" />
+    <meta property="og:url" content="https://sports-tube.netlify.app/pages/coming-soon" />
+    <meta property="og:image" content="https://res.cloudinary.com/dnptzisuf/image/upload/f_auto,q_auto,w_1200,h_630,c_fill/v1739374163/account-wide_nyctux.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Red stage curtains with text 'Coming Soon'." />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Coming Soon | Sports Tube" />
+    <meta name="twitter:description" content="Exciting sports content is coming soon to Sports Tube! Be the first to watch football, basketball, baseball, and more." />
+    <meta name="twitter:image" content="https://res.cloudinary.com/dnptzisuf/image/upload/f_auto,q_auto,w_1200,h_630,c_fill/v1739374163/account-wide_nyctux.jpg" />
+    <meta name="twitter:image:alt" content="Red stage curtains with text 'Coming Soon'." />
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="preconnect" href="https://res.cloudinary.com" crossorigin />
     <link
@@ -43,6 +60,61 @@
       href="https://res.cloudinary.com/dnptzisuf/image/upload/f_auto,q_auto:good,c_fit/v1738106888/sports_tube_tab_logo_oajgbj.avif"
       type="image/avif"
     />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "@id": "https://sports-tube.netlify.app/pages/coming-soon",
+        "url": "https://sports-tube.netlify.app/pages/coming-soon",
+        "name": "Coming Soon | Sports Tube",
+        "description": "Exciting sports content is coming soon to Sports Tube! Stay tuned for football, basketball, baseball, hockey, soccer, and MMA videos. Join our sports community now and be the first to access exclusive content!",
+        "inLanguage": "en-US",
+        "isPartOf": {
+          "@type": "WebSite",
+          "@id": "https://sports-tube.netlify.app",
+          "name": "Sports Tube"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "Sports Tube",
+          "url": "https://sports-tube.netlify.app",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://res.cloudinary.com/dnptzisuf/image/upload/f_auto,q_auto:good,c_fit/v1738106888/sports_tube_tab_logo_oajgbj.avif",
+            "width": 256,
+            "height": 256
+          }
+        },
+        "primaryImageOfPage": {
+          "@type": "ImageObject",
+          "url": "https://res.cloudinary.com/dnptzisuf/video/upload/v1739374163/9_july_qfrjkn.mp4",
+          "contentUrl": "https://res.cloudinary.com/dnptzisuf/video/upload/v1739374163/9_july_qfrjkn.mp4",
+          "encodingFormat": "video/mp4",
+          "name": "Coming Soon Video Banner",
+          "description": "Video of red stage curtains with the words 'Coming Soon'"
+        }
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://sports-tube.netlify.app/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Coming Soon",
+            "item": "https://sports-tube.netlify.app/pages/coming-soon"
+          }
+        ]
+      }
+    </script>
   <style>
     footer {
       margin-top: -25em;
@@ -51,7 +123,7 @@
     .coming-soon-container {
       width: 100%;
       height: 100vh;
-      margin-top: -60px;
+      margin-top: -100px;
       position: relative;
       overflow: hidden;
       max-width: 100%;
@@ -67,33 +139,39 @@
       max-width: 100%;
     }
 
-  @media (max-width: 1024px) {
-    main {
-      min-height: 75vh;
-    }
-    .coming-soon-container {
-      align-items: start;
-      height: 45vh;
-    }
-    .coming-soon {
-      margin-top: -30em;
-    }
+      @media (max-width: 1024px) {
+        main {
+          min-height: 75vh;
+        }
+        .coming-soon-container {
+          align-items: start;
+          height: auto;
+        }
+        .coming-soon {
+          margin-top: -30em;
+        }
 
-  #categories.categories {
-    margin-bottom: 0;
-  }
+        #categories.categories {
+          margin-bottom: 0;
+        }
 
-   footer {
-      margin-top: -15em;
-    }
-}
+        footer {
+            margin-top: -15em;
+          }
+        .coming-soon-container {
+            align-items: start;
+            padding-top: 7rem;
+        }
 
-  @media (max-width: 480px) {
-    .coming-soon-container {
-        align-items: start;
-        height: 45vh;
-    }
-}
+        .coming-soon {
+          margin-top: 0;
+        }
+
+        footer {
+          margin-top: 0;
+        }
+      }
+
 
   </style>
   </head>

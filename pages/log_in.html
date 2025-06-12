@@ -8,6 +8,19 @@
       content="Log into your Sports Tube account to stream the latest sports videos, engage with the community, and upload your own content. Join today to experience the best in sports entertainment!"
     />
     <title>Sports Tube Log In</title>
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Sports Tube Log In">
+    <meta property="og:description" content="Log into your Sports Tube account to stream the latest sports videos, engage with the community, and upload your own content.">
+    <meta property="og:url" content="https://sports-tube.netlify.app/pages/log_in">
+    <meta property="og:image" content="https://res.cloudinary.com/dnptzisuf/image/upload/f_auto,q_auto,w_1200,h_630,c_fill/v1739332963/login-wide_fmjvtn.jpg">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Sports Tube Log In">
+    <meta name="twitter:description" content="Log into your Sports Tube account to stream sports videos, connect with others, and share your favorite moments.">
+    <meta name="twitter:image" content="https://res.cloudinary.com/dnptzisuf/image/upload/f_auto,q_auto,w_1200,h_630,c_fill/v1739332963/login-wide_fmjvtn.jpg">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="preconnect" href="https://res.cloudinary.com" crossorigin />
     <link
@@ -46,7 +59,52 @@
       href="https://res.cloudinary.com/dnptzisuf/image/upload/f_auto,q_auto:good,c_fit/v1738106888/sports_tube_tab_logo_oajgbj.avif"
       type="image/avif"
     />
-
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "LoginPage",
+        "name": "Sports Tube Log In",
+        "url": "https://sports-tube.netlify.app/pages/log_in",
+        "description": "Log into your Sports Tube account to stream the latest sports videos, engage with the community, and upload your own content. Join today to experience the best in sports entertainment!",
+        "publisher": {
+          "@type": "Organization",
+          "name": "Sports Tube",
+          "url": "https://sports-tube.netlify.app",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://res.cloudinary.com/dnptzisuf/image/upload/f_auto,q_auto:good,c_fit/v1738106888/sports_tube_tab_logo_oajgbj.jpg",
+            "width": 512,
+            "height": 512
+          }
+        },
+        "primaryImageOfPage": {
+          "@type": "ImageObject",
+          "url": "https://res.cloudinary.com/dnptzisuf/image/upload/f_auto,q_auto,w_1200,h_630,c_fill/v1739332963/login-wide_fmjvtn.jpg",
+          "width": 1200,
+          "height": 630
+        }
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://sports-tube.netlify.app/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Guidelines",
+            "item": "https://sports-tube.netlify.app/pages/log_in"
+          }
+        ]
+      }
+    </script>
     <style>
       .category-page {
         text-align: center;
