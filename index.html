@@ -119,20 +119,18 @@
         width: 100%;
         max-width: 100vw;
         height: auto;
-        overflow: hidden;
-        min-height: 400px;
         max-height: 1080px;
         overflow: hidden;
+        background-color: #fe0000;
+        contain: paint;
       }
 
-      .hero-container {
-        background-color: #222;
-      }
-
-      .hero-container picture img {
+      .hero-container picture,
+      .hero-container img {
         display: block;
         width: 100%;
         height: auto;
+        min-height: 35rem;
       }
 
       .hero-img img {
@@ -222,7 +220,7 @@
         height: auto;
         max-width: 80vw;
         margin: 3em auto 2em;
-        min-height: auto;
+        min-height: 27rem;
       }
 
       .video-grid {
@@ -240,6 +238,7 @@
         justify-content: center;
         text-align: center;
         width: 100%;
+        height: auto;
         max-width: 500px;
         margin: 0 auto;
       }
@@ -376,7 +375,8 @@
         max-width: 80vw;
         margin: 0 auto;
         padding: 3rem 1rem;
-        gap: 2rem;
+        gap: 2rem;  
+        min-height: 40rem;
       }
 
       .call2action-text {
@@ -562,6 +562,7 @@
           padding: 0;
           gap: 1em;
           margin: 3em auto 0;
+          min-height: 65rem;
         }
 
         .video-grid {
@@ -573,13 +574,13 @@
           max-width: 95vw;
           margin: 1em auto 0;
         }
-
-        .call2action {
+        
+        .call2action-container {
+          min-height: 40rem;
           margin: 0 auto;
           padding: 0 1em;
           width: 90%;
           max-width: 90vw;
-
         }
         
       }
@@ -595,7 +596,6 @@
           max-width: 100vw;
           max-height: 400px;
           min-height: 300px;
-          
         }
 
         .hero-container img {
@@ -1464,12 +1464,12 @@
           <div class="grid-211">
             <div class="box1-211 icon">
               <img
-                src="https://res.cloudinary.com/dnptzisuf/image/upload/f_auto,fl_attachment,fl_lossy,fl_attachment,q_auto:low,w_40,h_40,c_fill,fl_attachment/v1738006149/live_streaming_icon_e5jc1t.avif"
+                src="https://res.cloudinary.com/dnptzisuf/image/upload/f_auto,fl_attachment,fl_lossy,fl_attachment,q_auto:low,w_80,h_80,c_fill,fl_attachment/v1738006149/live_streaming_icon_e5jc1t.avif"
                 alt="Live Streaming Icon"
                 width="40"
                 height="40"
                 loading="lazy"
-                style="width: 40px; height: 40px"
+                style="aspect-ratio: 40 / 40; object-fit: contain;"
               />
               <h2>Live Streaming</h2>
               <p>
@@ -1495,12 +1495,12 @@
             </div>
             <div class="box1-211 icon">
               <img
-                src="https://res.cloudinary.com/dnptzisuf/image/upload/f_auto,fl_attachment,fl_lossy,fl_attachment,q_auto:low,w_100,h_100,c_fill,fl_attachment/v1738006149/uploads_icon_uvklgj.avif"
+                src="https://res.cloudinary.com/dnptzisuf/image/upload/f_auto,fl_attachment,fl_lossy,fl_attachment,q_auto:low,w_80,h_80,c_fill,fl_attachment/v1738006149/uploads_icon_uvklgj.avif"
                 alt="Uploads Icon"
                 width="40"
                 height="40"
                 loading="lazy"
-                style="width: 40px; height: 40px"
+                style="aspect-ratio: 40 / 40; object-fit: contain;"
               />
               <h3>User Uploads Made Easy</h3>
               <p class="box1-211p">
@@ -1516,12 +1516,12 @@
             </div>
             <div class="box1-211 icon">
               <img
-                src="https://res.cloudinary.com/dnptzisuf/image/upload/f_auto,fl_attachment,fl_lossy,fl_attachment,q_auto:low,w_100,h_100,c_fill,fl_attachment/v1738006149/stay_updated_icon_cbrwnq.avif"
+                src="https://res.cloudinary.com/dnptzisuf/image/upload/f_auto,fl_attachment,fl_lossy,fl_attachment,q_auto:low,w_80,h_80,c_fill,fl_attachment/v1738006149/stay_updated_icon_cbrwnq.avif"
                 alt="Stay Updated Icon"
                 width="40"
                 height="40"
                 loading="lazy"
-                style="width: 40px; height: 40px"
+                style="aspect-ratio: 40 / 40; object-fit: contain;"
               />
               <h3>Stay Updated with Sports News</h3>
               <p>Get the latest news and updates on all sports.</p>
