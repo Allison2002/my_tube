@@ -28,42 +28,52 @@
     <link rel="preconnect" href="https://res.cloudinary.com" crossorigin />
     <link rel="preload" href="/styles.css" as="style" />
   
+    <!-- Preload Hero Image for Desktop -->
     <link
       rel="preload"
       as="image"
-      href="https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_40,fl_lossy,fl_force_strip,dpr_auto,c_fill,g_auto,w_2880,h_1620/v1748995107/sports_tube_background_nxaz9j.avif"
       type="image/avif"
+      href="https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_40,c_fill,g_auto,w_3840,h_2160/v1749555392/sports-tube-hero-desktop.avif"
       media="(min-width: 941px)"
       imagesrcset="
-        https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_40,fl_lossy,fl_force_strip,dpr_auto,c_fill,g_auto,w_2880,h_1620/v1748995107/sports_tube_background_nxaz9j.avif 2880w"
+        https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_40,c_fill,g_auto,w_3840,h_2160/v1749555392/sports-tube-hero-desktop.avif 2x,
+        https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_40,c_fill,g_auto,w_1920,h_1080/v1749555392/sports-tube-hero-desktop.avif 1x
+      "
       imagesizes="100vw"
     />
 
-
+    <!-- Preload Hero Image for Tablet -->
     <link
       rel="preload"
       as="image"
-      href="https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_40,fl_lossy,fl_force_strip,dpr_auto,c_fill,g_auto,w_1536,h_864/v1748995107/sports_tube_background_nxaz9j.avif"
       type="image/avif"
+      href="https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_40,c_fill,g_auto,w_1536,h_864/v1749555392/sports-tube-hero-tablet.avif"
       media="(min-width: 769px) and (max-width: 940px)"
       imagesrcset="
-        https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_40,fl_lossy,fl_force_strip,dpr_auto,c_fill,g_auto,w_1536,h_864/v1748995107/sports_tube_background_nxaz9j.avif 1536w"
-      imagesizes="100vw"
-    />
-    <link
-      rel="preload"
-      as="image"
-      href="https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_40,fl_lossy,fl_force_strip,dpr_auto,c_fill,g_auto,w_649,h_1000/v1749555392/sports-tube-hero-mobile_xdys9h.avif"
-      type="image/avif"
-      media="(max-width: 768px)"
-      imagesrcset="
-        https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_40,fl_lossy,fl_force_strip,dpr_auto,c_fill,g_auto,w_649,h_1000/v1749555392/sports-tube-hero-mobile_xdys9h.avif 649w"
+        https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_40,c_fill,g_auto,w_1536,h_864/v1749555392/sports-tube-hero-tablet.avif 2x,
+        https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_40,c_fill,g_auto,w_768,h_432/v1749555392/sports-tube-hero-tablet.avif 1x
+      "
       imagesizes="100vw"
     />
 
+    <!-- Preload Hero Image for Mobile -->
     <link
       rel="preload"
-      href="https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_auto:good,fl_lossy,fl_force_strip,dpr_auto,c_fill,g_auto,w_495,h_180,c_fill/v1739886981/official_sports_tube_logo_2_xn4flo.avif"
+      as="image"
+      type="image/avif"
+      href="https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_40,c_fill,g_auto,w_960,h_800/v1749555392/sports-tube-hero-mobile.avif"
+      media="(max-width: 768px)"
+      imagesrcset="
+        https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_40,c_fill,g_auto,w_960,h_800/v1749555392/sports-tube-hero-mobile.avif 2x,
+        https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_40,c_fill,g_auto,w_480,h_400/v1749555392/sports-tube-hero-mobile.avif 1x
+      "
+      imagesizes="100vw"
+    />
+
+
+    <link
+      rel="preload"
+      href="https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_auto:good,fl_lossy,fl_force_strip,dpr_auto,c_fill,g_auto,w_386,h_142,c_fill/v1739886981/official_sports_tube_logo_2_xn4flo.avif"
       as="image"
       type="image/avif"
       importance="high"
@@ -501,7 +511,7 @@
         padding: 3em 0 1em
       }
 
-      @media (max-width: 940px) {
+      @media (max-width: 1024px) {
         .section-title h2 {
           font-size: 2.5rem;
           margin: 1em auto 0;
@@ -527,7 +537,7 @@
         }
 
         .page-heading h1 {
-          font-size: 1.5rem;
+          font-size: 2rem;
           padding-bottom: 1em;
         }
 
@@ -574,13 +584,20 @@
           padding: 0 1em;
           width: 90%;
           max-width: 90vw;
+
+        }
         
+      }
+
+      @media (max-width:768px) {
+        .page-heading h1  {
+          font-size: 1.5rem;
+        }
       }
 
       @media (max-width:480px) {
 
         .hero-container img {
-          aspect-ratio: 480 / 609;
           top: 0 !important;
           padding: 0 !important;
           margin: 0;
@@ -1026,16 +1043,16 @@
 
           <!-- Fallback <img> -->
           <img
-            src="https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_40,fl_lossy,fl_force_strip,dpr_auto,c_fill,g_auto,w_960,h_1218/v1748995107/sports_tube_background_nxaz9j.avif"
+            src="https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_40,fl_lossy,fl_force_strip,dpr_auto,c_fill,g_auto,w_960,h_540/v1748995107/sports_tube_background_nxaz9j.avif"
             srcset="
-              https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_40,fl_lossy,fl_force_strip,dpr_auto,c_fill,g_auto,w_640,h_534/v1748995107/sports_tube_background_nxaz9j.avif,
-              https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_40,fl_lossy,fl_force_strip,dpr_auto,c_fill,g_auto,w_960,h_1218/v1748995107/sports_tube_background_nxaz9j.avif
+              https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_40,fl_lossy,fl_force_strip,dpr_auto,c_fill,g_auto,w_640,h_400/v1748995107/sports_tube_background_nxaz9j.avif,
+              https://res.cloudinary.com/dnptzisuf/image/upload/f_avif,q_40,fl_lossy,fl_force_strip,dpr_auto,c_fill,g_auto,w_960,h_800/v1748995107/sports_tube_background_nxaz9j.avif
             "
             media="(max-width: 480px)"
             sizes="100vw"
             alt="Hero image of Sports Tube Video Blog homepage showcasing responsive, SEO-optimized design"
             width="480"
-            height="609"
+            height="400"
             style="object-fit: cover; object-position: left;"
             fetchpriority="high"
             loading="eager"
