@@ -773,6 +773,8 @@ nav img {
   padding: 5em 0;
   max-width: 80%;
   margin: 5em auto;
+  min-height: 41rem;
+  max-width: 1536px;
 }
 
 .biography-section {
