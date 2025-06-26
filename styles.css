@@ -93,9 +93,9 @@ main {
   justify-content: center;
   align-items: stretch;
   margin: 0 auto;
-  contain: layout;
+  contain: layout paint;
   overflow-anchor: none;
-  min-height: 187rem;
+  min-height: 100vh;
 }
 
 img {
@@ -616,8 +616,6 @@ nav img {
 
 }
 
-
-
 .video-grid-collections {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -774,7 +772,7 @@ nav img {
   max-width: 80%;
   margin: 5em auto;
   min-height: 41rem;
-  max-width: 1536px;
+  content: layout;
 }
 
 .biography-section {
@@ -816,10 +814,10 @@ nav img {
   min-height: 300px;
   width: 100%;
   overflow: hidden;
-  min-height: 200px;
-  aspect-ratio: 3 / 2;
-  overflow: hidden;
   position: relative;
+  contain: paint;
+  aspect-ratio: 877 / 661;
+
 }
 
 .bio-img::before {
@@ -830,7 +828,7 @@ nav img {
   right: 0;
   height: 100%;
   background: linear-gradient(to bottom, rgba(31, 31, 31, .6) 0, rgba(68, 67, 67, .4) 100%);
-  z-index: 1
+  z-index: 1;
 }
 
 .bio-img img {
@@ -2103,11 +2101,6 @@ input::placeholder {
 }
 
 @media (min-width:769px) and (max-width:1024px) {
-
-  main {
-    min-height: 100vh;
-    min-height: 100dvh;
-  }
 
   section {
     min-height: auto;
