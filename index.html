@@ -121,6 +121,7 @@
         height: auto;
         overflow: hidden;
         min-height: 400px;
+        max-height: 1080px;
         overflow: hidden;
       }
 
@@ -522,11 +523,7 @@
           overflow: hidden;
           height: auto;
           min-height: 400px;
-        }
-
-        .hero-container img {
-          aspect-ratio: auto;
-          min-height: 400px;
+          max-height: 576px;
         }
 
         .page-heading h1,
@@ -594,15 +591,21 @@
       }
 
       @media (max-width:480px) {
+        .hero-container {
+          max-width: 100vw;
+          max-height: 400px;
+          min-height: 300px;
+          
+        }
 
         .hero-container img {
           top: 0 !important;
           padding: 0 !important;
           margin: 0;
           width: 100%;
-          max-width: 480px;
-          height: 100%;
-          max-height: 100vh;
+          height: auto;
+          aspect-ratio: 480 / 400;
+          display: block;
         }
         
         .page-heading {
